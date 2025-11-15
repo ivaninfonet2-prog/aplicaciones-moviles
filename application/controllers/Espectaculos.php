@@ -1,3 +1,4 @@
+
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
@@ -7,50 +8,53 @@ class Espectaculos extends CI_Controller
     {
         parent::__construct();
 
+        // Modelos y librerías necesarias
         $this->load->model('Usuario_modelo');
         $this->load->model('Espectaculo_modelo');
         $this->load->model('Reserva_modelo');
         $this->load->model('Venta_modelo');
-        $this->load->helper('url'); 
-        $this->load->helper('form');
-        $this->load->library('session');
-        $this->load->library('upload');
-        $this->load->library('form_validation');
+        $this->load->model('Correo_modelo'); 
+        $this->load->helper(['url','form']);
+        $this->load->library(['session','upload','form_validation']);
     }
 
     private function cargar_vista($vista, $data = [])
     {
-        $this->load->view('vista_comienzo_2');
+        $this->load->view('templates/header', $data);
         $this->load->view($vista, $data);
-        $this->load->view('footer');
+        $this->load->view('templates/footer');
     }
 
-    public function index()               
+    public function index()
     {
         $this->mostrar_lista('espectaculos/index');
     }
 
     public function index_administrador()
-    { 
-        $this->mostrar_lista('espectaculos/administrador'); 
+    {
+        $this->mostrar_lista('espectaculos/administrador');
     }
 
-    public function index_sin_loguear()  
-    { 
-        $this->mostrar_lista('espectaculos/index_sin_loguear'); 
+    public function index_sin_loguear()
+    {
+        $this->mostrar_lista('espectaculos/index_sin_loguear');
     }
 
     private function mostrar_lista($vista)
     {
         $espectaculos = $this->Espectaculo_modelo->obtener_espectaculos();
-        
-        foreach ($espectaculos as &$e) 
-        {
+
+        foreach ($espectaculos as &$e) {
             $e->detalles_habilitados = $e->fecha >= date('Y-m-d') && $e->disponibles > 0;
             $e->aviso = $this->generar_aviso($e);
         }
 
-        $this->cargar_vista($vista, compact('espectaculos'));
+        $data = [
+            'titulo' => 'Listado de espectáculos',
+            'espectaculos' => $espectaculos
+        ];
+
+        $this->cargar_vista($vista, $data);
     }
 
     private function generar_aviso($e)
@@ -58,39 +62,34 @@ class Espectaculos extends CI_Controller
         $ahora = new DateTime();
         $evento = new DateTime("{$e->fecha} {$e->hora}");
 
-        if ($evento < $ahora) 
-        {    
+        if ($evento < $ahora) {
             return 'Este espectáculo ya ha pasado.';
         }
-        
+
         $horas = $ahora->diff($evento)->days * 24 + $ahora->diff($evento)->h;
 
-        if ($horas <= 48 && $e->disponibles > 0) 
-        {
+        if ($horas <= 48 && $e->disponibles > 0) {
             return '¡Queda poco tiempo!';
-        } 
-        else 
-        {
-            return 'Todavía falta tiempo.';
         }
+        return 'Todavía falta tiempo.';
     }
 
-    public function ver_espectaculo($id)               
-    { 
-        $this->ver_detalle('espectaculos/ver_espectaculo', $id); 
+    public function ver_espectaculo($id)
+    {
+        $this->ver_detalle('espectaculos/ver_espectaculo', $id);
     }
 
-    public function espectaculo_sin_loguear($id)       
-    { 
-        $this->ver_detalle('espectaculos/espectaculo_sin_loguear', $id); 
+    public function espectaculo_sin_loguear($id)
+    {
+        $this->ver_detalle('espectaculos/espectaculo_sin_loguear', $id);
     }
 
     private function ver_detalle($vista, $id)
     {
-        $data = 
-        [
-            'espectaculo' => $this->Reserva_modelo->obtener_espectaculo_por_id($id),
-            'mensaje'     => $this->session->flashdata('mensaje')
+        $data = [
+            'titulo' => 'Detalle del espectáculo',
+            'espectaculo' => $this->Espectaculo_modelo->obtener_espectaculo_por_id($id),
+            'mensaje' => $this->session->flashdata('mensaje')
         ];
 
         $this->cargar_vista($vista, $data);
@@ -98,7 +97,8 @@ class Espectaculos extends CI_Controller
 
     public function crear()
     {
-        $this->cargar_vista('formularios/crear_espectaculo');
+        $data['titulo'] = 'Crear espectáculo';
+        $this->cargar_vista('formularios/crear_espectaculo', $data);
     }
 
     public function guardar()
@@ -110,22 +110,16 @@ class Espectaculos extends CI_Controller
         $this->form_validation->set_rules('precio', 'Precio', 'required|numeric');
         $this->form_validation->set_rules('disponibles', 'Disponibles', 'required|integer');
 
-        if ($this->form_validation->run() === FALSE) 
-        {
+        if ($this->form_validation->run() === FALSE) {
             $this->session->set_flashdata('mensaje', validation_errors());
             redirect('espectaculos/crear');
             return;
         }
 
         $imagen = $this->subir_imagen();
-        
-        if ($imagen === false) 
-        {   
-            return;
-        }    
+        if ($imagen === false) return;
 
-        $data = 
-        [
+        $data = [
             'nombre'      => $this->input->post('nombre'),
             'descripcion' => $this->input->post('descripcion'),
             'fecha'       => $this->input->post('fecha'),
@@ -135,38 +129,29 @@ class Espectaculos extends CI_Controller
             'imagen'      => $imagen
         ];
 
-        if ($this->Espectaculo_modelo->agregar_espectaculo($data)) 
-        {
-            $msg = 'Espectáculo agregado correctamente.';
-        } 
-        else 
-        {
-            $msg = 'Error al agregar el espectáculo.';
-        }
+        $msg = $this->Espectaculo_modelo->agregar_espectaculo($data)
+            ? 'Espectáculo agregado correctamente.'
+            : 'Error al agregar el espectáculo.';
 
         $this->session->set_flashdata('mensaje', $msg);
-        redirect('administrador');
+        redirect('espectaculos/index_administrador');
     }
 
     public function validar_fecha($fecha)
     {
-        if ($fecha < date('Y-m-d')) 
-        {
+        if ($fecha < date('Y-m-d')) {
             $this->form_validation->set_message('validar_fecha', 'La fecha debe ser igual o posterior a hoy.');
             return FALSE;
         }
-        else 
-        {
-            return TRUE;
-        }
+        return TRUE;
     }
 
     public function editar($id)
     {
         $data['espectaculo'] = $this->Espectaculo_modelo->obtener_espectaculo_por_id($id);
+        $data['titulo'] = 'Editar espectáculo';
 
-        if ($data['espectaculo']) 
-        {
+        if ($data['espectaculo']) {
             $this->cargar_vista('espectaculos/editar_espectaculo', $data);
         }
     }
@@ -174,28 +159,10 @@ class Espectaculos extends CI_Controller
     public function actualizar()
     {
         $id = $this->input->post('id_espectaculo');
-       
-        $upload_path = './activos/imagenes/';
+        $imagen = $this->subir_imagen('./activos/imagenes/', $this->input->post('imagen_actual'));
+        if ($imagen === false) return;
 
-        if (!is_dir($upload_path)) 
-        {
-            mkdir($upload_path, 0755, true);
-        }
-
-        if (!is_writable($upload_path)) 
-        {
-            chmod($upload_path, 0755);
-        }
-
-        $imagen = $this->subir_imagen($upload_path, $this->input->post('imagen_actual'));
-        
-        if ($imagen === false) 
-        {
-            return;
-        }
-
-        $data = 
-        [
+        $data = [
             'nombre'      => $this->input->post('nombre'),
             'descripcion' => $this->input->post('descripcion'),
             'fecha'       => $this->input->post('fecha'),
@@ -206,28 +173,19 @@ class Espectaculos extends CI_Controller
             'imagen'      => $imagen
         ];
 
-        if ($this->Espectaculo_modelo->actualizar_espectaculo($id, $data)) 
-        {
-            $msg = 'Espectáculo actualizado correctamente.';
-        } 
-        else 
-        {
-            $msg = 'Error al actualizar el espectáculo.';
-        }
+        $msg = $this->Espectaculo_modelo->actualizar_espectaculo($id, $data)
+            ? 'Espectáculo actualizado correctamente.'
+            : 'Error al actualizar el espectáculo.';
 
         $this->session->set_flashdata('mensaje', $msg);
-        redirect('administrador');
+        redirect('espectaculos/index_administrador');
     }
 
     private function subir_imagen($path = './activos/imagenes/', $imagen_actual = null)
     {
-        if (empty($_FILES['imagen']['name'])) 
-        {
-            return $imagen_actual;
-        }
+        if (empty($_FILES['imagen']['name'])) return $imagen_actual;
 
-        $config = 
-        [
+        $config = [
             'upload_path'   => $path,
             'allowed_types' => 'gif|jpg|png|jpeg',
             'max_size'      => 2048,
@@ -235,8 +193,7 @@ class Espectaculos extends CI_Controller
         ];
         $this->upload->initialize($config);
 
-        if (!$this->upload->do_upload('imagen')) 
-        {
+        if (!$this->upload->do_upload('imagen')) {
             $error = strip_tags($this->upload->display_errors());
             $this->session->set_flashdata('mensaje', 'Error al subir la imagen: ' . $error);
             redirect(current_url());
@@ -245,42 +202,48 @@ class Espectaculos extends CI_Controller
 
         $upload_data = $this->upload->data();
 
-        if ($imagen_actual && file_exists($path . $imagen_actual)) 
-        {
+        if ($imagen_actual && file_exists($path . $imagen_actual)) {
             unlink($path . $imagen_actual);
         }
 
         return $upload_data['file_name'];
     }
 
-    public function eliminar($id)
-    {
-        $reservas = $this->db->select('usuario_id, espectaculo_id')
-                            ->from('reservas')
-                            ->where('espectaculo_id', $id)
-                            ->get()->result_array();
+   public function eliminar($id)
+{
+    // Obtener todas las reservas asociadas al espectáculo
+    $reservas = $this->db->select('usuario_id, espectaculo_id')
+                         ->from('reservas')
+                         ->where('espectaculo_id', $id)
+                         ->get()->result_array();
 
-        $espectaculo = $this->Espectaculo_modelo->obtener_espectaculo_por_id($id);
+    // Obtener datos del espectáculo
+    $espectaculo = $this->Espectaculo_modelo->obtener_espectaculo_por_id($id);
 
-        foreach ($reservas as $r) 
-        {
-            $cliente = $this->db->get_where('clientes', ['id_usuario' => $r['usuario_id']])->row_array();
-            
-            if ($cliente) 
-            {
-                $this->Correo_modelo->enviar_cancelacion($cliente['email'], $cliente['nombre'], $espectaculo['nombre']);
-            }
+    // Notificar a los clientes afectados por la cancelación
+    foreach ($reservas as $r) {
+        $cliente = $this->db->get_where('clientes', ['id_usuario' => $r['usuario_id']])->row_array();
+        if ($cliente) {
+            $this->Correo_modelo->enviar_cancelacion(
+                $cliente['email'],
+                $cliente['nombre'],
+                $espectaculo['nombre']
+            );
         }
-
-        $ok = $this->Espectaculo_modelo->eliminar_espectaculo_completo($id);
-
-        $msg = $ok ? 'Espectáculo y datos asociados eliminados correctamente.' : 'Error al eliminar el espectáculo.';
-        
-        $this->session->set_flashdata('mensaje', $msg);
-       
-        redirect('espectaculos/index_administrador');
     }
 
-}
+    // Eliminar espectáculo y datos asociados
+    $ok = $this->Espectaculo_modelo->eliminar_espectaculo_completo($id);
 
-?>
+    // Mensaje de confirmación o error
+    $msg = $ok 
+        ? 'Espectáculo y datos asociados eliminados correctamente.' 
+        : 'Error al eliminar el espectáculo.';
+
+    // Guardar mensaje en sesión
+    $this->session->set_flashdata('mensaje', $msg);
+
+    // Redirigir al listado de espectáculos del administrador
+    redirect('espectaculos/index_administrador');
+  }
+}
