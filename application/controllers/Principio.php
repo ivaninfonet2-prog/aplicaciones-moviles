@@ -30,39 +30,4 @@ class Principio extends CI_Controller
         $this->load->view('principal/footer_principal');
     }
 
-    public function index_login() 
-    {
-        $data['fondo_login'] = base_url('activos/imagenes/mi_fondo.jpg');
-        $data['titulo'] = 'Inicio - UNLa Tienda';
-
-        $this->load->view('footer/header_footer', $data); 
-        $this->load->view('footer/body_footer', $data); 
-        $this->load->view('footer/footer');
-    }
-
-    public function index_3()
-    {
-        $data['fondo_login'] = base_url('activos/imagenes/mi_fondo.jpg');
-        $data['titulo'] = 'UNLa Tienda';
-
-        $this->load->view('templates/header_2', $data); 
-        $this->load->view('templates/body_3', $data); 
-        $this->load->view('templates/footer_2');
-    }
-
-    public function index_4()
-    {
-        // Defino los datos que se van a pasar a las vistas
-        $data = 
-        [
-            'titulo'       => 'Inicio - UNLa Tienda',
-            'espectaculos' => $this->Espectaculo_modelo->obtener_espectaculos(),
-            'fondo'        => base_url('activos/imagenes/mi_fondo.jpg')
-        ];
-
-        // Renderizo las vistas con los datos
-        $this->load->view('templates/header', $data);
-        $this->load->view('inicio/index', $data);
-        $this->load->view('templates/footer');
-    }
 }

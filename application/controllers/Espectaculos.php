@@ -27,7 +27,10 @@ class Espectaculos extends CI_Controller
 
     public function index()
     {
-        $this->mostrar_lista('espectaculos/index');
+        $this->load->view('espectaculos_sin_loguear/header_espectaculos');
+        $this->load->view('espectaculos_sin_loguear/body_espectaculos');
+        $this->load->view('espectaculos_sin_loguear/footer_espectaculos');
+       // $this->mostrar_lista('espectaculos/index');
     }
 
     public function index_administrador()
