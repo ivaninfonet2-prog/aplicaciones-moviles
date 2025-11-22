@@ -10,13 +10,13 @@ class Contacto extends CI_Controller
         $data['fondo'] = base_url('activos/imagenes/mi_fondo.jpg');
 
         // Cargar header común
-        $this->load->view('templates/header', $data);
+        $this->load->view('contacto_principal/header_contacto', $data);
 
         // Vista principal de la sección "Contacto"
-        $this->load->view('body_footer/contacto', $data);
+        $this->load->view('contacto_principal/body_contacto', $data);
 
         // Cargar footer común
-        $this->load->view('templates/footer');
+        $this->load->view('contacto_principal/footer_contacto');
     }
 
     public function index_2() 
