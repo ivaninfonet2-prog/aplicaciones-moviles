@@ -1,0 +1,89 @@
+/* Fondo general */
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); /* 🔹 degradado azul elegante */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+/* Main */
+.main-content {
+    min-height: calc(100vh - 120px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Contenedor principal */
+.cuadro-acerca {
+    background-color: rgba(255, 255, 255, 0.08); /* 🔹 semi-transparente */
+    border-radius: 15px;
+    padding: 30px;
+    max-width: 600px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.6);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+/* Hover dinámico */
+.cuadro-acerca:hover {
+    transform: scale(1.02);
+    background-color: rgba(255, 255, 255, 0.12);
+}
+
+/* Título */
+.cuadro-acerca h2 {
+    font-size: 2.2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #00cfff; /* 🔹 celeste brillante */
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
+}
+
+/* Texto */
+.cuadro-acerca p {
+    font-size: 1.1rem;
+    margin-bottom: 25px;
+    line-height: 1.6;
+    color: #f0f0f0; /* 🔹 blanco suave */
+}
+
+/* Botón */
+.cuadro-acerca a.btn-celeste {
+    font-weight: bold;
+    padding: 12px 24px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #00cfff, #0099ff); /* 🔹 degradado celeste */
+    color: #fff;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.5);
+    text-decoration: none;
+    display: inline-block;
+}
+
+.cuadro-acerca a.btn-celeste:hover {
+    background: linear-gradient(135deg, #66d9ff, #33adff); /* 🔹 tono más suave */
+    color: #fff;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.7);
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .cuadro-acerca {
+        max-width: 95%;
+        padding: 20px;
+    }
+
+    .cuadro-acerca h2 {
+        font-size: 1.8rem;
+    }
+
+    .cuadro-acerca p {
+        font-size: 1rem;
+    }
+}

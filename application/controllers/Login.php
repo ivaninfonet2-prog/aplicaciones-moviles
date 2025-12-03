@@ -1,0 +1,88 @@
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+class Login extends CI_Controller 
+{
+    public function __construct()
+    {
+        parent::__construct();
+        $this->load->model('Usuario_modelo');
+        $this->load->library('session');
+        $this->load->helper(['url','form']);
+    }
+    
+    private function datos_base()
+    {
+        return [
+            'fondo'  => base_url('activos/imagenes/mi_fondo.jpg'),
+            'titulo' => 'Inicio - UNLa Tienda'
+        ];
+    }
+
+    public function index()
+    {
+        $data = $this->datos_base();
+        $data['contenido'] = $this->load->view('login/formulario_login', $data, TRUE);
+
+        $this->load->view('login/header_login', $data);
+        $this->load->view('login/body_login', $data);
+        $this->load->view('login/footer_login');
+    }
+
+    public function autenticar()
+    {
+        $nombre_usuario = trim($this->input->post('nombre_usuario'));
+        $palabra_clave  = trim($this->input->post('palabra_clave'));
+
+        if (empty($nombre_usuario) || empty($palabra_clave)) 
+        {
+            $this->session->set_flashdata('error', 'Debe ingresar usuario y contraseña');
+            redirect('login');
+            return;
+        }
+
+        $usuario = $this->Usuario_modelo->obtener_usuario($nombre_usuario, $palabra_clave);
+
+        if ($usuario) 
+        {
+            $this->session->set_userdata([
+                'id_usuario' => $usuario->id_usuario,
+                'logged_in'  => true,
+                'rol_id'     => $usuario->rol_id
+            ]);
+
+            // Redirigir según rol
+            if ($usuario->rol_id === '2')
+            {
+                redirect('administrador'); // controlador para admin
+            } 
+            else 
+            {
+                redirect('usuario'); // controlador para usuario común
+            }
+        } 
+        else 
+        {
+            $this->session->set_flashdata('error', 'Usuario o contraseña incorrectos');
+            redirect('login');
+        }
+    }
+
+    public function logout()
+    {
+        // Destruye la sesión
+        $this->session->sess_destroy();
+
+        // Datos básicos para las vistas
+        $data = 
+        [
+            'titulo' => 'Cerrar Sesión - UNLa Tienda',
+            'fondo'  => base_url('activos/imagenes/mi_fondo.jpg')
+        ];
+
+        // Cargar vistas de cierre de sesión
+        $this->load->view('cerrar_sesion/header_cerrar_sesion', $data);
+        $this->load->view('cerrar_sesion/body_cerrar_sesion', $data);
+        $this->load->view('cerrar_sesion/footer_cerrar_sesion', $data);
+    }
+}

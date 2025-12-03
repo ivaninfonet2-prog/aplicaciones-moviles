@@ -1,0 +1,57 @@
+/* Fondo general */
+body {
+    margin: 0;
+    padding: 0;
+    background: #f2f2f2;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Centrado del contenedor */
+.error-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Caja del mensaje */
+.error-box {
+    background: white;
+    padding: 35px 40px;
+    border-radius: 12px;
+    max-width: 500px;
+    width: 90%;
+    text-align: center;
+
+    box-shadow: 0px 0px 20px rgba(0,0,0,0.15);
+    border-top: 6px solid #d9534f;
+}
+
+.error-box h1 {
+    color: #d9534f;
+    margin-bottom: 20px;
+    font-size: 26px;
+}
+
+/* Mensaje de error */
+.mensaje-error {
+    color: #555;
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+/* Botón */
+.btn-volver {
+    display: inline-block;
+    padding: 12px 20px;
+    background-color: #0275d8;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 16px;
+    transition: background .2s ease-in-out;
+}
+
+.btn-volver:hover {
+    background-color: #025aa5;
+}

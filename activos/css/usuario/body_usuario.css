@@ -1,0 +1,74 @@
+/* Contenedor principal */
+.usuario-main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Caja de contenido */
+.usuario-contenido {
+    background-color: rgba(0, 0, 0, 0.3); /* más transparente */
+    padding: 40px; /* más grande */
+    border-radius: 16px;
+    text-align: center;
+    max-width: 600px; /* más ancho */
+    box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+}
+
+/* Imagen de bienvenida */
+.welcome-img {
+    max-width: 150px;
+    margin-bottom: 20px;
+}
+
+/* Título */
+.titulo {
+    font-size: 2.2em;
+    font-weight: bold;
+    margin-bottom: 15px;
+    animation: fadeIn 1s ease-in-out;
+    color: #fff;
+}
+
+/* Subtítulo */
+.subtitulo {
+    font-size: 1.1em;
+    margin-bottom: 25px;
+    animation: fadeIn 1.5s ease-in-out;
+    color: #eee;
+}
+
+/* Botones personalizados */
+.btn-espectaculos {
+    background-color: #1e90ff;
+    color: #fff !important;
+    border: none;
+}
+.btn-espectaculos:hover { background-color: #0066cc; }
+
+.btn-reservas {
+    background-color: #28a745;
+    color: #fff !important;
+    border: none;
+}
+.btn-reservas:hover { background-color: #1c7c31; }
+
+.btn-logout {
+    background-color: #ff4d4d;
+    color: #fff !important;
+    border: none;
+}
+.btn-logout:hover { background-color: #cc0000; }
+
+/* Animaciones */
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+}
+.fade-in.delay-1 { animation-delay: 0.5s; }
+.fade-in.delay-2 { animation-delay: 1s; }
+
+@keyframes fadeIn {
+    to { opacity: 1; }
+}

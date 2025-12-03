@@ -1,0 +1,86 @@
+/* Fondo general */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-size: cover;
+    background-position: center;
+    color: #333;
+}
+
+/* Capa oscura suave */
+.fondo-animado {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.25); /* un poco más suave */
+    z-index: -1;
+}
+
+/* Contenido centrado con aire */
+.contenido {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 80px;
+    padding-bottom: 60px;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+/* Caja con mucha más transparencia */
+.contenedor-mensaje {
+    background: rgba(255, 255, 255, 0.4); /* blanco muy transparente */
+    padding: 25px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    max-width: 480px;
+    width: 90%;
+}
+
+/* Título */
+.titulo {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    color: #2a4d69; /* celeste oscuro elegante */
+}
+
+/* Mensajes */
+.mensaje {
+    font-size: 1.05rem;
+    margin-bottom: 12px;
+    color: #333;
+}
+
+.detalle {
+    font-size: 0.95rem;
+    margin-bottom: 12px;
+    line-height: 1.5;
+    color: #444;
+}
+
+.agradecimiento {
+    font-size: 0.95rem;
+    font-style: italic;
+    margin-bottom: 20px;
+    color: #555;
+}
+
+/* Botón */
+.boton {
+    display: inline-block;
+    padding: 10px 22px;
+    background: #e6f2ff; /* celeste muy suave */
+    color: #2a4d69;      /* texto celeste oscuro */
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.boton:hover {
+    background: #cce6ff; /* celeste un poco más intenso */
+    color: #1f3b4d;
+}

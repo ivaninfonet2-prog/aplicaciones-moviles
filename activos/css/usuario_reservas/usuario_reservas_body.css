@@ -1,0 +1,145 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-image: url('<?= $fondo; ?>');
+    background-size: cover;        
+    background-repeat: no-repeat;  
+    background-position: center;   
+    background-attachment: fixed;  
+    color: #333;
+}
+
+/* Contenido con aire */
+.contenido {
+    padding: 60px 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.titulo {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    color: #ffffff; /* blanco */
+    text-align: center;
+    animation: fadeInDown 1s ease;
+}
+
+/* Tabla */
+.tabla-reservas {
+    width: 100%;
+    max-width: 900px;
+    border-collapse: collapse;
+    background: rgba(255, 255, 255, 0.25); /* blanco muy transparente */
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    animation: fadeInUp 0.8s ease;
+}
+
+.tabla-reservas th, .tabla-reservas td {
+    padding: 12px 15px;
+    text-align: center;
+    border-right: 1px solid rgba(255,255,255,0.3);
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+
+.tabla-reservas th:last-child,
+.tabla-reservas td:last-child {
+    border-right: none;
+}
+
+.tabla-reservas th {
+    background: rgba(230, 242, 255, 0.5);
+    color: #2a4d69;
+    font-weight: bold;
+    position: sticky;
+    top: 0;
+    backdrop-filter: blur(4px);
+}
+
+/* Filas alternas */
+.tabla-reservas tr:nth-child(even) {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+/* Hover animado */
+.tabla-reservas tr:hover {
+    background: rgba(204, 230, 255, 0.4);
+    transition: background 0.3s ease, transform 0.2s ease;
+    transform: scale(1.01);
+}
+
+/* Estilo especial para precios y totales */
+.tabla-reservas td.precio,
+.tabla-reservas td.total {
+    font-weight: bold;
+    color: #2e7d32; /* verde elegante */
+}
+
+.tabla-reservas td.total {
+    background: rgba(200, 255, 200, 0.2);
+    border-radius: 4px;
+}
+
+/* Mensaje sin reservas */
+.no-reservas {
+    font-size: 1.1rem;
+    color: #eee;
+    font-style: italic;
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Botón */
+.boton-container {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.boton {
+    display: inline-block;
+    padding: 12px 25px;
+    background: rgba(230, 242, 255, 0.7);
+    color: #2a4d69;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.boton:hover {
+    background: rgba(204, 230, 255, 0.9);
+    transform: scale(1.05);
+}
+
+.boton-detalle {
+    display: inline-block;
+    padding: 8px 15px;
+    background: rgba(255, 255, 255, 0.6);
+    color: #2a4d69;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.boton-detalle:hover {
+    background: rgba(204, 230, 255, 0.9);
+    transform: scale(1.05);
+}
+
+
+
+/* Animaciones */
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}

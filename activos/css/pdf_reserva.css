@@ -1,0 +1,50 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    background: #f4f4f4;
+}
+
+.ticket-container {
+    width: 90%;
+    margin: 20px auto;
+    padding: 25px;
+    background: white;
+    border: 2px dashed #444;
+    border-radius: 8px;
+}
+
+.titulo {
+    text-align: center;
+    color: #333;
+    margin-bottom: 25px;
+    font-size: 26px;
+    letter-spacing: 1px;
+}
+
+.info-section {
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px dotted #888;
+}
+
+.info-section h2 {
+    margin: 0 0 10px 0;
+    color: #555;
+    font-size: 20px;
+}
+
+.info-section p {
+    margin: 4px 0;
+    font-size: 16px;
+}
+
+strong {
+    color: #222;
+}
+
+.footer {
+    margin-top: 25px;
+    text-align: center;
+    font-size: 15px;
+    color: #666;
+}

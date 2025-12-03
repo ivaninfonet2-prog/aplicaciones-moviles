@@ -1,0 +1,114 @@
+/* ===============================
+   FONDO DEL BODY
+=============================== */
+.fondo-body {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    filter: brightness(0.85); /* oscurece un poco para resaltar la tarjeta */
+    z-index: -1;
+
+    image-rendering: high-quality;
+    -webkit-optimize-contrast: high;
+}
+
+/* ===============================
+   CONTENEDOR DE LA TARJETA
+=============================== */
+.registro-container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 100px 15px 60px 15px;
+    position: relative;
+    z-index: 1;
+}
+
+/* ===============================
+   TARJETA DEL FORMULARIO
+=============================== */
+.registro-form {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(8px);
+    border-radius: 12px;
+    padding: 25px 20px;
+    max-width: 420px;
+    width: 100%;
+    color: #222;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+    text-align: center;
+}
+
+/* ===============================
+   TÍTULO
+=============================== */
+.registro-title {
+    font-size: 1.6rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    color: #222;
+}
+
+/* ===============================
+   INPUTS
+=============================== */
+.form-control {
+    border-radius: 8px;
+    border: 1px solid rgba(0,0,0,0.2);
+    background: rgba(255,255,255,0.85);
+    color: #222;
+    transition: 0.3s;
+}
+
+.form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 8px rgba(0,123,255,0.4);
+}
+
+/* ===============================
+   BOTONES
+=============================== */
+.btn {
+    border-radius: 8px;
+    font-weight: bold;
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 12px rgba(0,0,0,0.3);
+}
+
+/* ===============================
+   BLOQUES EXTRA
+=============================== */
+.registro-registered {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: #333;
+}
+
+.volver-inicio {
+    margin-top: 1.5rem;
+}
+
+/* ===============================
+   MENSAJE DE ERROR
+=============================== */
+.alert-danger {
+    background: rgba(220,53,69,0.9);
+    color: #fff;
+    border-radius: 8px;
+    padding: 12px;
+    margin-bottom: 1rem;
+    text-align: center;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(220,53,69,0.4);
+}

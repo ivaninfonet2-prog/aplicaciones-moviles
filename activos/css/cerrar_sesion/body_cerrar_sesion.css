@@ -1,0 +1,61 @@
+/* Estilos generales del body */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* alinea arriba */
+}
+
+/* Contenedor principal */
+.cuerpo {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 150px; /* 🔽 más espacio debajo del header */
+}
+
+/* Caja de contenido */
+.contenedor {
+    background-color: rgba(0, 0, 0, 0.3); /* transparente: 0.0 = invisible, 0.3 = leve sombra */
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+    max-width: 400px;
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+/* Título */
+.contenedor h1 {
+    font-size: 1.8em;
+    margin-bottom: 15px;
+}
+
+/* Párrafo */
+.contenedor p {
+    font-size: 1em;
+    margin-bottom: 20px;
+}
+
+/* Botón */
+.boton {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #1e90ff;
+    color: #fff !important;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+    font-weight: bold;
+}
+
+/* Hover del botón */
+.boton:hover {
+    background-color: #0066cc;
+}

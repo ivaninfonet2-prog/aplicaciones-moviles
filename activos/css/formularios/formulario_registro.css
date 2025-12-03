@@ -1,0 +1,72 @@
+/* Contenedor principal dentro del body2 */
+.registro-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;   /* más alejado del header */
+    margin-bottom: 80px; /* más alejado del footer */
+}
+
+/* Formulario más compacto y ancho */
+.registro-form {
+    background: #fff;
+    padding: 15px;               /* 🔹 menos altura */
+    border-radius: 10px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+    animation: fadeIn 0.8s ease-in-out;
+
+    width: 100%;
+    max-width: 500px;            /* 🔹 más ancho */
+    margin: 0 auto;
+
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Efecto hover dinámico */
+.registro-form:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.35);
+}
+
+/* Título más pequeño y oscuro */
+.registro-title {
+    color: #222;
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+/* Labels en negro */
+.registro-form .form-label {
+    color: #000;
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+
+/* Bloque para usuarios ya registrados */
+.registro-registered {
+    margin-top: 20px;
+    text-align: center;
+    background: #f1f1f1;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.registro-registered p {
+    color: #222; /* oscuro */
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+/* Botón volver al inicio */
+.volver-inicio {
+    margin-top: 25px;
+    text-align: center;
+}
+
+/* Animación */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-15px); }
+    to   { opacity: 1; transform: translateY(0); }
+}

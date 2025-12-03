@@ -1,0 +1,96 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    color: #fff;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Eliminamos el fondo animado para no alterar la imagen */
+.fondo-animado {
+    display: none;
+}
+
+/* Contenedor principal */
+main {
+    flex: 1;
+    display: grid;
+    place-items: center;
+    padding: 20px;
+    z-index: 1;
+}
+
+/* Tarjeta transparente con efecto vidrio */
+.contenido {
+    background-color: rgba(255, 255, 255, 0.2); /* leve transparencia */
+    backdrop-filter: blur(8px); /* efecto vidrio */
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+    max-width: 450px; /* más chica */
+    width: 100%;
+    text-align: center;
+    margin: auto;
+}
+
+/* Títulos y textos */
+.titulo {
+    font-size: 2rem;
+    color: #007BFF;
+    margin-bottom: 10px;
+}
+
+.mensaje, .submensaje {
+    font-size: 1.1rem;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+/* Botones */
+.botones {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.boton {
+    text-decoration: none;
+    padding: 12px 20px;
+    font-size: 0.95rem;
+    font-weight: bold;
+    border-radius: 8px;
+    background-color: rgba(0, 123, 255, 0.85);
+    color: white;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.boton:hover {
+    background-color: rgba(0, 86, 179, 0.9);
+    transform: scale(1.05);
+}
+
+
+/* Mensajes fuera de la tarjeta */
+.mensaje-superior, .mensaje-inferior {
+    text-align: center;
+    margin: 15px;
+}
+
+.mensaje-superior h2 {
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+    color: #fff;
+}
+
+.mensaje-superior p,
+.mensaje-inferior p {
+    font-size: 0.95rem;
+    color: #f0f0f0;
+}

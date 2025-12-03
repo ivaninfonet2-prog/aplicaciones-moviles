@@ -1,0 +1,132 @@
+/* ===== Estilos generales ===== */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #111;
+    color: #fff;
+}
+
+/* Fondo principal */
+.inicio-container {
+    min-height: 100vh;
+    background-size: cover;        /* cubre toda la pantalla */
+    background-position: center;   /* centra la imagen */
+    background-repeat: no-repeat;  /* evita que se repita */
+    background-attachment: fixed;  /* efecto parallax */
+    image-rendering: auto;         /* asegura que no se pixelee */
+    padding: 2rem;
+}
+
+/* Bloque de bienvenida */
+.bienvenida {
+    margin-top: 3rem;   /* espacio desde el header */
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.mensaje-bienvenida {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #4dd0e1; /* turquesa moderno en lugar de amarillo */
+    margin-top: 1rem;
+}
+
+.mensaje-sub {
+    font-size: 1rem;
+    color: #e0e0e0;
+    margin-top: 0.5rem;
+}
+
+/* ===== Cartelera ===== */
+.cartelera {
+    margin-top: 2rem;
+}
+
+/* Contenedor de tarjetas */
+.tarjetas-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+/* Tarjeta individual */
+.tarjeta {
+    background: rgba(255, 255, 255, 0.08); /* más transparente */
+    backdrop-filter: blur(6px);            /* efecto vidrio definido */
+    border: 1px solid rgba(255,255,255,0.15); /* borde sutil */
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    padding: 1rem;
+    text-align: center;
+}
+
+/* Animación hover */
+.tarjeta:hover {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 10px 24px rgba(0,0,0,0.35);
+}
+
+/* Imagen tipo carnet 5x5 */
+.tarjeta .imagen {
+    width: 5cm;
+    height: 5cm;
+    object-fit: cover;
+    border-radius: 8px;
+    margin: 0 auto 1rem auto;
+    display: block;
+    border: 2px solid rgba(255,255,255,0.3);
+}
+
+/* Contenido */
+.tarjeta h3 {
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: #ffffff; /* blanco puro */
+}
+
+.tarjeta h2 {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    font-weight: normal;
+    color: #cfd8dc; /* gris azulado claro */
+}
+
+.tarjeta .precio {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #4dd0e1; /* turquesa */
+    margin-bottom: 1rem;
+}
+
+/* Botón */
+.boton-ver {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    background: linear-gradient(135deg, #4caf50, #81c784); /* verde moderno */
+    color: #fff;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.boton-ver:hover {
+    background: linear-gradient(135deg, #81c784, #4caf50);
+    transform: scale(1.05);
+}
+
+/* ===== Responsivo ===== */
+@media (max-width: 768px) {
+    .tarjeta .imagen {
+        width: 120px;
+        height: 120px;
+    }
+    .tarjeta h3 {
+        font-size: 1.2rem;
+    }
+    .tarjeta h2 {
+        font-size: 0.9rem;
+    }
+}

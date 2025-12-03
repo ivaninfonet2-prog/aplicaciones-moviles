@@ -1,0 +1,138 @@
+/* Contenedor principal de la cartelera */
+.inicio-container {
+    padding-top: 3.5rem; /* menos separación respecto al header */
+    padding-bottom: 3.5rem; /* agrega aire antes del footer */
+}
+
+/* Cartelera */
+.cartelera {
+    color: #fff; /* blanco para buena lectura sobre fondo oscuro */
+    margin-top: 1.5rem; /* espacio moderado respecto a la bienvenida */
+}
+
+/* Mensaje de bienvenida */
+.mensaje-bienvenida {
+    color: #ffffff; /* blanco puro para contraste */
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.8); /* sombra oscura para legibilidad */
+    margin-top: 1.5rem; /* menos separación del header */
+}
+
+/* Mensaje secundario */
+.mensaje-sub {
+    color: #f0f0f0; /* gris muy claro */
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
+    margin-bottom: 1rem; /* agrega aire antes de la cartelera */
+}
+
+/* Contenedor de tarjetas */
+.tarjetas-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.tarjeta {
+    background: rgba(255, 255, 255, 0.25); /* más transparente */
+    border: 2px solid rgba(3, 155, 229, 0.25); /* también suavizo el borde */
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: zoomIn 0.8s ease;
+}
+
+.tarjeta:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 8px 20px rgba(3,155,229,0.25); /* sombra más suave */
+}
+
+
+
+/* Imagen estilo carnet centrada */
+.imagen {
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+/* Contenido dentro de la tarjeta */
+.contenido {
+    text-align: center;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.contenido h3 {
+    margin: 10px 0 5px;
+    color: #0277bd;
+    font-size: 1.4em;
+    font-weight: bold;
+}
+
+.contenido h2 {
+    font-size: 1em;
+    color: #333;
+    margin-bottom: 10px;
+    line-height: 1.4;
+}
+
+.precio {
+    font-weight: bold;
+    color: #d32f2f;
+    margin-bottom: 15px;
+    font-size: 1.1em;
+}
+
+/* Botón */
+.boton-ver {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #039be5;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    font-weight: bold;
+}
+
+.boton-ver:hover {
+    background-color: #0277bd;
+    transform: translateY(-2px);
+}
+
+/* Animaciones */
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes zoomIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    .tarjetas-container {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+    .imagen {
+        height: 160px;
+        width: 160px;
+    }
+}
