@@ -38,9 +38,11 @@ class Espectaculos extends CI_Controller
         }
     }
 
-    // Mostrar lista de espectáculos según tipo de vista
-    private function mostrar_lista_espectaculos($tipo)
+    // LISTA PRINCIPAL (COMPLETAMENTE INDEPENDIENTE)
+
+    public function index()
     {
+        // Copia completa del procesamiento
         $espectaculos = $this->Espectaculo_modelo->obtener_espectaculos();
 
         foreach ($espectaculos as &$e) 
@@ -59,113 +61,139 @@ class Espectaculos extends CI_Controller
 
         $data = 
         [
-            'titulo' => "Cartelera de Espectáculos",
-            'fondo' => base_url('activos/imagenes/mi_fondo.jpg'),
-            'espectaculos' => $espectaculos
+            'titulo'        => "Cartelera de Espectáculos",
+            'fondo'         => base_url('activos/imagenes/mi_fondo.jpg'),
+            'espectaculos'  => $espectaculos
         ];
 
-        $vistas = 
-        [
-            'usuario' => 
-            [
-                'header' => 'usuario_espectaculos/usuario_espectaculos_header',
-                'body'   => 'usuario_espectaculos/usuario_espectaculos_body',
-                'footer' => 'usuario_espectaculos/usuario_espectaculos_footer'
-            ],
-            'administrador' =>
-             [
-                'header' => 'administrador_espectaculos/header_administrador_espectaculos',
-                'body'   => 'administrador_espectaculos/body_administrador_espectaculos',
-                'footer' => 'administrador_espectaculos/footer_administrador_espectaculos'
-            ],
-            'principal' => 
-            [
-                'header' => 'principal/header_principal',
-                'body'   => 'principal/body_principal',
-                'footer' => 'principal/footer_principal'
-            ]
-        ];
-
-        if (!isset($vistas[$tipo])) 
-        {
-            show_error("Tipo de vista no válido: $tipo");
-        }
-
-        $this->load->view($vistas[$tipo]['header'], $data);
-        $this->load->view($vistas[$tipo]['body'], $data);
-        $this->load->view($vistas[$tipo]['footer'], $data);
+        // Sus vistas propias
+        $this->load->view('principal/header_principal', $data);
+        $this->load->view('principal/body_principal', $data);
+        $this->load->view('principal/footer_principal', $data);
     }
 
-    // FUNCIONES PÚBLICAS PARA MOSTRAR LISTAS
-    public function index()
-    {
-        $this->mostrar_lista_espectaculos('principal');
-    }
+    //  LISTA USUARIO (COMPLETAMENTE INDEPENDIENTE)
 
     public function mostrar_lista_espectaculos_usuario()
     {
-        $this->mostrar_lista_espectaculos('usuario');
-    }
+        // Copia completa del procesamiento
+        $espectaculos = $this->Espectaculo_modelo->obtener_espectaculos();
 
-    public function mostrar_lista_espectaculos_administrador()
-    {
-        $this->mostrar_lista_espectaculos('administrador');
-    }
-
-    // FUNCIONES PARA VER ESPECTÁCULO
-    private function cargar_vista_espectaculo($id, $tipo)
-    {
-        $espectaculo = $this->Espectaculo_modelo->obtener_espectaculo_por_id($id);
-        
-        if ( ! $espectaculo) 
+        foreach ($espectaculos as &$e) 
         {
-            show_404();
+            if ($e['fecha'] >= date('Y-m-d') && $e['disponibles'] > 0) 
+            {
+                $e['detalles_habilitados'] = true;
+            } 
+            else 
+            {
+                $e['detalles_habilitados'] = false;
+            }
+
+            $e['aviso'] = $this->generar_aviso($e);
         }
 
         $data = 
         [
-            'titulo' => 'Ver espectáculo',
-            'fondo' => base_url('activos/imagenes/mi_fondo.jpg'),
-            'espectaculo' => $espectaculo
+            'titulo'        => "Cartelera de Espectáculos",
+            'fondo'         => base_url('activos/imagenes/mi_fondo.jpg'),
+            'espectaculos'  => $espectaculos
         ];
 
-        $vistas = 
-        [
-            'sin_loguear' => 
-            [
-                'header' => 'ver_espectaculo_sin_loguear/header_ver_espectaculo_sin_loguear',
-                'body'   => 'ver_espectaculo_sin_loguear/body_ver_espectaculo_sin_loguear',
-                'footer' => 'ver_espectaculo_sin_loguear/footer_ver_espectaculo_sin_loguear'
-            ],
-            'logueado' => 
-            [
-                'header' => 'ver_espectaculo_logueado/header_ver_espectaculo_logueado',
-                'body'   => 'ver_espectaculo_logueado/body_ver_espectaculo_logueado',
-                'footer' => 'ver_espectaculo_logueado/footer_ver_espectaculo_logueado'
-            ]
-        ];
+        // Sus vistas propias
+        $this->load->view('usuario_espectaculos/usuario_espectaculos_header', $data);
+        $this->load->view('usuario_espectaculos/usuario_espectaculos_body', $data);
+        $this->load->view('usuario_espectaculos/usuario_espectaculos_footer', $data);
+    }
 
-        if ( ! isset($vistas[$tipo])) 
+    //  LISTA ADMINISTRADOR (COMPLETAMENTE INDEPENDIENTE)
+
+    public function mostrar_lista_espectaculos_administrador()
+    {
+        // Copia completa del procesamiento
+        $espectaculos = $this->Espectaculo_modelo->obtener_espectaculos();
+
+        foreach ($espectaculos as &$e) 
         {
-            show_error("Tipo de vista no válido: $tipo");
+            if ($e['fecha'] >= date('Y-m-d') && $e['disponibles'] > 0) 
+            {
+                $e['detalles_habilitados'] = true;
+            } 
+            else 
+            {
+                $e['detalles_habilitados'] = false;
+            }
+
+            $e['aviso'] = $this->generar_aviso($e);
         }
 
-        $this->load->view($vistas[$tipo]['header'], $data);
-        $this->load->view($vistas[$tipo]['body'], $data);
-        $this->load->view($vistas[$tipo]['footer'], $data);
+        $data = 
+        [
+            'titulo'        => "Cartelera de Espectáculos",
+            'fondo'         => base_url('activos/imagenes/mi_fondo.jpg'),
+            'espectaculos'  => $espectaculos
+        ];
+
+        // Sus vistas propias
+        $this->load->view('administrador_espectaculos/header_administrador_espectaculos', $data);
+        $this->load->view('administrador_espectaculos/body_administrador_espectaculos', $data);
+        $this->load->view('administrador_espectaculos/footer_administrador_espectaculos', $data);
     }
+
+    //  VER ESPECTÁCULO SIN LOGUEAR (TOTALMENTE INDEPENDIENTE)
 
     public function ver_espectaculo_sin_loguear($id)
     {
-        $this->cargar_vista_espectaculo($id, 'sin_loguear');
+        // Obtener espectáculo
+        $espectaculo = $this->Espectaculo_modelo->obtener_espectaculo_por_id($id);
+
+        if ( ! $espectaculo)
+        {
+            show_404();
+        }
+
+        // Datos propios de esta vista
+        $data = 
+        [
+            'titulo'      => 'Ver espectáculo',
+            'fondo'       => base_url('activos/imagenes/mi_fondo.jpg'),
+            'espectaculo' => $espectaculo
+        ];
+
+        // Sus vistas específicas
+        $this->load->view('ver_espectaculo_sin_loguear/header_ver_espectaculo_sin_loguear', $data);
+        $this->load->view('ver_espectaculo_sin_loguear/body_ver_espectaculo_sin_loguear', $data);
+        $this->load->view('ver_espectaculo_sin_loguear/footer_ver_espectaculo_sin_loguear', $data);
     }
+
+    //  VER ESPECTÁCULO LOGUEADO (TOTALMENTE INDEPENDIENTE)
 
     public function ver_espectaculo_logueado($id)
     {
-        $this->cargar_vista_espectaculo($id, 'logueado');
+        // Obtener espectáculo (copiado de arriba)
+        $espectaculo = $this->Espectaculo_modelo->obtener_espectaculo_por_id($id);
+
+        if ( ! $espectaculo)
+        {
+            show_404();
+        }
+
+        // Datos propios de esta vista
+        $data = 
+        [
+            'titulo'      => 'Ver espectáculo',
+            'fondo'       => base_url('activos/imagenes/mi_fondo.jpg'),
+            'espectaculo' => $espectaculo
+        ];
+
+        // Sus vistas específicas
+        $this->load->view('ver_espectaculo_logueado/header_ver_espectaculo_logueado', $data);
+        $this->load->view('ver_espectaculo_logueado/body_ver_espectaculo_logueado', $data);
+        $this->load->view('ver_espectaculo_logueado/footer_ver_espectaculo_logueado', $data);
     }
 
     // REGLAS DE VALIDACIÓN
+    
     private function reglas_formulario()
     {
         $this->form_validation->set_rules('nombre', 'Nombre', 'required');
@@ -177,7 +205,7 @@ class Espectaculos extends CI_Controller
         $this->form_validation->set_rules('direccion', 'Dirección', 'required');
     }
 
-    // SUBIR IMAGEN
+    // SUBIR IMAGEN (sin cambios)
     private function subir_imagen()
     {
         $config = 
@@ -189,40 +217,19 @@ class Espectaculos extends CI_Controller
 
         $this->upload->initialize($config);
 
-        if ($this->upload->do_upload('imagen')) 
-        {
-            return $this->upload->data('file_name');
-        }
-         else 
-        {
-            return null;
-        }
-    }
-
-    // CARGAR VISTA GENERAL
-    private function cargar_vista($carpeta, $data)
-    {
-        if ($carpeta === 'editar_espectaculo') 
-        {
-            $this->load->view("$carpeta/header_editar", $data);
-            $this->load->view("$carpeta/body_editar", $data);
-            $this->load->view("$carpeta/footer_editar", $data);
-        }
-        else 
-        {
-            $this->load->view("$carpeta/header_$carpeta", $data);
-            $this->load->view("$carpeta/body_$carpeta", $data);
-            $this->load->view("$carpeta/footer_$carpeta", $data);
-        }
+        return $this->upload->do_upload('imagen') ?
+           $this->upload->data('file_name') :
+           null;
     }
 
     // CREAR ESPECTÁCULO
+
     public function crear_espectaculo()
     {
         $data = 
         [
-            'titulo' => 'Crear espectáculo',
-            'fondo'  => base_url('activos/imagenes/mi_fondo.jpg')
+        'titulo' => 'Crear espectáculo',
+        'fondo'  => base_url('activos/imagenes/mi_fondo.jpg')
         ];
 
         if ($this->input->method() === 'post') 
@@ -246,29 +253,34 @@ class Espectaculos extends CI_Controller
                 ];
 
                 $this->Espectaculo_modelo->agregar_espectaculo($nuevo);
-                
+
                 $this->session->set_flashdata('success', 'El espectáculo fue creado exitosamente.');
                 
                 redirect('administrador');
             }
         }
 
-        $this->cargar_vista('crear_espectaculo', $data);
+        // Cargar vistas directas (sin función auxiliar)
+        $this->load->view('crear_espectaculo/header_crear_espectaculo', $data);
+        $this->load->view('crear_espectaculo/body_crear_espectaculo', $data);
+        $this->load->view('crear_espectaculo/footer_crear_espectaculo', $data);
     }
 
     // EDITAR ESPECTÁCULO
+
     public function editar_espectaculo($id)
     {
         $espectaculo = $this->Espectaculo_modelo->obtener_espectaculo_por_id($id);
-        if ( ! $espectaculo) 
-        {
+
+        if ( ! $espectaculo)
+        {     
             show_404();
-        }
+        } 
 
         $data = 
         [
-            'titulo' => 'Editar espectáculo',
-            'fondo' => base_url('activos/imagenes/mi_fondo.jpg'),
+            'titulo'      => 'Editar espectáculo',
+            'fondo'       => base_url('activos/imagenes/mi_fondo.jpg'),
             'espectaculo' => $espectaculo
         ];
 
@@ -279,7 +291,7 @@ class Espectaculos extends CI_Controller
             if ($this->form_validation->run()) 
             {
                 $nueva_imagen = $this->subir_imagen();
-            
+                
                 $imagen_final = $nueva_imagen ?? $espectaculo['imagen'];
 
                 if ($nueva_imagen && $espectaculo['imagen'] && file_exists('./activos/imagenes/' . $espectaculo['imagen'])) 
@@ -300,35 +312,39 @@ class Espectaculos extends CI_Controller
                 ];
 
                 $this->Espectaculo_modelo->actualizar_espectaculo($id, $actualizado);
-                
+
                 $this->session->set_flashdata('success', 'El espectáculo fue editado exitosamente.');
-                
+           
                 redirect('administrador/administrador_espectaculos');
             }
         }
 
-        $this->cargar_vista('editar_espectaculo', $data);
+        // Cargar vistas directas para editar
+        $this->load->view('editar_espectaculo/header_editar', $data);
+        $this->load->view('editar_espectaculo/body_editar', $data);
+        $this->load->view('editar_espectaculo/footer_editar', $data);
     }
 
     // ELIMINAR ESPECTÁCULO
+
     public function eliminar_espectaculo($id)
     {
         $espectaculo = $this->Espectaculo_modelo->obtener_espectaculo_por_id($id);
 
-        if (!$espectaculo) 
+        if ( ! $espectaculo)
         {
             redirect('administrador');
-        }
-
+        }     
+            
         if ($espectaculo['imagen'] && file_exists('./activos/imagenes/' . $espectaculo['imagen']))
         {
             unlink('./activos/imagenes/' . $espectaculo['imagen']);
         }
 
         $this->Espectaculo_modelo->eliminar_espectaculo_completo($id);
-        
+
         $this->session->set_flashdata('success', 'El espectáculo fue eliminado exitosamente.');
-        
+    
         redirect('administrador');
     }
 }
