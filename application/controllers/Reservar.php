@@ -1,4 +1,3 @@
-
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
@@ -6,7 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 require_once APPPATH . 'third_party/dompdf/autoload.inc.php';
 use Dompdf\Dompdf;
 
-// PHPMailer (igual que en tu versión funcional)
+// PHPMailer
 require APPPATH . 'third_party/PHPMailer/Exception.php';
 require APPPATH . 'third_party/PHPMailer/PHPMailer.php';
 require APPPATH . 'third_party/PHPMailer/SMTP.php';
@@ -19,7 +18,6 @@ class Reservar extends CI_Controller
     public function __construct() 
     {
         parent::__construct();
-
         $this->load->model('Reserva_modelo', 'reserva');
         $this->load->model('Espectaculo_modelo', 'espectaculo');
         $this->load->model('Usuario_modelo', 'usuario');
@@ -27,7 +25,7 @@ class Reservar extends CI_Controller
         $this->load->library('session');
     }
 
-    //  MÉTODOS PRIVADOS — UTILIDADES
+    // ---------------------- UTILIDADES PRIVADAS ----------------------
 
     private function set_datos_reserva($datos)
     {
@@ -45,23 +43,19 @@ class Reservar extends CI_Controller
         exit;
     }
 
-    // PASO 1 → Recibir POST y guardar datos en sesión
-    
+    // ---------------------- PASO 1: Procesar reserva ----------------------
+
     public function procesar($id_espectaculo)
     {
         $usuario = $this->session->userdata('id_usuario');
-        
-        if ( ! $usuario) 
-        {   
+
+        if (!$usuario) 
             return $this->error("Debes iniciar sesión.");
-        }   
 
         $cantidad = $this->input->post('cantidad_entradas');
-        
-        if ( ! $cantidad || $cantidad < 1) 
-        {   
+
+        if (!$cantidad || $cantidad < 1) 
             return $this->error("Cantidad de entradas inválida.");
-        }    
 
         $this->set_datos_reserva([
             'id_espectaculo'    => $id_espectaculo,
@@ -73,23 +67,20 @@ class Reservar extends CI_Controller
         redirect("reservar/confirmar/$id_espectaculo");
     }
 
-    // PASO 2 → Confirmar y registrar reserva
-    
+    // ---------------------- PASO 2: Confirmar reserva ----------------------
+
     public function confirmar($id_espectaculo)
     {
         $datos = $this->get_datos_reserva();
-        if ( ! $datos) 
-        {    
+
+        if (!$datos) 
             return $this->error("No hay datos de reserva.");
-        }
 
         $precio = $this->espectaculo->obtener_precio($id_espectaculo);
-        
-        if ( ! $precio) 
-        {
+
+        if (!$precio) 
             return $this->error("No se pudo obtener el precio del espectáculo.");
-        }    
-            
+
         $monto_total = $datos['cantidad_entradas'] * $precio;
 
         // Crear reserva
@@ -101,10 +92,8 @@ class Reservar extends CI_Controller
             $monto_total
         );
 
-        if ( ! $ok)
-        {
+        if (!$ok) {
             $this->session->set_flashdata('mensaje', 'Error: No hay suficientes entradas.');
-            
             redirect("espectaculos/ver_espectaculo_logueado/$id_espectaculo");
             return;
         }
@@ -112,38 +101,66 @@ class Reservar extends CI_Controller
         // Crear cliente si no existe
         $this->cliente->crear_cliente($datos['usuario']);
 
-        // Continuar flujo hacia ventas (tal como funcionaba)
+        // Continuar flujo hacia ventas
         redirect("ventas/crear_venta/$id_espectaculo/{$datos['cantidad_entradas']}");
     }
 
-    // LISTA DE RESERVAS DEL USUARIO
-   
+    // ---------------------- Listar reservas ----------------------
+
     public function listar()
     {
         $usuario = $this->session->userdata('id_usuario');
-        
-        if (!$usuario)
-        {    
+        if (!$usuario) 
             return $this->error("Debes iniciar sesión.");
-        }
 
         $data['reservas'] = $this->reserva->obtener_reservas($usuario);
+        $data['fondo'] = base_url('activos/imagenes/mi_fondo.jpg');
 
-        $this->load->view('usuario_reservas/usuario_reservas_header');
+        $this->load->view('usuario_reservas/usuario_reservas_header', $data);
         $this->load->view('usuario_reservas/usuario_reservas_body', $data);
-        $this->load->view('usuarios_reservas/usuario_reservas_footer', $data);
+        $this->load->view('usuario_reservas/usuario_reservas_footer', $data);
     }
 
-    //  GENERAR PDF
-    
+    // ---------------------- Cancelar reserva ----------------------
+
+    public function cancelar_reserva($id_reserva)
+    {
+        $usuario_id = $this->session->userdata('id_usuario');
+        
+        $reserva = $this->reserva->obtener_reserva_por_id($id_reserva); // Debes crear este método en el modelo
+
+        $data['reservas'] = $this->reserva->obtener_reservas($usuario_id);
+
+        $data['fondo'] = base_url('activos/imagenes/mi_fondo.jpg');
+
+        if (!$reserva) 
+        {
+            $this->session->set_flashdata('mensaje', 'Reserva no encontrada.');
+        } 
+        elseif ($reserva['usuario_id'] != $usuario_id) 
+        {
+            $this->session->set_flashdata('mensaje', 'No tienes permiso para cancelar esta reserva.');
+        } 
+        else
+       {
+            $ok = $this->reserva->eliminar_reserva($id_reserva);
+            if ($ok)
+                $this->session->set_flashdata('mensaje', 'Reserva cancelada exitosamente.');
+            else
+                $this->session->set_flashdata('mensaje', 'No se pudo cancelar la reserva. Intenta nuevamente.');
+        }
+
+        // Volver al listado
+        redirect('reservar/listar');
+    }
+
+    // ---------------------- Generar PDF ----------------------
+
     public function generar_pdf($id_espectaculo)
     {
         $datos = $this->get_datos_reserva();
-
-        if ( ! $datos) 
-        {    
+        if (!$datos) 
             return $this->error("No hay datos de reserva.");
-        }
 
         $html = $this->load->view('plantilla_pdf', [
             'usuario'     => $this->usuario->obtener_por_id($datos['usuario']),
@@ -157,42 +174,31 @@ class Reservar extends CI_Controller
         $dompdf->render();
 
         $filename = 'reserva_' . time() . '.pdf';
-
         $filepath = FCPATH . 'uploads/' . $filename;
-
         file_put_contents($filepath, $dompdf->output());
 
         $this->session->set_userdata('pdf_filename', $filename);
-
         redirect("reservar/enviar_email");
     }
 
-    // ENVIAR EMAIL CON PDF
-    
+    // ---------------------- Enviar email con PDF ----------------------
+
     public function enviar_email()
     {
         $filename = $this->session->userdata('pdf_filename');
-        
         $datos = $this->get_datos_reserva();
 
-        if ( ! $filename || ! $datos) 
-        {    
+        if (!$filename || !$datos) 
             return $this->error("No hay información para enviar.");
-        }
 
         $usuario_data = $this->usuario->get_usuario_email($datos['usuario']);
-
-        if ( ! $usuario_data) 
-        {    
+        if (!$usuario_data) 
             return $this->error("No se encontró email del usuario.");
-        }
 
         $email = $usuario_data['nombre_usuario'];
-       
-        $mail = new PHPMailer(true);
 
-        try 
-        {
+        $mail = new PHPMailer(true);
+        try {
             $mail->isSMTP();
             $mail->Host       = 'smtp.gmail.com';
             $mail->SMTPAuth   = true;
@@ -207,37 +213,29 @@ class Reservar extends CI_Controller
             $mail->isHTML(true);
             $mail->Subject = 'Confirmación de reserva';
             $mail->Body    = "<h1>Reserva confirmada</h1><p>Adjunto comprobante en PDF.</p>";
-
             $mail->addAttachment(FCPATH . "uploads/" . $filename);
 
             if ($mail->send())
-            {
                 redirect('reservar/reserva_exitosa');
-            }
-            else 
-            {    
+            else
                 echo "Error al enviar: " . $mail->ErrorInfo;
-            }    
-        }
-        catch (Exception $e)
-        {
+
+        } catch (Exception $e) {
             echo "Excepción: " . $e->getMessage();
         }
     }
 
+    // ---------------------- Página de éxito ----------------------
+
     public function reserva_exitosa()
     {
-        $data = 
-        [
-            'titulo'    => "Mis Reservas",
-            'fondo'     => base_url('activos/imagenes/mi_fondo.jpg'),
+        $data = [
+            'titulo' => "Mis Reservas",
+            'fondo'  => base_url('activos/imagenes/mi_fondo.jpg')
         ];
-     
-        // Renderizo el layout maestro
+
         $this->load->view('reserva_exitosa/header_reserva_exitosa', $data);
         $this->load->view('reserva_exitosa/body_reserva_exitosa', $data);
         $this->load->view('reserva_exitosa/footer_reserva_exitosa');
     }
 }
-
-?>

@@ -70,5 +70,25 @@ class Reserva_modelo extends CI_Model
     {
         return $this->obtener_reservas_usuario($usuario_id);
     }
+
+     public function eliminar_reserva($id_reserva)
+    {
+        $this->db->where('id_reserva', $id_reserva);
+        return $this->db->delete('reservas');
+    }
+
+public function obtener_reserva_por_id($id_reserva)
+{
+    return $this->db->select('r.id_reserva, r.cantidad, r.fecha_reserva, r.monto_total, r.usuario_id,
+                              e.nombre AS nombre_espectaculo, e.fecha AS fecha_espectaculo, e.precio, e.disponibles')
+                    ->from('reservas r')
+                    ->join('espectaculos e', 'r.espectaculo_id = e.id_espectaculo')
+                    ->where('r.id_reserva', $id_reserva)
+                    ->get()
+                    ->row_array(); // devuelve un array asociativo
+}
+
+
+
 }
 ?>

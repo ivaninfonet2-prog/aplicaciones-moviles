@@ -3,16 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>Cartelera de espectáculos</title>
-    <!-- Enlace al CSS externo principal -->
-    <link rel="stylesheet" href="<?php echo base_url('activos/css/usuario_espectaculos/usuario_espectaculos_body.css'); ?>">
+    <link rel="stylesheet" href="<?= base_url('activos/css/usuario_espectaculos/usuario_espectaculos_body.css'); ?>">
 </head>
 <body>
 
-<main class="inicio-container" style="background-image: url('<?php echo isset($fondo) ? $fondo : ''; ?>');">
-    
-    <!-- Bloque superior con título y descripción -->
+<main class="inicio-container"
+      <?= isset($fondo) && !empty($fondo) ? 'style="background-image: url(' . $fondo . ');"' : ''; ?>>
+
     <section class="bienvenida row">
-        <div class="col-12 text-center animate__animated animate__zoomIn">
+        <div class="col-12 text-center">
             <h3 class="mensaje-bienvenida">Lista de los mejores Espectáculos</h3>
             <p class="mensaje-sub">
                 Descubrí nuestra selección de eventos destacados: conciertos, obras de teatro y experiencias culturales únicas.<br>
@@ -21,15 +20,14 @@
         </div>
     </section>
 
-    <!-- Cartelera de espectáculos -->
-    <section class="cartelera row justify-content-center animate__animated animate__fadeInUp">
+    <section class="cartelera row justify-content-center">
         <div class="col-md-10">
             <div class="tarjetas-container">
                 <?php if (!empty($espectaculos)): ?>
                     <?php foreach ($espectaculos as $espectaculo): ?>
                         <div class="tarjeta">
-                            <img src="<?= base_url('activos/imagenes/' . $espectaculo['imagen']); ?>" 
-                                 alt="<?= $espectaculo['nombre']; ?>" 
+                            <img src="<?= base_url('activos/imagenes/' . $espectaculo['imagen']); ?>"
+                                 alt="<?= $espectaculo['nombre']; ?>"
                                  class="imagen">
 
                             <div class="contenido">
@@ -38,7 +36,7 @@
                                 <p class="precio">
                                     $<?= number_format($espectaculo['precio'], 2, ',', '.'); ?>
                                 </p>
-                                <a href="<?= site_url('espectaculos/ver_espectaculo_logueado/' . $espectaculo['id_espectaculo']); ?>" 
+                                <a href="<?= site_url('espectaculos/ver_espectaculo_logueado/' . $espectaculo['id_espectaculo']); ?>"
                                    class="boton-ver">Ver espectáculo</a>
                             </div>
                         </div>

@@ -41,7 +41,7 @@
         <?php else: ?>
             <p class="no-reservas">No tienes reservas actualmente.</p>
         <?php endif; ?>
-
+       
         <div class="boton-container">
             <a href="<?= base_url('usuario'); ?>" class="boton">Volver a la vista del usuario</a>
         </div>

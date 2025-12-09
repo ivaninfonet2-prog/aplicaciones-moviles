@@ -4,37 +4,55 @@ body {
     font-family: 'Segoe UI', Arial, sans-serif;
     background: #111;
     color: #fff;
+    line-height: 1.6;
 }
 
 /* Fondo principal */
 .inicio-container {
     min-height: 100vh;
-    background-size: cover;        /* cubre toda la pantalla */
-    background-position: center;   /* centra la imagen */
-    background-repeat: no-repeat;  /* evita que se repita */
-    background-attachment: fixed;  /* efecto parallax */
-    image-rendering: auto;         /* asegura que no se pixelee */
-    padding: 2rem;
+    background-size: contain; /* Para que se vea completa */
+    background-position: center center; /* Centra la imagen */
+    background-repeat: no-repeat; /* No repetir */
+    background-attachment: scroll; /* Evita problemas de render en móviles */
+    padding: 3rem 2rem;
+    position: relative;
+}
+
+/* Opcional: si quieres un overlay oscuro sobre el fondo */
+.inicio-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6); /* Oscurece el fondo para que el texto resalte */
+    z-index: 0;
+}
+
+.inicio-container > * {
+    position: relative; /* Para que el contenido quede sobre el overlay */
+    z-index: 1;
 }
 
 /* Bloque de bienvenida */
 .bienvenida {
-    margin-top: 3rem;
-    margin-bottom: 2rem;
+    margin: 3rem 0 2rem;
     text-align: center;
 }
 
 .mensaje-bienvenida {
     font-size: 2rem;
-    font-weight: bold;
-    color: #4dd0e1; /* turquesa moderno */
-    margin-top: 1rem;
+    font-weight: 700;
+    color: #4dd0e1;
+    margin-bottom: 0.5rem;
 }
 
 .mensaje-sub {
     font-size: 1rem;
     color: #e0e0e0;
-    margin-top: 0.5rem;
+    max-width: 700px;
+    margin: 0.5rem auto 0;
 }
 
 /* ===== Contenedor principal de tarjetas ===== */
@@ -58,12 +76,22 @@ body {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     padding: 1.5rem 1rem;
     text-align: center;
+    overflow: hidden;
 }
 
-/* Animación hover */
+/* Hover en tarjeta */
 .tarjeta:hover {
     transform: translateY(-6px) scale(1.02);
     box-shadow: 0 10px 24px rgba(0,0,0,0.35);
+}
+
+/* Imagen de la tarjeta */
+.tarjeta .imagen {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 1rem;
 }
 
 /* Contenido de la tarjeta */
@@ -78,12 +106,14 @@ body {
     font-size: 1rem;
     margin-bottom: 1rem;
     font-weight: normal;
-    color: #cfd8dc; /* gris azulado claro */
+    color: #cfd8dc;
 }
 
-.tarjeta .descripcion-usuario {
-    font-size: 0.95rem;
-    line-height: 1.4;
+.tarjeta .precio {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #81c784;
+    margin-bottom: 1rem;
 }
 
 /* Botón "Ver detalles" */
@@ -95,23 +125,48 @@ body {
     border-radius: 8px;
     text-decoration: none;
     font-weight: bold;
-    transition: background 0.3s ease, transform 0.2s ease;
+    transition: all 0.3s ease;
 }
 
 .boton-ver:hover {
     background: linear-gradient(135deg, #81c784, #4caf50);
     transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
 }
 
 /* ===== Responsivo ===== */
 @media (max-width: 768px) {
+    .mensaje-bienvenida {
+        font-size: 1.8rem;
+    }
+
+    .mensaje-sub {
+        font-size: 0.95rem;
+    }
+
     .tarjeta h3 {
         font-size: 1.2rem;
     }
+
     .tarjeta h2 {
         font-size: 0.9rem;
     }
-    .tarjeta .descripcion-usuario {
-        font-size: 0.85rem;
+
+    .tarjeta .precio {
+        font-size: 1rem;
+    }
+
+    .tarjeta .imagen {
+        height: 150px;
+    }
+}
+
+@media (max-width: 480px) {
+    .inicio-container {
+        padding: 2rem 1rem;
+    }
+
+    .tarjeta .imagen {
+        height: 130px;
     }
 }

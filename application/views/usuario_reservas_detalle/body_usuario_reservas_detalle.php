@@ -21,9 +21,19 @@
             <p><strong>Entradas disponibles actualmente:</strong> <?= $reserva['disponibles']; ?></p>
         </div>
 
-        <div class="boton-container">
-            <a href="<?= base_url('usuario/usuario_reservas'); ?>" class="boton">Volver a mis reservas</a>
-        </div>
+        <?php if ($this->session->flashdata('mensaje_cancelacion')): ?>
+            <div class="detalle-card" style="background: rgba(220, 53, 69, 0.15); color: #a00; margin-top: 20px; text-align: center;">
+                <?= $this->session->flashdata('mensaje_cancelacion'); ?>
+            </div>
+        <?php else: ?>
+            <div class="boton-container">
+                <a href="<?= base_url('reservar/cancelar_reserva/'.$reserva['id_reserva']); ?>" class="boton">Cancelar Reserva</a>
+            </div>
+
+            <div class="boton-container">
+                <a href="<?= base_url('usuario/usuario_reservas'); ?>" class="boton">Volver a mis reservas</a>
+            </div>
+        <?php endif; ?>
     </main>
 
 </body>
