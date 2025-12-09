@@ -75,7 +75,7 @@ class Espectaculos extends CI_Controller
 
     //  LISTA USUARIO (COMPLETAMENTE INDEPENDIENTE)
 
-    public function mostrar_lista_espectaculos_usuario()
+    public function espectaculos_usuario()
     {
         // Copia completa del procesamiento
         $espectaculos = $this->Espectaculo_modelo->obtener_espectaculos();
@@ -109,7 +109,7 @@ class Espectaculos extends CI_Controller
 
     //  LISTA ADMINISTRADOR (COMPLETAMENTE INDEPENDIENTE)
 
-    public function mostrar_lista_espectaculos_administrador()
+    public function espectaculos_admin()
     {
         // Copia completa del procesamiento
         $espectaculos = $this->Espectaculo_modelo->obtener_espectaculos();
@@ -143,7 +143,7 @@ class Espectaculos extends CI_Controller
 
     //  VER ESPECTÁCULO SIN LOGUEAR (TOTALMENTE INDEPENDIENTE)
 
-    public function ver_espectaculo_sin_loguear($id)
+    public function espectaculo_sin_loguear($id)
     {
         // Obtener espectáculo
         $espectaculo = $this->Espectaculo_modelo->obtener_espectaculo_por_id($id);
@@ -169,7 +169,7 @@ class Espectaculos extends CI_Controller
 
     //  VER ESPECTÁCULO LOGUEADO (TOTALMENTE INDEPENDIENTE)
 
-    public function ver_espectaculo_logueado($id)
+    public function espectaculo_logueado($id)
     {
         // Obtener espectáculo (copiado de arriba)
         $espectaculo = $this->Espectaculo_modelo->obtener_espectaculo_por_id($id);
