@@ -2,48 +2,67 @@
    Footer principal
    ================================ */
 .main-footer {
-    background: #0d0d0d;
+    background: #000; /* Fondo negro */
     color: #ffffff;
-    font-size: 1.1rem; /* 🔥 Aumenté el tamaño general */
-    text-align: center; /* 🔥 Asegura que TODO el contenido quede centrado */
+    font-size: 1.1rem; /* Aumenté el tamaño general */
+    text-align: center; /* Asegura que TODO el contenido quede centrado */
     box-shadow: 0 -4px 12px rgba(0,0,0,0.4);
     width: 100%;
     margin: 0;
-    padding: 30px 0; /* 🔥 Más espacio vertical */
+    padding: 40px 0; /* Más espacio vertical */
     box-sizing: border-box;
     display: block;
 }
 
-/* Links del footer */
+/* Contenedor de los enlaces del footer */
 .footer-links {
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly; /* Distribuye los enlaces de manera más uniforme */
     flex-wrap: wrap;
-    gap: 28px; /* 🔥 Más separación entre enlaces */
+    gap: 35px; /* Más separación entre los enlaces */
     width: 100%;
-    margin: 20px 0; /* 🔥 Más espacio alrededor */
+    margin: 20px 0;
     padding: 0 20px;
     box-sizing: border-box;
 }
 
-.footer-links .footer-link {
+/* Enlaces del footer */
+.footer-link {
     color: #00bfff;
     text-decoration: none;
-    font-size: 1.15rem; /* 🔥 Enlaces más grandes */
-    letter-spacing: 0.5px; /* 🔥 Letras un poco más separadas */
+    font-size: 1.15rem; /* Enlaces más grandes */
+    letter-spacing: 0.5px; /* Letras un poco más separadas */
     transition: color 0.3s ease, transform 0.3s ease;
     font-weight: 500;
 }
 
-.footer-links .footer-link:hover {
+.footer-link:hover {
     color: #ffffff;
     transform: translateY(-2px);
 }
 
+/* Texto adicional debajo de los enlaces */
+.footer-text {
+    font-size: 0.9rem;
+    color: #aaa;
+    margin-top: 20px;
+    line-height: 1.6;
+}
+
+.footer-text a {
+    color: #00bfff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-text a:hover {
+    color: #ffffff;
+}
+
 /* Botón volver */
 .btn-warning {
-    font-size: 1.1rem; /* 🔥 Botón más grande */
-    padding: 10px 28px; /* 🔥 Más cómodo */
+    font-size: 1.1rem;
+    padding: 10px 28px;
     font-weight: 600;
     border-radius: 25px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -65,6 +84,10 @@
     .footer-links {
         flex-direction: column;
         align-items: center;
-        gap: 15px; /* 🔥 Más espacio en móvil también */
+        gap: 15px; /* Más espacio en móvil también */
+    }
+    
+    .footer-text {
+        font-size: 0.85rem;
     }
 }

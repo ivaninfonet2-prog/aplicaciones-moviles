@@ -5,10 +5,10 @@
 
         <!-- Enlaces del footer -->
         <div class="footer-links">
-            <a href="<?= base_url('acerca'); ?>" class="footer-link">Acerca de</a>
-            <a href="<?= base_url('contacto'); ?>" class="footer-link">Contacto</a>
-            <a href="<?= base_url('politicas'); ?>" class="footer-link">Políticas</a>
-            <a href="<?= base_url('ayuda'); ?>" class="footer-link">Ayuda</a>
+            <a href="<?= base_url('acerca/acerca_usuario'); ?>" class="footer-link">Acerca de</a>
+            <a href="<?= base_url('contacto/contacto_usuario'); ?>" class="footer-link">Contacto</a>
+            <a href="<?= base_url('politicas/politicas_usuario'); ?>" class="footer-link">Políticas</a>
+            <a href="<?= base_url('ayuda/ayuda_usuario'); ?>" class="footer-link">Ayuda</a>
         </div>
     </div>
 </footer>

@@ -11,13 +11,13 @@ class Contacto extends CI_Controller
         $data['titulo'] = 'Contacto de UNLa Tienda';
 
         // Cargar header común
-        $this->load->view('contacto_principal/header_contacto_principal', $data);
+        $this->load->view('header/header_principal', $data);
 
         // Vista principal de la sección "Contacto"
         $this->load->view('contacto_principal/body_contacto_principal', $data);
 
         // Cargar footer común
-        $this->load->view('contacto_principal/footer_contacto_principal');
+        $this->load->view('principal/footer_principal');
     }
 
     public function contacto_login() 
@@ -29,7 +29,7 @@ class Contacto extends CI_Controller
         $this->load->view('header/header_login', $data);
 
        // Vista principal
-        $this->load->view('acerca_principal/body_acerca_principal', $data);
+        $this->load->view('contacto_principal/body_contacto_principal', $data);
 
         // Footer común
         $this->load->view('footer/footer_login');
@@ -44,7 +44,7 @@ class Contacto extends CI_Controller
         $this->load->view('header/header_registrar', $data);
 
        // Vista principal
-        $this->load->view('acerca_principal/body_acerca_principal', $data);
+        $this->load->view('contacto_principal/body_contacto_principal', $data);
 
         // Footer común
         $this->load->view('footer/footer_registrar');
@@ -56,13 +56,13 @@ class Contacto extends CI_Controller
         $data['fondo'] = base_url('activos/imagenes/mi_fondo.jpg');
 
         // Cargar header común
-        $this->load->view('contacto_usuario/header_contacto_usuario', $data);
+        $this->load->view('header/header_usuario', $data);
 
         // Vista principal de la sección "Contacto"
-        $this->load->view('contacto_usuario/body_contacto_usuario', $data);
+        $this->load->view('contacto_principal/body_contacto_principal', $data);
 
         // Cargar footer común
-        $this->load->view('contacto_usuario/footer_contacto_usuario');
+        $this->load->view('footer/footer_usuario');
     }
 
     public function contacto_administrador() 

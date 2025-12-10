@@ -1,0 +1,84 @@
+/* Estilos generales para el header */
+
+.main-header {
+    background-color: #000; /* Fondo negro */
+    color: white; /* Texto blanco para contraste */
+}
+
+.navbar-dark .navbar-nav .nav-item .btn {
+    font-weight: 500;
+}
+
+/* Aumentar la altura del header */
+.navbar {
+    padding: 20px 15px; /* Aumento del padding (alto) */
+}
+
+/* Botón verde */
+.btn-verde {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px; /* Esquinas redondeadas */
+    padding: 10px 20px;
+    font-size: 14px;
+}
+
+.btn-verde:hover {
+    background-color: #218838;
+    color: white;
+}
+
+/* Botón azul */
+.btn-azul {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px; /* Esquinas redondeadas */
+    padding: 10px 20px;
+    font-size: 14px;
+}
+
+.btn-azul:hover {
+    background-color: #0056b3;
+    color: white;
+}
+
+/* Estilo para la barra de navegación */
+.navbar .navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white; /* Título del sitio en blanco */
+}
+
+.navbar .navbar-nav .nav-item {
+    margin-left: 15px;
+}
+
+.navbar .navbar-nav .nav-item .btn {
+    font-weight: 500;
+}
+
+/* Logo en la barra de navegación */
+.logo-img {
+    width: 40px;
+    height: auto;
+}
+
+/* Estilo para el título del sitio */
+.site-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: white; /* Título en blanco */
+}
+
+/* Mejorar el diseño de la barra de navegación en pantallas pequeñas */
+@media (max-width: 768px) {
+    .navbar .navbar-nav {
+        text-align: center;
+    }
+    
+    .navbar .navbar-nav .nav-item {
+        margin-top: 10px;
+    }
+}
