@@ -33,7 +33,7 @@ class Acerca extends CI_Controller
         $this->load->view('acerca_usuario/footer_acerca_usuario');
     }
 
-     public function acerca_administrador() 
+    public function acerca_administrador() 
     {
         $data['fondo']  = base_url('activos/imagenes/mi_fondo.jpg');
         $data['titulo'] = 'Acerca de UNLa Tienda';

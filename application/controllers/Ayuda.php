@@ -19,36 +19,6 @@ class Ayuda extends CI_Controller
         $this->load->view('ayuda_principal/footer_ayuda_principal');
     }
 
-    public function ayuda_login() 
-    {
-        // Ruta de la imagen de fondo
-        $data['fondo'] = base_url('activos/imagenes/mi_fondo.jpg');
-
-        // Cargar header común
-        $this->load->view('ayuda_login/header_ayuda_login', $data);
-
-        // Vista principal de la sección "Ayuda"
-        $this->load->view('ayuda_login/body_ayuda_login', $data);
-
-        // Cargar footer común
-        $this->load->view('ayuda_login/footer_ayuda_login');
-    }
-
-    public function ayuda_registrar() 
-    {
-        // Ruta de la imagen de fondo
-        $data['fondo'] = base_url('activos/imagenes/mi_fondo.jpg');
-
-        // Cargar header común
-        $this->load->view('ayuda_registrar/header_ayuda_registrar', $data);
-
-        // Vista principal de la sección "Ayuda"
-        $this->load->view('ayuda_registrar/body_ayuda_registrar', $data);
-
-        // Cargar footer común
-        $this->load->view('ayuda_registrar/footer_ayuda_registrar');
-    }
-
     public function ayuda_usuario() 
     {
         // Ruta de la imagen de fondo
@@ -62,21 +32,6 @@ class Ayuda extends CI_Controller
 
         // Cargar footer común
         $this->load->view('ayuda_usuario/footer_ayuda_usuario');
-    }
-
-     public function ayuda_usuario_espectaculos() 
-    {
-        // Ruta de la imagen de fondo
-        $data['fondo'] = base_url('activos/imagenes/mi_fondo.jpg');
-
-        // Cargar header común
-        $this->load->view('ayuda_usuario_espectaculos/header_ayuda_usuario_espectaculos', $data);
-
-        // Vista principal de la sección "Ayuda"
-        $this->load->view('ayuda_usuario_espectaculos/body_ayuda_usuario_espectaculos', $data);
-
-        // Cargar footer común
-        $this->load->view('ayuda_usuario_espectaculos/footer_ayuda_usuario_espectaculos');
     }
 
     public function ayuda_administrador() 

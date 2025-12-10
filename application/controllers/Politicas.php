@@ -19,22 +19,6 @@ class Politicas extends CI_Controller
         $this->load->view('politicas_principal/footer_politicas_principal');
     }
     
-    public function politicas_login() 
-    {
-        // Ruta de la imagen de fondo
-        $data['fondo'] = base_url('activos/imagenes/mi_fondo.jpg');
-        $data['titulo'] = 'Politica de UNLa Tienda';
-
-        // Cargar header común
-        $this->load->view('politicas_login/header_politicas_login', $data);
-
-        // Vista principal de la sección "Políticas"
-        $this->load->view('politicas_login/body_politicas_login', $data);
-
-        // Cargar footer común
-        $this->load->view('politicas_login/footer_politicas_login');
-    }
-
     public function politicas_usuario() 
     {
         // Ruta de la imagen de fondo
@@ -65,22 +49,6 @@ class Politicas extends CI_Controller
 
         // Cargar footer común
         $this->load->view('politicas_administrador/footer_politicas_administrador');
-    }
-
-    public function politicas_usuario_espectaculos() 
-    {
-        // Ruta de la imagen de fondo
-        $data['fondo'] = base_url('activos/imagenes/mi_fondo.jpg');
-        $data['titulo'] = 'Politica de UNLa Tienda';
-
-        // Cargar header común
-        $this->load->view('politicas_usuario_espectaculos/header_politicas_usuario_espectaculos', $data);
-
-        // Vista principal de la sección "Políticas"
-        $this->load->view('politicas_usuario_espectaculos/body_politicas_usuario_espectaculos', $data);
-
-        // Cargar footer común
-       $this->load->view('politicas_usuario_espectaculos/footer_politicas_usuario_espectaculos');
     }
 
 }
