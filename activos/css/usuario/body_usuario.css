@@ -1,74 +1,149 @@
-/* Contenedor principal */
-.usuario-main {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+/* Título fuera de la tarjeta (sobre el fondo) */
+.titulo {
+    font-size: 1.8em; /* Ajuste del tamaño de la fuente */
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+    width: 100%;
+    margin-top: 40px; /* Margen superior añadido para separar más del header */
+    margin-bottom: 20px; /* Margen inferior para separar del subtítulo */
+    white-space: nowrap; /* Evita que el texto se divida en varias líneas */
+    overflow: visible; /* Asegura que el contenido no se oculte */
 }
 
-/* Caja de contenido */
+/* Subtítulo fuera de la tarjeta (sobre el fondo) */
+.subtitulo {
+    font-size: 1.2em; /* Ajuste del tamaño del subtítulo */
+    color: #eee;
+    margin-bottom: 30px; /* Aumentamos el margen para separar más de la tarjeta */
+    text-align: center;
+    width: 100%;
+    max-width: 90%; /* Mantener subtítulo dentro de un área controlada */
+    margin: 0 auto;
+    white-space: nowrap; /* Evita que el texto se divida en varias líneas */
+    overflow: hidden; /* Evita que se desborde */
+    text-overflow: ellipsis; /* Muestra "..." si el texto es demasiado largo */
+}
+
+/* Caja de contenido (tarjeta) */
 .usuario-contenido {
-    background-color: rgba(0, 0, 0, 0.3); /* más transparente */
-    padding: 40px; /* más grande */
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px); /* Efecto esmerilado de fondo */
+    padding: 30px;
     border-radius: 16px;
     text-align: center;
-    max-width: 600px; /* más ancho */
-    box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+    max-width: 750px;
+    width: 100%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    border: none;
+    margin-top: 20px; /* Separación de la tarjeta desde el subtítulo */
+    margin-bottom: 40px; /* Margen inferior para separar la tarjeta del footer */
 }
 
-/* Imagen de bienvenida */
+/* Imagen dentro de la tarjeta */
 .welcome-img {
     max-width: 150px;
-    margin-bottom: 20px;
-}
-
-/* Título */
-.titulo {
-    font-size: 2.2em;
-    font-weight: bold;
     margin-bottom: 15px;
-    animation: fadeIn 1s ease-in-out;
-    color: #fff;
 }
 
-/* Subtítulo */
-.subtitulo {
+/* Texto dentro de la tarjeta */
+.body-text {
     font-size: 1.1em;
-    margin-bottom: 25px;
-    animation: fadeIn 1.5s ease-in-out;
-    color: #eee;
+    color: #333;
+    margin-bottom: 20px;
+    line-height: 1.5;
+    text-align: center;
 }
 
-/* Botones personalizados */
+/* Botones alineados horizontalmente */
+.d-flex {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+/* Botones */
+.btn-espectaculos, .btn-reservas {
+    padding: 12px 25px;
+    font-size: 1.1em;
+    border-radius: 30px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
 .btn-espectaculos {
     background-color: #1e90ff;
     color: #fff !important;
     border: none;
 }
-.btn-espectaculos:hover { background-color: #0066cc; }
+
+.btn-espectaculos:hover {
+    background-color: #0066cc;
+}
 
 .btn-reservas {
     background-color: #28a745;
     color: #fff !important;
     border: none;
 }
-.btn-reservas:hover { background-color: #1c7c31; }
 
-.btn-logout {
-    background-color: #ff4d4d;
-    color: #fff !important;
-    border: none;
+.btn-reservas:hover {
+    background-color: #1c7c31;
 }
-.btn-logout:hover { background-color: #cc0000; }
 
-/* Animaciones */
-.fade-in {
-    opacity: 0;
-    animation: fadeIn 1s forwards;
+/* Footer */
+.footer-text {
+    font-size: 0.9em;
+    color: #333;
+    margin-top: 20px;
+    font-style: italic;
 }
-.fade-in.delay-1 { animation-delay: 0.5s; }
-.fade-in.delay-2 { animation-delay: 1s; }
 
-@keyframes fadeIn {
-    to { opacity: 1; }
+/* Responsividad para pantallas grandes */
+@media (min-width: 1200px) {
+    .usuario-contenido {
+        max-width: 900px; /* Ampliar aún más la tarjeta en pantallas grandes */
+    }
+
+    .titulo {
+        font-size: 2.5em; /* Aumentar tamaño del título */
+    }
+
+    .subtitulo {
+        font-size: 1.5em; /* Aumentar subtítulo en pantallas grandes */
+    }
+}
+
+/* Responsividad para dispositivos móviles */
+@media (max-width: 768px) {
+    .usuario-main {
+        padding: 15px;
+    }
+
+    .titulo {
+        font-size: 2em; /* Ajuste tamaño en móviles */
+    }
+
+    .subtitulo {
+        font-size: 1.2em; /* Ajuste tamaño en móviles */
+    }
+
+    .usuario-contenido {
+        width: 95%; /* Ajustar al 95% del ancho */
+        padding: 20px;
+    }
+
+    .d-flex {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .btn-espectaculos, .btn-reservas {
+        width: 100%;
+        padding: 15px;
+        font-size: 1.1em;
+    }
 }

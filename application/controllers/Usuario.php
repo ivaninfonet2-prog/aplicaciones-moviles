@@ -13,54 +13,43 @@ class Usuario extends CI_Controller
         $this->load->library(['session', 'form_validation']);
         $this->load->helper('url');
     }
-
-    private function datos_base($titulo = 'Inicio - UNLa Tienda')
-    {
-        return 
-        [
-            'fondo'  => base_url('activos/imagenes/mi_fondo.jpg'),
-            'titulo' => $titulo
-        ];
+        public function index()
+{
+    // Verificar si el usuario está logueado
+    if (!$this->session->userdata('logged_in')) {
+        redirect('login');
+        return;
     }
 
-    private function validar_usuario($es_nuevo = true)
-    {
-        $this->form_validation->set_rules('nombre', 'Nombre', 'required');
-        $this->form_validation->set_rules('apellido', 'Apellido', 'required');
-        $this->form_validation->set_rules('email', 'Email', 'required|valid_email' . ($es_nuevo ? '|is_unique[usuarios.nombre_usuario]' : ''));
+    // Evitar caché
+    $this->output->set_header("Cache-Control: no-store, no-cache, must-revalidate");
+    $this->output->set_header("Cache-Control: post-check=0, pre-check=0", false);
+    $this->output->set_header("Pragma: no-cache");
 
-        if ($es_nuevo) 
-        {
-            $this->form_validation->set_rules('password', 'Contraseña', 'required|min_length[6]');
-        }
+    // Datos iniciales
+    $data = [
+        'titulo'   => "Bienvenido Usuario",
+        'fondo'    => base_url('activos/imagenes/mi_fondo.jpg'),
+        'nombre'   => '',
+        'apellido' => '',
+    ];
+
+    // Obtener datos del usuario
+    $id_usuario = $this->session->userdata('id_usuario');
+    $usuario = $this->Usuario_modelo->obtener_por_id($id_usuario);
+
+    // Si existe el usuario, asignar los valores de nombre y apellido
+    if ($usuario) {
+        $data['nombre']   = $usuario->nombre;
+        $data['apellido'] = $usuario->apellido;
     }
 
-    /* ------------------ MÉTODOS DE USUARIO ------------------ */
+    // Cargar las vistas
+    $this->load->view('usuario/header_usuario', $data);
+    $this->load->view('usuario/body_usuario', $data);
+    $this->load->view('usuario/footer_usuario', $data);
+}
 
-    public function index()
-    {
-        if (!$this->session->userdata('logged_in'))
-        {
-            redirect('login');
-            return;
-        }
-
-        $this->output->set_header("Cache-Control: no-store, no-cache, must-revalidate");
-        $this->output->set_header("Cache-Control: post-check=0, pre-check=0", false);
-        $this->output->set_header("Pragma: no-cache");
-
-        $id_usuario = $this->session->userdata('id_usuario');
-        $usuario = $this->Usuario_modelo->obtener_por_id($id_usuario);
-
-        $data = $this->datos_base();
-        $data['titulo']   = 'UNLa Tienda';
-        $data['nombre']   = $usuario ? $usuario->nombre : '';
-        $data['apellido'] = $usuario ? $usuario->apellido : '';
-
-        $this->load->view('usuario/header_usuario', $data);
-        $this->load->view('usuario/body_usuario', $data);
-        $this->load->view('usuario/footer_usuario', $data);
-    }
 
     public function usuario_espectaculos()
     {
@@ -130,6 +119,21 @@ class Usuario extends CI_Controller
         $this->load->view('usuario_reservas_detalle/header_usuario_reservas_detalle', $data);
         $this->load->view('usuario_reservas_detalle/body_usuario_reservas_detalle', $data);
         $this->load->view('usuario_reservas_detalle/footer_usuario_reservas_detalle', $data);
+    }
+
+
+      /* ------------------ MÉTODOS DE USUARIO ------------------ */
+
+    private function validar_usuario($es_nuevo = true)
+    {
+        $this->form_validation->set_rules('nombre', 'Nombre', 'required');
+        $this->form_validation->set_rules('apellido', 'Apellido', 'required');
+        $this->form_validation->set_rules('email', 'Email', 'required|valid_email' . ($es_nuevo ? '|is_unique[usuarios.nombre_usuario]' : ''));
+
+        if ($es_nuevo) 
+        {
+            $this->form_validation->set_rules('password', 'Contraseña', 'required|min_length[6]');
+        }
     }
 
     /* ------------------ MÉTODOS CRUD ADMIN ------------------ */
