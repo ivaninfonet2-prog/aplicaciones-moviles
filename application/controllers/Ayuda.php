@@ -11,13 +11,13 @@ class Ayuda extends CI_Controller
         $data['titulo'] = 'Ayuda de UNLa Tienda';
 
         // Cargar header común
-        $this->load->view('header/header_principal', $data);
+        $this->load->view('header_footer/header_footer_principal', $data);
 
         // Vista principal de la sección "Ayuda"
-        $this->load->view('ayuda_principal/body_ayuda_principal', $data);
+        $this->load->view('body_footer/body_footer_ayuda', $data);
 
         // Cargar footer común
-        $this->load->view('principal/footer_principal');
+        $this->load->view('footer_footer/footer_footer_principal');
     }
 
 
@@ -27,13 +27,13 @@ class Ayuda extends CI_Controller
         $data['titulo'] = 'Acerca de UNLa Tienda';
 
         // Header común
-        $this->load->view('header/header_login', $data);
+        $this->load->view('header_footer/header_footer_login', $data);
 
        // Vista principal
-        $this->load->view('ayuda_principal/body_ayuda_principal', $data);
+        $this->load->view('body_footer/body_footer_ayuda', $data);
 
         // Footer común
-        $this->load->view('footer/footer_login');
+        $this->load->view('footer_footer/footer_footer_login');
     }
 
     public function ayuda_registrar() 
@@ -42,13 +42,13 @@ class Ayuda extends CI_Controller
         $data['titulo'] = 'Acerca de UNLa Tienda';
 
         // Header común
-        $this->load->view('header/header_registrar', $data);
+        $this->load->view('header_footer/header_footer_registrar', $data);
 
        // Vista principal
-        $this->load->view('ayuda_principal/body_ayuda_principal', $data);
+        $this->load->view('body_footer/body_footer_ayuda', $data);
 
         // Footer común
-        $this->load->view('footer/footer_registrar');
+        $this->load->view('footer_footer/footer_footer_registrar');
     }
 
     public function ayuda_usuario() 
@@ -57,13 +57,13 @@ class Ayuda extends CI_Controller
         $data['fondo'] = base_url('activos/imagenes/mi_fondo.jpg');
 
         // Cargar header común
-        $this->load->view('header/header_usuario', $data);
+        $this->load->view('header_footer/header_footer_usuario', $data);
 
         // Vista principal de la sección "Ayuda"
-        $this->load->view('ayuda_principal/body_ayuda_principal', $data);
+        $this->load->view('body_footer/body_footer_ayuda', $data);
 
         // Cargar footer común
-        $this->load->view('footer/footer_usuario');
+        $this->load->view('footer_footer/footer_footer_usuario');
     }
 
     public function ayuda_administrador() 
@@ -72,13 +72,13 @@ class Ayuda extends CI_Controller
         $data['fondo'] = base_url('activos/imagenes/mi_fondo.jpg');
 
         // Cargar header común
-        $this->load->view('ayuda_administrador/header_ayuda_administrador', $data);
+        $this->load->view('header_footer/header_footer_administrador', $data);
 
         // Vista principal de la sección "Ayuda"
-        $this->load->view('ayuda_administrador/body_ayuda_administrador', $data);
+        $this->load->view('body_footer/body_footer_ayuda', $data);
 
         // Cargar footer común
-        $this->load->view('ayuda_administrador/footer_ayuda_administrador');
+        $this->load->view('footer_footer/footer_footer_administrador');
     }
 
 }
