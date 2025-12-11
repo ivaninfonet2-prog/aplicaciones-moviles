@@ -39,14 +39,14 @@
             <?php endif; ?>
 
             <!-- Usuario -->
-            <div class="mb-3">
+            <div class="form-group mb-4">
                 <label for="nombre_usuario" class="form-label">Usuario</label>
                 <input type="text" class="form-control" id="nombre_usuario" name="nombre_usuario"
                        placeholder="Ingresa tu usuario" required autocomplete="off">
             </div>
 
             <!-- Contraseña -->
-            <div class="mb-3">
+            <div class="form-group mb-4">
                 <label for="palabra_clave" class="form-label">Contraseña</label>
                 <input type="password" class="form-control" id="palabra_clave" name="palabra_clave"
                        placeholder="Ingresa tu contraseña" required autocomplete="new-password">
@@ -59,7 +59,7 @@
             </div>
 
             <!-- Extra -->
-            <div class="login-extra text-center mt-3">
+            <div class="login-extra text-center mt-4">
                 <p class="registro-text">
                     ¿No tienes cuenta todavía? <br>
                     <span class="highlight">¡Únete a nuestra comunidad!</span>

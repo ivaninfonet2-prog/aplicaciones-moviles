@@ -14,7 +14,7 @@ body {
 .main-header {
     width: 100%;
     height: 85px;
-    background: linear-gradient(180deg, #0d0d0d, #1a1a1a);
+    background-color: #000000; /* fondo negro sólido */
     box-shadow: 0 4px 18px rgba(0,0,0,0.6);
     display: flex;
     align-items: center;
@@ -31,7 +31,7 @@ body {
     padding: 0 25px;
     display: flex;
     align-items: center;
-    justify-content: space-between; /* separa izquierda y derecha */
+    justify-content: space-between;
 }
 
 /* ================================
@@ -47,14 +47,8 @@ body {
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    border: 2px solid #ffffff;
     margin-right: 12px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.logo-img:hover {
-    transform: scale(1.12) rotate(4deg);
-    box-shadow: 0 0 16px rgba(255,255,255,0.7);
+    /* quitamos borde blanco y efectos */
 }
 
 .site-title {
@@ -62,7 +56,7 @@ body {
     font-weight: 700;
     color: #ffffff;
     letter-spacing: 0.5px;
-    text-shadow: 0 0 6px rgba(255,255,255,0.3);
+    /* quitamos efecto brilloso */
 }
 
 /* ================================
@@ -71,7 +65,8 @@ body {
 .nav-menu {
     display: flex;
     align-items: center;
-    gap: 15px; /* separación entre botones */
+    gap: 25px; /* más separación entre botones */
+    margin-right: 40px; /* evita que queden pegados al borde derecho */
 }
 
 /* ================================
@@ -82,32 +77,28 @@ body {
     border-radius: 8px;
     font-weight: 600;
     text-decoration: none;
-    transition: all 0.3s ease;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.4);
+    box-shadow: none; /* quitamos sombra */
+    transition: none; /* quitamos animación */
 }
 
-/* Botón Login (más azul) */
+/* Botón Login */
 .btn-login {
-    background-color: #0066ff; /* azul intenso */
+    background-color: #0066ff;
     color: #ffffff;
 }
 
 .btn-login:hover {
-    background-color: #004bb3; /* azul más oscuro */
-    transform: scale(1.08);
-    box-shadow: 0 4px 12px rgba(0,102,255,0.6);
+    background-color: #004bb3; /* solo cambio de color */
 }
 
-/* Botón Registrar (verde oscuro) */
+/* Botón Registrar */
 .btn-register {
-    background-color: #009944; /* verde oscuro atractivo */
+    background-color: #009944;
     color: #ffffff;
 }
 
 .btn-register:hover {
-    background-color: #006633; /* verde más oscuro */
-    transform: scale(1.08);
-    box-shadow: 0 4px 12px rgba(0,153,68,0.6);
+    background-color: #006633; /* solo cambio de color */
 }
 
 /* ================================
@@ -130,9 +121,10 @@ body {
     }
 
     .nav-menu {
-        gap: 10px;
+        gap: 15px;
         width: 100%;
         justify-content: center;
+        margin-right: 0; /* centrado en móviles */
     }
 
     .btn {

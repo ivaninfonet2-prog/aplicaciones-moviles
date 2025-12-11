@@ -4,14 +4,17 @@
 .body-login {
   min-height: 100vh;
   display: flex;
-  justify-content: center;  /* Centrar horizontal */
-  align-items: center;      /* Centrar vertical */
+  justify-content: flex-start;  
+  align-items: center;      
   flex-direction: column;
 
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
+
+  padding-top: 120px; /* aire extra respecto al header */
+  padding-bottom: 60px; /* espacio con el footer */
 }
 
 .login-container {
@@ -25,75 +28,87 @@
 
 
 /* ==========================
-   TITULOS
+   TITULOS FUERA DE LA TARJETA
 ========================== */
 .titulo-login {
-  color: #ffffff; /* blanco nítido */
-  font-size: 2.8rem; /* un poco más grande */
+  color: #ffffff;
+  font-size: 2.8rem;
   font-weight: 700;
   text-shadow: 0px 0px 14px rgba(0,0,0,0.7);
   margin-bottom: 10px;
 }
 
 .subtitulo-login {
-  color: #d9eaff; /* azul muy claro elegante */
+  color: #d9eaff;
   font-size: 1.25rem;
   margin-bottom: 28px;
   text-shadow: 0px 0px 8px rgba(0,0,0,0.4);
 }
 
-.login-description {
-  color: #f0f6ff; /* blanco azulado */
-  font-size: 16px;
-  margin-bottom: 18px;
-}
-
 
 /* ==========================
-   TARJETA / FORMULARIO
+   TARJETA / FORMULARIO TRANSPARENTE
 ========================== */
 .login-form {
   width: 100%;
-  max-width: 430px;  /* Más ancho */
-  padding: 35px;     /* Más aire interno */
+  max-width: 430px;
+  padding: 35px;
 
-  background: rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.08); /* transparente con efecto glass */
   backdrop-filter: blur(14px);
   border-radius: 16px;
 
-  border: 1px solid rgba(255,255,255,0.40);
-  box-shadow: 0 12px 34px rgba(0,0,0,0.32);
+  border: 1px solid rgba(255,255,255,0.25);
+  box-shadow: 0 12px 34px rgba(0,0,0,0.25);
+
+  color: #222; /* texto base oscuro */
 }
 
 
 /* ==========================
-   CAMPOS
+   TEXTOS INTERNOS OSCUROS
 ========================== */
-.form-label {
-  color: #e1edff; /* celeste-claro muy visible */
-  font-size: 16px;   /* más grande */
+.login-form .login-description {
+  color: #333; /* gris medio */
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.login-form .form-label {
+  color: #111; /* muy oscuro para etiquetas */
+  font-size: 16px;
   font-weight: 600;
+  margin-bottom: 10px;
 }
 
-.form-control {
+.login-form .form-control {
   background: rgba(255, 255, 255, 0.9);
-  border: none;
+  border: 1px solid #ccc;
   border-radius: 6px;
-  padding: 12px;
-  font-size: 16px;   /* más legible */
-  margin-top: 6px;
-  color: #1d1d1d; /* texto oscuro nítido */
-  transition: 0.2s ease-in-out;
+  padding: 14px;
+  font-size: 16px;
+  color: #111;
 }
 
-.form-control::placeholder {
-  color: #4d4d4d; /* gris oscuro para más visibilidad */
+.login-form .form-control::placeholder {
+  color: #666;
 }
 
-.form-control:focus {
+.login-form .form-control:focus {
   background: #ffffff;
   border: 2px solid #0077ff;
-  box-shadow: 0 0 10px rgba(0,123,255,0.45);
+  box-shadow: 0 0 10px rgba(0,123,255,0.3);
+}
+
+.login-form .login-extra {
+  color: #222;
+  font-size: 15px;
+  margin-top: 20px;
+}
+
+.login-form .highlight {
+  color: #0077ff; /* azul fuerte para destacar */
+  font-weight: bold;
 }
 
 
@@ -109,16 +124,15 @@
 
 .login-buttons .btn {
   padding: 12px 26px;
-  font-size: 16px;   /* más grande */
+  font-size: 16px;
   font-weight: 600;
   border-radius: 10px;
   transition: 0.2s;
   color: white;
 }
 
-/* Hover */
 .login-buttons .btn-primary:hover {
-  background-color: #004ba7; /* azul UNLa más fuerte */
+  background-color: #004ba7;
 }
 
 .login-buttons .btn-success:hover {
@@ -127,29 +141,15 @@
 
 
 /* ==========================
-   MENSAJE EXTRA
-========================== */
-.login-extra {
-  color: #e4f2ff; /* celeste blanco */
-  font-size: 15px;
-  margin-top: 20px;
-}
-
-.highlight {
-  color: #00c3ff; /* azul destacable pero suave */
-  font-weight: bold;
-}
-
-
-/* ==========================
    ALERTA DE ERROR
 ========================== */
-.alert {
+.login-form .alert {
   font-size: 15px;
   border-radius: 8px;
   padding: 10px;
   text-align: center;
-  color: white;
+  color: #fff;
+  background-color: #f44336;
 }
 
 
