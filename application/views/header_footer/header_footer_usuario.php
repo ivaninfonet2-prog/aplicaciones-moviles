@@ -9,7 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- CSS personalizado -->
-    <link rel="stylesheet" href="<?= base_url('activos/css/header/header_usuario.css'); ?>">
+    <link rel="stylesheet" href="<?= base_url('activos/css/header_footer/header_footer_usuario.css'); ?>">
 
 </head>
 <body class="d-flex flex-column min-vh-100">

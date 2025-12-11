@@ -30,7 +30,7 @@ class Acerca extends CI_Controller
         $this->load->view('acerca_principal/body_acerca_principal', $data);
 
         // Footer común
-        $this->load->view('footer/footer_login');
+        $this->load->view('footer_footer/footer_login');
     }
 
     public function acerca_registrar() 
@@ -39,13 +39,13 @@ class Acerca extends CI_Controller
         $data['titulo'] = 'Acerca de UNLa Tienda';
 
         // Header común
-        $this->load->view('header/header_registrar', $data);
+        $this->load->view('header_footer/header_footer_registrar', $data);
 
        // Vista principal
         $this->load->view('acerca_principal/body_acerca_principal', $data);
 
         // Footer común
-        $this->load->view('footer/footer_registrar');
+        $this->load->view('footer_footer/footer_registrar');
     }
 
     public function acerca_usuario() 
@@ -54,13 +54,13 @@ class Acerca extends CI_Controller
         $data['titulo'] = 'Acerca de UNLa Tienda';
 
         // Header común
-        $this->load->view('header/header_usuario', $data);
+        $this->load->view('header_footer/header_footer_usuario', $data);
 
         // Vista principal
         $this->load->view('acerca_principal/body_acerca_principal', $data);
 
         // Footer común
-        $this->load->view('footer/footer_usuario');
+        $this->load->view('footer_footer/footer_usuario');
     }
 
     public function acerca_administrador() 
@@ -69,13 +69,13 @@ class Acerca extends CI_Controller
         $data['titulo'] = 'Acerca de UNLa Tienda';
 
         // Header común
-        $this->load->view('acerca_administrador/header_acerca_administrador', $data);
+        $this->load->view('header_footer/header_footer_administrador', $data);
 
         // Vista principal
         $this->load->view('acerca_administrador/body_acerca_administrador', $data);
 
         // Footer común
-        $this->load->view('acerca_administrador/footer_acerca_administrador');
+        $this->load->view('footer_footer/footer_acerca_administrador');
     }
 
 

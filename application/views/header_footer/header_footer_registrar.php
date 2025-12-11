@@ -6,7 +6,7 @@
     <title><?= $titulo ?? 'UNLa Tienda'; ?></title>
 
     <!-- CSS personalizado -->
-    <link rel="stylesheet" href="<?= base_url('activos/css/header/header_principal.css'); ?>">
+    <link rel="stylesheet" href="<?= base_url('activos/css/header_footer/header_footer_registrar.css'); ?>">
 </head>
 
 <body>
@@ -23,11 +23,13 @@
 
         <!-- Botones a la derecha -->
         <nav class="nav-menu">
-            <a href="<?= base_url(''); ?>" class="btn btn-login">Volver al Inicio</a>
+            <a href="<?= base_url('registrar'); ?>" class="btn btn-login">Registrar</a>
+            <a href="<?= base_url(''); ?>" class="btn btn-register">Volver al Inicio</a>
         </nav>
 
     </div>
 
 </header>
+
 </body>
 </html>
