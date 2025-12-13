@@ -36,7 +36,7 @@
                                 <p class="precio">
                                     $<?= number_format($espectaculo['precio'], 2, ',', '.'); ?>
                                 </p>
-                                <a href="<?= site_url('espectaculos/ver_espectaculo_logueado/' . $espectaculo['id_espectaculo']); ?>"
+                                <a href="<?= site_url('usuario/usuario_espectaculo/' . $espectaculo['id_espectaculo']); ?>"
                                    class="boton-ver">Ver espectáculo</a>
                             </div>
                         </div>

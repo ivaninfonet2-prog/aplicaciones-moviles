@@ -12,4 +12,4 @@
 </footer>
 
 <!-- Enlace al CSS del footer -->
-<link rel="stylesheet" href="<?= base_url('activos/css/ver_espectaculo_logueado/footer_ver_espectaculo_logueado.css'); ?>">
+<link rel="stylesheet" href="<?= base_url('activos/css/principal/footer_principal.css'); ?>">

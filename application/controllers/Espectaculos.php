@@ -188,9 +188,9 @@ class Espectaculos extends CI_Controller
         ];
 
         // Sus vistas específicas
-        $this->load->view('espectaculo_logueado/header_ver_espectaculo_logueado', $data);
-        $this->load->view('espectaculo_logueado/body_ver_espectaculo_logueado', $data);
-        $this->load->view('espectaculo_logueado/footer_ver_espectaculo_logueado', $data);
+        $this->load->view('espectaculo_logueado/header_espectaculo_logueado', $data);
+        $this->load->view('espectaculo_logueado/body_espectaculo_logueado', $data);
+        $this->load->view('espectaculo_logueado/footer_espectaculo_logueado', $data);
     }
 
     // REGLAS DE VALIDACIÓN

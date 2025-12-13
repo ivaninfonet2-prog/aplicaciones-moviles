@@ -179,6 +179,18 @@ class Usuario extends CI_Controller
     }
 }
 
+    public function usuario_espectaculo($id = null)
+    {
+        // Evita llamadas sin ID
+        if ($id === null)
+        {
+            show_404();
+        }
+
+        // Redirige al controlador de espectáculos (responsabilidad correcta)
+        redirect('espectaculos/espectaculo_logueado/' . $id);
+    }
+ 
 
     public function editar_usuario($id_usuario)
 {
@@ -247,12 +259,12 @@ class Usuario extends CI_Controller
     if ($clientes->num_rows() > 0) {
         // Si tiene clientes, no se puede borrar
         $this->session->set_flashdata('mensaje_error', 
-            '❌ No se puede eliminar el usuario porque tiene clientes asociados.');
+            ' No se puede eliminar el usuario porque tiene clientes asociados.');
     } else {
         // No tiene clientes, se puede borrar
         $this->Usuario_modelo->eliminar_usuario($id_usuario);
         $this->session->set_flashdata('mensaje_exito', 
-            '✔ Usuario eliminado correctamente.');
+            ' Usuario eliminado correctamente.');
     }
 
     // Redirigir al panel administrador

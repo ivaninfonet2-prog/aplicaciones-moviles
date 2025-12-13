@@ -6,7 +6,7 @@
     <title><?= $espectaculo['nombre']; ?></title>
 
     <!-- CSS principal -->
-    <link rel="stylesheet" href="<?= base_url('activos/css/ver_espectaculo_logueado/body_ver_espectaculo_logueado.css?v=' . time()); ?>" />
+    <link rel="stylesheet" href="<?= base_url('activos/css/espectaculo_logueado/body_espectaculo_logueado.css?v=' . time()); ?>" />
 </head>
 
 <!-- Fondo del body -->
