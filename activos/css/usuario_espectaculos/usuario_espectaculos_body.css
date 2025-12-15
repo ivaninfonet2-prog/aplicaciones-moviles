@@ -1,150 +1,163 @@
-/* ===== Estilos generales ===== */
+/* ===============================
+   ESTILOS GENERALES
+================================ */
 body {
     margin: 0;
     font-family: 'Segoe UI', Arial, sans-serif;
-    background: #111;
-    color: #fff;
+    background-color: #111;
+    color: #ffffff;
     line-height: 1.6;
 }
 
-/* Fondo principal */
+/* ===============================
+   CONTENEDOR PRINCIPAL
+================================ */
 .inicio-container {
     min-height: 100vh;
     background-size: cover;
-    background-position: center center;
+    background-position: center;
     background-repeat: no-repeat;
-    background-attachment: scroll;
-    padding: 2rem 2rem;
+    padding: 3.5rem 2rem 2.5rem; /* 🔹 más espacio arriba */
     position: relative;
 }
 
-/* Bloque de bienvenida */
+/* ❌ SIN OVERLAY → se elimina oscurecimiento */
+/* ===============================
+   BIENVENIDA
+================================ */
 .bienvenida {
-    margin: 3.5rem 0 1.5rem; /* 🔹 más cerca del header */
+    max-width: 900px;
+    margin: 5rem auto 2.5rem; /* 🔹 separación clara del header */
     text-align: center;
 }
 
 .mensaje-bienvenida {
-    font-size: 2.2rem;
+    font-size: 2.3rem;
     font-weight: 700;
-    color: #ffffff; /* blanco para que se note */
-    margin-bottom: 0.5rem;
-    text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+    margin-bottom: 0.8rem;
+    color: #ffffff;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.55); /* solo sombra de texto */
 }
 
 .mensaje-sub {
     font-size: 1.1rem;
-    color: #e0e0e0;
-    max-width: 700px;
-    margin: 0.5rem auto 0;
+    color: #f0f0f0;
+    max-width: 720px;
+    margin: 0 auto;
 }
 
-/* ===== Contenedor principal de tarjetas ===== */
+/* ===============================
+   CARTELERA
+================================ */
 .cartelera {
-    margin-top: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
+/* Grid de tarjetas */
 .tarjetas-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 2rem;
 }
 
-/* Tarjeta individual */
+/* ===============================
+   TARJETA
+================================ */
 .tarjeta {
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(0, 0, 0, 0.45);
     border: 1px solid rgba(255,255,255,0.15);
-    border-radius: 12px;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.25);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    padding: 1.5rem 1rem;
+    border-radius: 14px;
+    padding: 1.6rem 1.2rem;
     text-align: center;
-    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.35);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Hover en tarjeta */
 .tarjeta:hover {
-    transform: translateY(-6px) scale(1.02);
-    box-shadow: 0 10px 24px rgba(0,0,0,0.35);
+    transform: translateY(-6px);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.5);
 }
 
-/* Imagen del artista más grande tipo carnet */
+/* Imagen */
 .tarjeta .imagen {
-    width: 180px;   /* 🔹 más grande */
+    width: 180px;
     height: 180px;
     object-fit: cover;
-    border-radius: 10px;
-    margin: 0 auto 1rem;
-    display: block;
+    border-radius: 12px;
+    margin-bottom: 1rem;
 }
 
-/* Contenido de la tarjeta */
-.tarjeta h3 {
+/* ===============================
+   CONTENIDO
+================================ */
+.contenido {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.titulo {
     font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-    font-weight: bold;
+    font-weight: 700;
     color: #ffffff;
 }
 
-.tarjeta h2 {
-    font-size: 1.1rem;
-    margin-bottom: 1rem;
-    font-weight: normal;
-    color: #e0e0e0;
+.descripcion {
+    font-size: 1rem;
+    color: #e6e6e6;
 }
 
-.tarjeta .precio {
-    font-size: 1.2rem;
+/* Precio */
+.precio {
+    font-size: 1.3rem;
     font-weight: bold;
-    color: #81c784;
-    margin-bottom: 1rem;
+    color: #7CFF8A;
+    margin-top: 0.6rem;
 }
 
-/* Botón "Ver espectáculo" */
+/* ===============================
+   BOTÓN
+================================ */
 .boton-ver {
-    display: inline-block;
-    padding: 0.6rem 1.2rem;
+    margin: 0.8rem auto 0; /* 🔹 centra sin ocupar todo */
+    padding: 0.5rem 1.1rem; /* 🔹 más angosto */
+    width: fit-content;     /* 🔹 evita botón ancho */
     background: linear-gradient(135deg, #4caf50, #81c784);
-    color: #fff;
-    border-radius: 8px;
+    color: #ffffff;
+    border-radius: 7px;
     text-decoration: none;
-    font-weight: bold;
-    transition: all 0.3s ease;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.25s ease;
 }
 
 .boton-ver:hover {
-    background: linear-gradient(135deg, #81c784, #4caf50);
     transform: scale(1.05);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    background: linear-gradient(135deg, #81c784, #4caf50);
 }
 
-/* ===== Botones del header ===== */
-.btn-login {
-    background-color: #007bff !important; /* 🔵 azul */
-    color: #ffffff !important;
-    border: none !important;
-    transition: background-color 0.3s ease;
+/* ===============================
+   MENSAJE SIN ESPECTÁCULOS
+================================ */
+.sin-espectaculos {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #ffffff;
+    margin-top: 2.5rem;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
 }
 
-.btn-login:hover {
-    background-color: #0056b3 !important;
-}
-
-.btn-cerrar {
-    background-color: #ff4d4d !important; /* 🔴 rojo */
-    color: #ffffff !important;
-    border: none !important;
-    transition: background-color 0.3s ease;
-}
-
-.btn-cerrar:hover {
-    background-color: #cc0000 !important;
-}
-
-/* ===== Responsivo ===== */
+/* ===============================
+   RESPONSIVE
+================================ */
 @media (max-width: 768px) {
+    .bienvenida {
+        margin-top: 4rem;
+    }
+
     .mensaje-bienvenida {
-        font-size: 1.8rem;
+        font-size: 1.9rem;
     }
 
     .mensaje-sub {
@@ -159,7 +172,11 @@ body {
 
 @media (max-width: 480px) {
     .inicio-container {
-        padding: 1.5rem 1rem;
+        padding: 3rem 1rem 2rem;
+    }
+
+    .tarjeta {
+        padding: 1.3rem 1rem;
     }
 
     .tarjeta .imagen {

@@ -3,50 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <title>Cartelera de espectáculos</title>
-    <link rel="stylesheet" href="<?= base_url('activos/css/usuario_espectaculos/usuario_espectaculos_body.css'); ?>">
+
+    <!-- CSS -->
+    <link rel="stylesheet"
+          href="<?= base_url('activos/css/usuario_espectaculos/usuario_espectaculos_body.css'); ?>">
 </head>
 <body>
 
 <main class="inicio-container"
-      <?= isset($fondo) && !empty($fondo) ? 'style="background-image: url(' . $fondo . ');"' : ''; ?>>
+      <?= isset($fondo) && !empty($fondo)
+          ? 'style="background-image: url(' . $fondo . ');"'
+          : ''; ?>>
 
-    <section class="bienvenida row">
-        <div class="col-12 text-center">
-            <h3 class="mensaje-bienvenida">Lista de los mejores Espectáculos</h3>
-            <p class="mensaje-sub">
-                Descubrí nuestra selección de eventos destacados: conciertos, obras de teatro y experiencias culturales únicas.<br>
-                Aquí encontrarás toda la información necesaria para elegir y disfrutar tu próximo espectáculo.
-            </p>
-        </div>
+    <!-- Bienvenida -->
+    <section class="bienvenida">
+        <h3 class="mensaje-bienvenida">Lista de los mejores espectáculos</h3>
+        <p class="mensaje-sub">
+            Descubrí nuestra selección de eventos destacados: conciertos,
+            obras de teatro y experiencias culturales únicas.<br>
+            Elegí y disfrutá tu próximo espectáculo.
+        </p>
     </section>
 
-    <section class="cartelera row justify-content-center">
-        <div class="col-md-10">
-            <div class="tarjetas-container">
-                <?php if (!empty($espectaculos)): ?>
-                    <?php foreach ($espectaculos as $espectaculo): ?>
-                        <div class="tarjeta">
-                            <img src="<?= base_url('activos/imagenes/' . $espectaculo['imagen']); ?>"
-                                 alt="<?= $espectaculo['nombre']; ?>"
-                                 class="imagen">
+    <!-- Cartelera -->
+    <section class="cartelera">
+        <div class="tarjetas-container">
 
-                            <div class="contenido">
-                                <h3><?= $espectaculo['nombre']; ?></h3>
-                                <h2><?= $espectaculo['descripcion']; ?></h2>
-                                <p class="precio">
-                                    $<?= number_format($espectaculo['precio'], 2, ',', '.'); ?>
-                                </p>
-                                <a href="<?= site_url('usuario/usuario_espectaculo/' . $espectaculo['id_espectaculo']); ?>"
-                                   class="boton-ver">Ver espectáculo</a>
-                            </div>
+            <?php if (!empty($espectaculos)): ?>
+                <?php foreach ($espectaculos as $espectaculo): ?>
+                    <article class="tarjeta">
+
+                        <img src="<?= base_url('activos/imagenes/' . $espectaculo['imagen']); ?>"
+                             alt="<?= $espectaculo['nombre']; ?>"
+                             class="imagen">
+
+                        <div class="contenido">
+                            <h3 class="titulo"><?= $espectaculo['nombre']; ?></h3>
+                            <p class="descripcion"><?= $espectaculo['descripcion']; ?></p>
+
+                            <p class="precio">
+                                $<?= number_format($espectaculo['precio'], 2, ',', '.'); ?>
+                            </p>
+
+                            <a href="<?= site_url('usuario/usuario_espectaculo/' . $espectaculo['id_espectaculo']); ?>"
+                               class="boton-ver">
+                                Ver espectáculo
+                            </a>
                         </div>
-                    <?php endforeach; ?>
-                <?php else: ?>
-                    <p>No hay espectáculos disponibles en este momento.</p>
-                <?php endif; ?>
-            </div>
+
+                    </article>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <p class="sin-espectaculos">
+                    No hay espectáculos disponibles en este momento.
+                </p>
+            <?php endif; ?>
+
         </div>
     </section>
+
 </main>
 
 </body>
