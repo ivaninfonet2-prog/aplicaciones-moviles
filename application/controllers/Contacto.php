@@ -14,7 +14,7 @@ class Contacto extends CI_Controller
         $this->load->view('header_footer/header_footer_principal', $data);
 
         // Vista principal de la sección "Contacto"
-        $this->load->view('contacto_principal/body_contacto_principal', $data);
+        $this->load->view('body_footer/body_footer_contacto', $data);
 
         // Cargar footer común
         $this->load->view('footer_footer/footer_footer_principal');
@@ -29,7 +29,7 @@ class Contacto extends CI_Controller
         $this->load->view('header_footer/header_footer_login', $data);
 
        // Vista principal
-        $this->load->view('contacto_principal/body_contacto_principal', $data);
+        $this->load->view('body_footer/body_footer_contacto', $data);
 
         // Footer común
         $this->load->view('footer_footer/footer_footer_login');
@@ -44,7 +44,7 @@ class Contacto extends CI_Controller
         $this->load->view('header_footer/header_footer_registrar', $data);
 
        // Vista principal
-        $this->load->view('contacto_principal/body_contacto_principal', $data);
+        $this->load->view('body_footer/body_footer_contacto', $data);
 
         // Footer común
         $this->load->view('footer_footer/footer_footer_registrar');
@@ -59,7 +59,7 @@ class Contacto extends CI_Controller
         $this->load->view('header_footer/header_footer_usuario', $data);
 
         // Vista principal de la sección "Contacto"
-        $this->load->view('contacto_principal/body_contacto_principal', $data);
+        $this->load->view('body_footer/body_footer_contacto', $data);
 
         // Cargar footer común
         $this->load->view('footer_footer/footer_footer_usuario');
@@ -74,11 +74,10 @@ class Contacto extends CI_Controller
         $this->load->view('header_footer/header_footer_administrador', $data);
 
         // Vista principal de la sección "Contacto"
-        $this->load->view('contacto_principal/body_contacto_principal', $data);
+        $this->load->view('body_footer/body_footer_contacto', $data);
 
         // Cargar footer común
         $this->load->view('footer_footer/footer_footer_administrador');
     }
-
 }
 ?>
