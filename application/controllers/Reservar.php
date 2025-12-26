@@ -138,8 +138,7 @@ class Reservar extends CI_Controller
         $this->load->view('usuario_reservas/usuario_reservas_footer', $data);
     }
 
-    // ---------------------- CANCELAR RESERVA ----------------------
-
+   // ---------------------- CANCELAR RESERVA ----------------------
     public function cancelar_reserva($id_reserva)
     {
         $usuario_id = $this->session->userdata('id_usuario');
@@ -168,7 +167,7 @@ class Reservar extends CI_Controller
             {
                 $this->session->set_flashdata(
                     'mensaje',
-                    'Reserva cancelada exitosamente.'
+                    'La reserva Nº '.$id_reserva.' fue cancelada exitosamente.'
                 );
             }
             else
@@ -180,6 +179,7 @@ class Reservar extends CI_Controller
             }
         }
 
+        // vuelve a la lista de reservas
         redirect('reservar/listar');
     }
 

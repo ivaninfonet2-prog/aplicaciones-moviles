@@ -19,8 +19,8 @@
 <header class="main-header">
     <div class="header-container">
 
-        <!-- Logo + título (RUTA CONTROLADA) -->
-        <a href="<?= site_url('login'); ?>" class="brand">
+        <!-- Logo + título (LOGOUT FORZADO) -->
+        <a href="<?= site_url('login/logout'); ?>" class="brand" title="Cerrar sesión">
             <img src="<?= base_url('activos/imagenes/logo.jpg'); ?>" class="logo-img" alt="Logo UNLa">
             <span class="site-title">UNLa Tienda</span>
         </a>
@@ -40,15 +40,12 @@
 
 <!-- Protección contra volver con la flecha -->
 <script>
-    if (window.history.replaceState) 
-    {
+    if (window.history.replaceState) {
         window.history.replaceState(null, null, window.location.href);
     }
 
-    window.onpageshow = function (event) 
-    {
-        if (event.persisted) 
-        {
+    window.onpageshow = function (event) {
+        if (event.persisted) {
             window.location.reload();
         }
     };

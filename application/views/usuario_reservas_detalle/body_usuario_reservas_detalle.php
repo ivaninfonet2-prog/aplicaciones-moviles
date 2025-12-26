@@ -4,11 +4,16 @@
     <meta charset="UTF-8">
     <title>Detalle de Reserva</title>
 
-    <link rel="stylesheet"
-          href="<?= base_url('activos/css/usuario_reservas_detalle/body_usuario_reservas_detalle.css'); ?>">
-    <link rel="stylesheet"
-          href="<?= base_url('activos/css/usuario_reservas_detalle/aviso_usuario_reservas_detalle.css'); ?>">
+    <link rel="stylesheet" href="<?= base_url('activos/css/usuario_reservas_detalle/body_usuario_reservas_detalle.css'); ?>">
+    <link rel="stylesheet" href="<?= base_url('activos/css/usuario_reservas_detalle/aviso_usuario_reservas_detalle.css'); ?>">
 </head>
+
+<?php
+$mensaje = $this->session->flashdata('mensaje');
+
+$precio_unitario = number_format($reserva['precio'], 2, ',', '.');
+$total_abonado   = number_format($reserva['monto_total'], 2, ',', '.');
+?>
 
 <body style="background-image: url('<?= $fondo; ?>');">
 
@@ -45,14 +50,11 @@
 
             <div class="fila">
                 <span>Precio unitario</span>
-                <strong>
-                    $<?= number_format($reserva['precio'], 2, ',', '.'); ?>
-                </strong>
+                <strong>$<?= $precio_unitario; ?></strong>
             </div>
 
             <div class="total">
-                Total abonado:
-                $<?= number_format($reserva['monto_total'], 2, ',', '.'); ?>
+                Total abonado: $<?= $total_abonado; ?>
             </div>
 
             <div class="fila">
@@ -67,18 +69,18 @@
 
         </div>
 
-        <!-- MENSAJE POST-CANCELACIÓN -->
-        <?php if ($this->session->flashdata('mensaje')): ?>
+        <!-- MENSAJE / ACCIONES -->
+        <?php if ($mensaje): ?>
+
             <div class="detalle-card aviso-cancelacion">
-                <?= $this->session->flashdata('mensaje'); ?>
+                <?= $mensaje; ?>
             </div>
+
         <?php else: ?>
 
-            <!-- ACCIONES -->
             <div class="acciones">
 
-                <!--  VA A LA VISTA DE CONFIRMACIÓN -->
-                <a href="<?= site_url('confirmacion/cancelar_reserva/'.$reserva['id_reserva']); ?>"
+                <a href="<?= site_url('confirmacion/cancelar_reserva/' . $reserva['id_reserva']); ?>"
                    class="boton cancelar">
                     Cancelar reserva
                 </a>

@@ -11,7 +11,7 @@
 
 <main class="contenido">
 
-    <!-- TEXTO SUPERIOR (NUEVO) -->
+    <!-- TEXTO SUPERIOR -->
     <section class="intro">
         <h1 class="titulo">Mis Reservas de Espectáculos</h1>
         <p class="descripcion">
@@ -19,6 +19,13 @@
             totales y acceder al detalle de cada espectáculo.
         </p>
     </section>
+
+    <!-- MENSAJE FLASH -->
+    <?php if ($this->session->flashdata('mensaje')): ?>
+        <div class="mensaje-exito">
+            <?= $this->session->flashdata('mensaje'); ?>
+        </div>
+    <?php endif; ?>
 
     <?php if (!empty($reservas)): ?>
         <table class="tabla-reservas">
@@ -39,7 +46,9 @@
                         <td><?= $reserva['nombre_espectaculo']; ?></td>
                         <td><?= $reserva['fecha_espectaculo']; ?></td>
                         <td><?= $reserva['cantidad']; ?></td>
-                        <td class="total">$<?= number_format($reserva['monto_total'], 2, ',', '.'); ?></td>
+                        <td class="total">
+                            $<?= number_format($reserva['monto_total'], 2, ',', '.'); ?>
+                        </td>
                         <td>
                             <a href="<?= base_url('usuario/usuario_reservas_detalle/'.$reserva['id_reserva']); ?>"
                                class="boton-detalle">

@@ -13,33 +13,42 @@
     <main class="contenido">
 
         <!-- TÍTULO -->
-        <h1 class="titulo-principal">Reserva Exitosa</h1>
+        <h1 class="titulo-principal">¡Reserva confirmada!</h1>
 
-        <!-- TEXTO DEBAJO DEL TÍTULO -->
+        <!-- MENSAJE BREVE -->
         <div class="texto-intro">
             <p>
                 Tu reserva se registró correctamente y ya está confirmada.
-            </p>
-
-            <p>
-                Te enviamos un correo electrónico con todos los detalles.  
-                Recordá llegar al menos <strong>15 minutos antes</strong> del horario programado.
-            </p>
-
-            <p class="agradecimiento">
-                ¡Gracias por elegirnos! Nuestro equipo está listo para recibirte.
             </p>
         </div>
 
         <!-- TARJETA -->
         <div class="contenedor-mensaje">
-            <p class="texto-tarjeta">
-                Podés revisar el estado de tu reserva desde tu perfil.
-            </p>
 
-            <a href="<?= site_url('usuario') ?>" class="boton">
-                Volver a Usuario
-            </a>
+            <div class="detalle-reserva">
+                <p>
+                    Te enviamos un correo electrónico con todos los detalles de tu reserva.
+                </p>
+
+                <p>
+                    Recordá llegar al menos <strong>15 minutos antes</strong> del horario programado.
+                </p>
+
+                <p class="agradecimiento">
+                    Gracias por elegirnos. ¡Te esperamos!
+                </p>
+            </div>
+
+            <div class="acciones">
+                <a href="<?= site_url('usuario/usuario_espectaculos') ?>" class="boton boton-espectaculos">
+                    Ver Espectáculos
+                </a>
+
+                <a href="<?= site_url('usuario/usuario_reservas') ?>" class="boton boton-reservas">
+                    Mis Reservas
+                </a>
+            </div>
+
         </div>
 
     </main>
