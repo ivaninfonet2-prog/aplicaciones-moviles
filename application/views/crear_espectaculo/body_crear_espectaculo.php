@@ -10,88 +10,91 @@
 
 <main class="main-content" style="background-image: url('<?= $fondo ?>');">
 
-    <!-- TÍTULO PRINCIPAL Y DESCRIPCIÓN -->
     <div class="page-header">
         <h1><?= $titulo ?></h1>
-        <p>Complete los datos del espectáculo para agregarlo al sistema. Asegúrese de incluir todos los campos requeridos.</p>
+        <p>Complete los datos del espectáculo. La imagen es opcional.</p>
     </div>
 
-    <!-- TARJETA / FORMULARIO -->
     <div class="card">
 
-        <!-- Error de imagen -->
+        <!-- MENSAJES -->
         <?php if ($this->session->flashdata('error_imagen')): ?>
-            <div class="alert alert-danger">
-                <?= $this->session->flashdata('error_imagen') ?>
+            <div class="alert error">
+                ❌ <?= $this->session->flashdata('error_imagen') ?>
             </div>
         <?php endif; ?>
 
-        <!-- Errores de validación -->
-        <?php if (validation_errors()): ?>
-            <div class="alert alert-danger">
-                <?= validation_errors(); ?>
+        <?php if ($this->session->flashdata('success')): ?>
+            <div class="alert success">
+                ✅ <?= $this->session->flashdata('success') ?>
             </div>
         <?php endif; ?>
 
-        <!-- Formulario -->
         <?= form_open_multipart(); ?>
 
-            <div class="form-group">
-                <label for="nombre">Nombre</label>
-                <input type="text" name="nombre" id="nombre"
-                       value="<?= set_value('nombre') ?>" maxlength="100" required>
+            <label>Nombre</label>
+            <input type="text" name="nombre" value="<?= set_value('nombre') ?>" required>
+
+            <label>Descripción</label>
+            <textarea name="descripcion" required><?= set_value('descripcion') ?></textarea>
+
+            <div class="fila">
+                <input type="date" name="fecha" value="<?= set_value('fecha') ?>" required>
+                <input type="time" name="hora" value="<?= set_value('hora') ?>" required>
             </div>
 
-            <div class="form-group">
-                <label for="descripcion">Descripción</label>
-                <textarea name="descripcion" id="descripcion" required><?= set_value('descripcion') ?></textarea>
+            <div class="fila">
+                <input type="number" step="0.01" name="precio" placeholder="Precio"
+                       value="<?= set_value('precio') ?>" required>
+                <input type="number" name="disponibles" placeholder="Disponibles"
+                       value="<?= set_value('disponibles') ?>" required>
             </div>
 
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="fecha">Fecha</label>
-                    <input type="date" name="fecha" value="<?= set_value('fecha') ?>" required>
-                </div>
-                <div class="form-group">
-                    <label for="hora">Hora</label>
-                    <input type="time" name="hora" value="<?= set_value('hora') ?>" required>
-                </div>
+            <label>Dirección</label>
+            <input type="text" name="direccion" value="<?= set_value('direccion') ?>" required>
+
+            <!-- IMAGEN -->
+            <label>Imagen</label>
+            <input type="file" name="imagen" id="imagenInput" accept="image/*">
+
+            <!-- PREVIEW -->
+            <div id="preview" class="preview oculto">
+                <p>Vista previa:</p>
+                <img id="previewImg">
             </div>
 
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="precio">Precio</label>
-                    <input type="number" name="precio" step="0.01"
-                           value="<?= set_value('precio') ?>" required>
-                </div>
-                <div class="form-group">
-                    <label for="disponibles">Disponibles</label>
-                    <input type="number" name="disponibles"
-                           value="<?= set_value('disponibles') ?>" required>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label for="direccion">Dirección</label>
-                <input type="text" name="direccion"
-                       value="<?= set_value('direccion') ?>" required>
-            </div>
-
-            <div class="form-group">
-                <label for="imagen">Imagen</label>
-                <input type="file" name="imagen">
-            </div>
-
-            <!-- BOTONES -->
-            <div class="form-buttons">
-                <button type="submit" class="btn btn-submit">Crear Espectáculo</button>
-                <a href="<?= base_url('administrador') ?>" class="btn btn-cancel">Cancelar</a>
+            <div class="acciones">
+                <button type="submit">Crear espectáculo</button>
+                <a href="<?= base_url('administrador') ?>">Cancelar</a>
             </div>
 
         <?= form_close(); ?>
     </div>
 
 </main>
+
+<script>
+document.getElementById('imagenInput').addEventListener('change', function(e) {
+    const file = e.target.files[0];
+    const preview = document.getElementById('preview');
+    const img = document.getElementById('previewImg');
+
+    if (!file) {
+        preview.classList.add('oculto');
+        return;
+    }
+
+    if (!file.type.startsWith('image/')) {
+        alert('El archivo seleccionado NO es una imagen');
+        e.target.value = '';
+        preview.classList.add('oculto');
+        return;
+    }
+
+    img.src = URL.createObjectURL(file);
+    preview.classList.remove('oculto');
+});
+</script>
 
 </body>
 </html>
