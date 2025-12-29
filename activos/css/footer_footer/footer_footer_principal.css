@@ -1,93 +1,76 @@
-/* ================================
-   Footer principal
-   ================================ */
+/* ======================================================
+   FOOTER PRINCIPAL
+   Coherente con header y cartelera
+====================================================== */
+
 .main-footer {
-    background: #000; /* Fondo negro */
+    background-color: #000;
     color: #ffffff;
-    font-size: 1.1rem; /* Aumenté el tamaño general */
-    text-align: center; /* Asegura que TODO el contenido quede centrado */
-    box-shadow: 0 -4px 12px rgba(0,0,0,0.4);
     width: 100%;
-    margin: 0;
-    padding: 40px 0; /* Más espacio vertical */
-    box-sizing: border-box;
-    display: block;
+    margin-top: 0; /* 👈 CLAVE: elimina el rectángulo negro */
 }
 
-/* Contenedor de los enlaces del footer */
+/* ======================================================
+   CONTENEDOR
+====================================================== */
+.footer-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 25px 20px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+}
+
+/* ======================================================
+   TEXTO LEGAL
+====================================================== */
+.footer-copy {
+    margin: 0;
+    font-size: 1rem;
+    opacity: 0.85;
+    text-align: center;
+}
+
+/* ======================================================
+   ENLACES
+====================================================== */
 .footer-links {
     display: flex;
-    justify-content: space-evenly; /* Distribuye los enlaces de manera más uniforme */
+    gap: 40px;
     flex-wrap: wrap;
-    gap: 35px; /* Más separación entre los enlaces */
-    width: 100%;
-    margin: 20px 0;
-    padding: 0 20px;
-    box-sizing: border-box;
+    justify-content: center;
 }
 
-/* Enlaces del footer */
-.footer-link {
+.footer-links a {
     color: #00bfff;
     text-decoration: none;
-    font-size: 1.15rem; /* Enlaces más grandes */
-    letter-spacing: 0.5px; /* Letras un poco más separadas */
-    transition: color 0.3s ease, transform 0.3s ease;
-    font-weight: 500;
-}
-
-.footer-link:hover {
-    color: #ffffff;
-    transform: translateY(-2px);
-}
-
-/* Texto adicional debajo de los enlaces */
-.footer-text {
-    font-size: 0.9rem;
-    color: #aaa;
-    margin-top: 20px;
-    line-height: 1.6;
-}
-
-.footer-text a {
-    color: #00bfff;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.footer-text a:hover {
-    color: #ffffff;
-}
-
-/* Botón volver */
-.btn-warning {
     font-size: 1.1rem;
-    padding: 10px 28px;
-    font-weight: 600;
-    border-radius: 25px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    margin-top: 20px;
-    background-color: #00bfff;
-    border: 1px solid #00bfff;
+    font-weight: 500;
+    transition: color 0.25s ease;
+}
+
+.footer-links a:hover {
     color: #ffffff;
 }
 
-.btn-warning:hover {
-    transform: scale(1.06);
-    box-shadow: 0 0 12px rgba(0,191,255,0.7);
-}
-
-/* ================================
-   Responsive
-   ================================ */
+/* ======================================================
+   RESPONSIVE
+====================================================== */
 @media (max-width: 768px) {
+
+    .footer-container {
+        padding: 30px 15px;
+    }
+
     .footer-links {
         flex-direction: column;
-        align-items: center;
-        gap: 15px; /* Más espacio en móvil también */
+        gap: 18px;
     }
-    
-    .footer-text {
-        font-size: 0.85rem;
+
+    .footer-links a {
+        font-size: 1.05rem;
     }
 }
