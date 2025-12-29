@@ -17,40 +17,64 @@ class Espectaculos extends CI_Controller
         $this->ruta_imagenes = FCPATH . 'activos/imagenes/';
     }
 
-    
     // AVISOS
     
     private function generar_aviso($e)
     {
-        $ahora  = new DateTime();
-        $evento = new DateTime("{$e['fecha']} {$e['hora']}");
+        // Fecha y hora actuales
+        $ahora = new DateTime();
 
-        if ($evento < $ahora) 
+        // Fecha y hora del espectáculo
+        $evento = new DateTime($e['fecha'] . ' ' . $e['hora']);
+
+        // 1) Si el evento ya pasó
+        if ($evento < $ahora)
         {
             return 'Este espectáculo ya ha pasado.';
         }
 
-        $diff  = $ahora->diff($evento);
-        $horas = $diff->days * 24 + $diff->h;
+        // 2) Calcular diferencia de tiempo
+        $diferencia = $ahora->diff($evento);
 
-        return ($horas <= 48 && $e['disponibles'] > 0)
-            ? '¡Queda poco tiempo!'
-            : 'Todavía falta tiempo.';
+        // Pasar todo a horas
+        $horas_restantes = ($diferencia->days * 24) + $diferencia->h;
+
+        // 3) Si queda poco tiempo y hay disponibles
+        if ($horas_restantes <= 48 && $e['disponibles'] > 0)
+        {
+            return '¡Queda poco tiempo!';
+        }
+        else
+        {
+            return 'Todavía falta tiempo.';
+        }
     }
 
     // LISTADO PRINCIPAL, espectaculos sin loguear
   
     public function index()
     {
+        // 1) Obtener todos los espectáculos
         $espectaculos = $this->Espectaculo_modelo->obtener_espectaculos();
 
-        foreach ($espectaculos as &$e) 
+        // 2) Procesar cada espectáculo
+        foreach ($espectaculos as &$e)
         {
-            $e['detalles_habilitados'] =
-                ($e['fecha'] >= date('Y-m-d') && $e['disponibles'] > 0);
+            // Habilitar botón "ver detalles"
+            if ($e['fecha'] >= date('Y-m-d') && $e['disponibles'] > 0)
+            {
+                $e['detalles_habilitados'] = true;
+            }
+            else
+            {
+                $e['detalles_habilitados'] = false;
+            }
+
+            // Generar aviso de estado
             $e['aviso'] = $this->generar_aviso($e);
         }
 
+        // 3) Datos para la vista
         $data = 
         [
             'titulo'       => 'Cartelera de Espectáculos',
@@ -58,6 +82,7 @@ class Espectaculos extends CI_Controller
             'espectaculos' => $espectaculos
         ];
 
+        // 4) Cargar vistas
         $this->load->view('principal/header_principal', $data);
         $this->load->view('principal/body_principal', $data);
         $this->load->view('principal/footer_principal', $data);
@@ -67,15 +92,25 @@ class Espectaculos extends CI_Controller
  
     public function usuario_espectaculos()
     {
+        // 1) Obtener espectáculos
         $espectaculos = $this->Espectaculo_modelo->obtener_espectaculos();
 
-        foreach ($espectaculos as &$e) 
+        // 2) Procesar cada uno
+        foreach ($espectaculos as &$e)
         {
-            $e['detalles_habilitados'] =
-                ($e['fecha'] >= date('Y-m-d') && $e['disponibles'] > 0);
+            if ($e['fecha'] >= date('Y-m-d') && $e['disponibles'] > 0)
+            {
+                $e['detalles_habilitados'] = true;
+            }
+            else
+            {
+                $e['detalles_habilitados'] = false;
+            }
+
             $e['aviso'] = $this->generar_aviso($e);
         }
 
+        // 3) Enviar datos a la vista
         $data = 
         [
             'titulo'       => 'Cartelera de Espectáculos',
@@ -83,6 +118,7 @@ class Espectaculos extends CI_Controller
             'espectaculos' => $espectaculos
         ];
 
+        // 4) Cargar vistas del usuario
         $this->load->view('usuario_espectaculos/header_usuario_espectaculos', $data);
         $this->load->view('usuario_espectaculos/body_usuario_espectaculos', $data);
         $this->load->view('usuario_espectaculos/footer_usuario_espectaculos', $data);
@@ -135,7 +171,6 @@ class Espectaculos extends CI_Controller
         $this->load->view('espectaculo_sin_loguear/footer_espectaculo_sin_loguear', $data);
     }
 
-    
     // VER espectaculo LOGUEADO
   
     public function espectaculo_logueado($id)
@@ -256,7 +291,7 @@ class Espectaculos extends CI_Controller
     }
 
     // crear espectaculo
-
+    
     public function crear_espectaculo()
     {
         $data = 
@@ -265,19 +300,30 @@ class Espectaculos extends CI_Controller
             'fondo'  => base_url('activos/imagenes/mi_fondo.jpg')
         ];
 
-        if ($this->input->method() === 'post') 
+        if ($this->input->method() === 'post')
         {
             $this->reglas_formulario();
 
-            if ($this->form_validation->run()) 
+            if ($this->form_validation->run())
             {
                 $nuevo = $this->datos_formulario();
-                $nuevo['imagen'] = $this->subir_imagen() ?? 'default.jpg';
+
+                // Subir imagen o usar default
+                $imagen = $this->subir_imagen();
+
+                if ($imagen !== null)
+                {
+                    $nuevo['imagen'] = $imagen;
+                }
+                else
+                {
+                    $nuevo['imagen'] = 'default.jpg';
+                }
 
                 $this->Espectaculo_modelo->agregar_espectaculo($nuevo);
 
                 $this->session->set_flashdata('success', 'OK: espectáculo creado.');
-                
+
                 redirect('administrador');
             }
         }
@@ -290,80 +336,87 @@ class Espectaculos extends CI_Controller
     // editar espectaculo
 
     public function editar_espectaculo($id)
-{
-    $e = $this->Espectaculo_modelo->obtener_espectaculo_por_id($id);
+    {
+        $e = $this->Espectaculo_modelo->obtener_espectaculo_por_id($id);
 
-    if (!$e) {
-        show_404();
-    }
-
-    $data = [
-        'titulo'      => 'Editar espectáculo',
-        'fondo'       => base_url('activos/imagenes/mi_fondo.jpg'),
-        'espectaculo' => $e
-    ];
-
-    if ($this->input->method() === 'post') {
-
-        $this->reglas_formulario();
-
-        if ($this->form_validation->run()) {
-
-            $actualizado = $this->datos_formulario();
-
-            if (!empty($_FILES['imagen']['name'])) {
-
-                $img = $this->subir_imagen();
-
-                if ($img) {
-
-                    if ($e['imagen'] !== 'default.jpg') {
-                        $vieja = $this->ruta_imagenes . $e['imagen'];
-                        if (file_exists($vieja)) {
-                            unlink($vieja);
-                        }
-                    }
-
-                    $actualizado['imagen'] = $img;
-                }
-            }
-
-            $this->Espectaculo_modelo->actualizar_espectaculo($id, $actualizado);
-
-            $this->session->set_flashdata('success', 'OK: espectáculo actualizado.');
-            redirect('administrador/administrador_espectaculos');
+        if ( !$e) 
+        {
+            show_404();
         }
+
+        $data = 
+        [
+            'titulo'      => 'Editar espectáculo',
+            'fondo'       => base_url('activos/imagenes/mi_fondo.jpg'),
+            'espectaculo' => $e
+        ];
+
+        if ($this->input->method() === 'post') 
+        {
+            $this->reglas_formulario();
+
+            if ($this->form_validation->run()) 
+            {
+                $actualizado = $this->datos_formulario();
+
+                if ( !empty($_FILES['imagen']['name'])) 
+                {
+                    $img = $this->subir_imagen();
+
+                    if ($img) 
+                    {
+                        if ($e['imagen'] !== 'default.jpg') 
+                        {
+                            $vieja = $this->ruta_imagenes . $e['imagen'];
+                        
+                            if (file_exists($vieja)) 
+                            {
+                                unlink($vieja);
+                            }
+                        }
+
+                        $actualizado['imagen'] = $img;
+                    }
+                }
+
+                $this->Espectaculo_modelo->actualizar_espectaculo($id, $actualizado);
+
+                $this->session->set_flashdata('success', 'OK: espectáculo actualizado.');
+                
+                redirect('administrador/administrador_espectaculos');
+            }
+        }
+
+        $this->load->view('editar_espectaculo/header_editar', $data);
+        $this->load->view('editar_espectaculo/body_editar', $data);
+        $this->load->view('editar_espectaculo/footer_editar', $data);
     }
-
-    $this->load->view('editar_espectaculo/header_editar', $data);
-    $this->load->view('editar_espectaculo/body_editar', $data);
-    $this->load->view('editar_espectaculo/footer_editar', $data);
-}
-
 
     public function eliminar_espectaculo($id)
-{
-    $e = $this->Espectaculo_modelo->obtener_espectaculo_por_id($id);
+    {
+        $e = $this->Espectaculo_modelo->obtener_espectaculo_por_id($id);
 
-    if (!$e) {
-        show_404();
-    }
-
-    if (!empty($e['imagen']) && $e['imagen'] !== 'default.jpg') {
-        $ruta = $this->ruta_imagenes . $e['imagen'];
-        if (file_exists($ruta)) {
-            unlink($ruta);
+        if ( !$e) 
+        {
+            show_404();
         }
+
+        if ( !empty($e['imagen']) && $e['imagen'] !== 'default.jpg') 
+        {
+            $ruta = $this->ruta_imagenes . $e['imagen'];
+            
+            if (file_exists($ruta)) 
+            {
+                unlink($ruta);
+            }
+        }
+
+        $this->Espectaculo_modelo->eliminar_espectaculo_completo($id);
+
+        $this->session->set_flashdata('success', 'OK: espectáculo eliminado.');
+        
+        redirect('administrador/administrador_espectaculos');
     }
-
-    $this->Espectaculo_modelo->eliminar_espectaculo_completo($id);
-
-    $this->session->set_flashdata('success', 'OK: espectáculo eliminado.');
-    redirect('administrador/administrador_espectaculos');
-}
-
-
-
 
 }
 
