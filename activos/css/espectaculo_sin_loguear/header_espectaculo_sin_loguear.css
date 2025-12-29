@@ -1,27 +1,26 @@
-/* ================================
-   Header principal
-   ================================ */
+/* =====================================================
+   HEADER PRINCIPAL
+===================================================== */
 .main-header {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 80px;
-    background-color: #000;
+    background-color: #000; /* fondo negro */
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
     z-index: 1000;
 }
 
 /* Contenedor interno */
 .header-container {
-    max-width: 1200px;              /* Limita el ancho */
-    margin: 0 auto;                 /* Centra el contenido */
-    padding: 0 30px;                /* Separación lateral */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 30px;
     height: 100%;
-
     display: flex;
     align-items: center;
-    justify-content: space-between; /* Logo a la izquierda, botón a la derecha */
+    justify-content: space-between;
 }
 
 /* Logo + título */
@@ -54,37 +53,33 @@
     white-space: nowrap;
 }
 
-/* ================================
-   Botón Volver al Inicio
-   ================================ */
+/* Botón Volver al Inicio */
 .nav-menu {
     display: flex;
     align-items: center;
 }
 
-/* Botón */
 .btn-login {
-    background-color: #007bbf;
+    background-color: #007bbf; /* azul principal */
     color: #fff;
     text-decoration: none;
     font-weight: 500;
     border-radius: 6px;
     padding: 12px 26px;
     font-size: 16px;
-
-    margin-right: 30px; /* 🔥 separación del borde derecho */
+    margin-right: 0;
     transition: all 0.3s ease;
 }
 
 .btn-login:hover {
-    background-color: #005f8f;
+    background-color: #005f8f; /* azul oscuro al hover */
     transform: scale(1.05);
     box-shadow: 0 0 10px rgba(0, 123, 191, 0.6);
 }
 
-/* ================================
-   Responsive
-   ================================ */
+/* =====================================================
+   RESPONSIVE
+===================================================== */
 @media (max-width: 768px) {
     .site-title {
         font-size: 1.3rem;
@@ -109,5 +104,10 @@
     .logo-img {
         width: 40px;
         height: 40px;
+    }
+
+    .btn-login {
+        padding: 8px 14px;
+        font-size: 14px;
     }
 }

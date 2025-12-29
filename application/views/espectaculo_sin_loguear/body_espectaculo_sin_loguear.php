@@ -5,26 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= $titulo; ?></title>
 
+    <!-- Enlace al CSS optimizado -->
     <link rel="stylesheet" href="<?= base_url('activos/css/espectaculo_sin_loguear/body_espectaculo_sin_loguear.css?v=' . time()) ?>">
 </head>
 
 <body>
 
+    <!-- Fondo general -->
     <div class="fondo-body" style="background-image: url('<?= $fondo ?>');"></div>
 
+    <!-- Título y descripción principales arriba de la tarjeta -->
     <section class="intro-text">
-        <h1>Detalle del Espectáculo</h1>
-        <p>Explorá la información completa del evento y preparate para disfrutar.</p>
+        <h1><?= $espectaculo['nombre'] ?></h1>
+        <p><?= $espectaculo['descripcion'] ?></p>
+        <h2>Información completa del espectáculo</h2>
+        <p>Revisá todos los detalles y asegurate de reservar tu lugar a tiempo.</p>
     </section>
 
+    <!-- Contenedor principal -->
     <main class="registro-container">
         <div class="tarjeta-espectaculo">
 
-            <section class="descripcion">
-                <h2><?= $espectaculo['nombre'] ?></h2>
-                <p><?= $espectaculo['descripcion'] ?></p>
-            </section>
-
+            <!-- Imagen del espectáculo -->
             <section class="imagen">
                 <img 
                     src="<?= base_url('activos/imagenes/' . $espectaculo['imagen']) ?>" 
@@ -32,21 +34,19 @@
                     class="imagen-espectaculo">
             </section>
 
+            <!-- Detalles básicos centrados -->
             <section class="detalles">
-                <h3>Detalles del evento</h3>
                 <ul>
                     <li><strong>Fecha:</strong> <?= $espectaculo['fecha'] ?></li>
                     <li><strong>Hora:</strong> <?= $espectaculo['hora'] ?></li>
                     <li><strong>Dirección:</strong> <?= $espectaculo['direccion'] ?></li>
+                    <li><strong>Precio:</strong> $<?= number_format($espectaculo['precio'], 2, ',', '.') ?></li>
+                    <li><strong>Entradas disponibles:</strong> <?= $espectaculo['disponibles'] ?></li>
                 </ul>
             </section>
 
+            <!-- Estado de disponibilidad -->
             <section class="informacion">
-                <h3>Entradas</h3>
-                <p class="entradas">
-                    Disponibles: <strong><?= $espectaculo['disponibles'] ?></strong>
-                </p>
-
                 <?php if ($espectaculo['disponibles'] > 0): ?>
                     <p class="estado disponible">¡Todavía hay lugares disponibles!</p>
                 <?php else: ?>
@@ -54,17 +54,24 @@
                 <?php endif; ?>
             </section>
 
+            <!-- Invitación a loguearse -->
             <section class="reserva-login">
                 <p class="texto-login">
                     Para reservar entradas, primero debés iniciar sesión.
                 </p>
                 <a href="<?= site_url('login') ?>" class="boton-login">
-                    Loguearse
+                    Iniciar sesión
                 </a>
             </section>
 
         </div>
     </main>
+
+    <!-- Texto final fuera de la tarjeta con espaciado armonioso -->
+    <section class="texto-final">
+        Recordá revisar toda la información antes de iniciar sesión para reservar tus entradas.<br>
+        ¡No te pierdas este espectáculo y asegurá tu lugar con anticipación!
+    </section>
 
 </body>
 </html>

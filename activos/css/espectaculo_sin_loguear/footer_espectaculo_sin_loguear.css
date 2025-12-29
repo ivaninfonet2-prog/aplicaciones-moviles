@@ -1,76 +1,76 @@
-/* ================================
-   Footer principal
-   ================================ */
+/* ======================================================
+   FOOTER PRINCIPAL
+   Coherente con header y cartelera
+====================================================== */
+
 .main-footer {
-    background: #000000; /* fondo negro */
+    background-color: #000;
     color: #ffffff;
-    font-size: 0.95rem;
-    box-shadow: 0 -4px 12px rgba(0,0,0,0.5);
     width: 100%;
-    margin: 0;
-    padding: 25px 20px;  /* espacio interno arriba/abajo y lateral */
-    box-sizing: border-box;
+    margin-top: 0; /* 👈 CLAVE: elimina el rectángulo negro */
+}
+
+/* ======================================================
+   CONTENEDOR
+====================================================== */
+.footer-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 25px 20px;
+
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 15px;           /* separación entre elementos */
+    gap: 18px;
+}
+
+/* ======================================================
+   TEXTO LEGAL
+====================================================== */
+.footer-copy {
+    margin: 0;
+    font-size: 1rem;
+    opacity: 0.85;
     text-align: center;
 }
 
-/* Links del footer */
+/* ======================================================
+   ENLACES
+====================================================== */
 .footer-links {
     display: flex;
-    justify-content: center; /* centrados horizontalmente */
+    gap: 40px;
     flex-wrap: wrap;
-    gap: 25px;               /* separación entre links */
-    width: 100%;
-    max-width: 800px;        /* limita la distribución en pantallas grandes */
-    margin: 0 auto;
-    padding: 0;
-    box-sizing: border-box;
+    justify-content: center;
 }
 
-.footer-links .footer-link {
-    color: #00bfff; /* azul celeste claro */
+.footer-links a {
+    color: #00bfff;
     text-decoration: none;
-    transition: color 0.3s ease, transform 0.3s ease;
+    font-size: 1.1rem;
     font-weight: 500;
+    transition: color 0.25s ease;
 }
 
-.footer-links .footer-link:hover {
+.footer-links a:hover {
     color: #ffffff;
-    transform: translateY(-2px);
 }
 
-/* Botón volver */
-.btn-warning {
-    font-weight: 600;
-    border-radius: 25px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    margin-top: 10px;
-    background-color: #007bbf; /* azul oscuro para resaltar en negro */
-    border: 1px solid #007bbf;
-    color: #ffffff;
-    padding: 10px 22px;
-}
-
-.btn-warning:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 12px rgba(0,123,191,0.7);
-}
-
-/* ================================
-   Responsive
-   ================================ */
+/* ======================================================
+   RESPONSIVE
+====================================================== */
 @media (max-width: 768px) {
-    .footer-links {
-        flex-direction: column;
-        align-items: center;
-        gap: 12px;
+
+    .footer-container {
+        padding: 30px 15px;
     }
 
-    .btn-warning {
-        width: 80%;
-        text-align: center;
+    .footer-links {
+        flex-direction: column;
+        gap: 18px;
+    }
+
+    .footer-links a {
+        font-size: 1.05rem;
     }
 }
