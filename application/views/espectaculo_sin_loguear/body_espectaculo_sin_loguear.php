@@ -3,50 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= $titulo; ?></title>
+    <title><?= htmlspecialchars($titulo); ?></title>
 
-    <!-- Enlace al CSS optimizado -->
+    <!-- Enlace al CSS -->
     <link rel="stylesheet" href="<?= base_url('activos/css/espectaculo_sin_loguear/body_espectaculo_sin_loguear.css?v=' . time()) ?>">
 </head>
 
 <body>
 
     <!-- Fondo general -->
-    <div class="fondo-body" style="background-image: url('<?= $fondo ?>');"></div>
+    <div class="fondo-body" style="background-image: url('<?= htmlspecialchars($fondo) ?>');" aria-hidden="true"></div>
 
-    <!-- Título y descripción principales arriba de la tarjeta -->
-    <section class="intro-text">
-        <h1><?= $espectaculo['nombre'] ?></h1>
-        <p><?= $espectaculo['descripcion'] ?></p>
+    <!-- Título y descripción principales -->
+    <header class="intro-text">
+        <h1><?= htmlspecialchars($espectaculo['nombre']) ?></h1>
+        <p><?= htmlspecialchars($espectaculo['descripcion']) ?></p>
         <h2>Información completa del espectáculo</h2>
         <p>Revisá todos los detalles y asegurate de reservar tu lugar a tiempo.</p>
-    </section>
+    </header>
 
-    <!-- Contenedor principal -->
+    <!-- Tarjeta espectáculo -->
     <main class="registro-container">
-        <div class="tarjeta-espectaculo">
+        <article class="tarjeta-espectaculo">
 
             <!-- Imagen del espectáculo -->
-            <section class="imagen">
+            <figure class="imagen">
                 <img 
                     src="<?= base_url('activos/imagenes/' . $espectaculo['imagen']) ?>" 
-                    alt="<?= $espectaculo['nombre'] ?>" 
+                    alt="Imagen del espectáculo: <?= htmlspecialchars($espectaculo['nombre']) ?>" 
                     class="imagen-espectaculo">
-            </section>
+            </figure>
 
-            <!-- Detalles básicos centrados -->
-            <section class="detalles">
+            <!-- Detalles -->
+            <section class="detalles" aria-label="Detalles del espectáculo">
                 <ul>
-                    <li><strong>Fecha:</strong> <?= $espectaculo['fecha'] ?></li>
-                    <li><strong>Hora:</strong> <?= $espectaculo['hora'] ?></li>
-                    <li><strong>Dirección:</strong> <?= $espectaculo['direccion'] ?></li>
+                    <li><strong>Fecha:</strong> <?= htmlspecialchars($espectaculo['fecha']) ?></li>
+                    <li><strong>Hora:</strong> <?= htmlspecialchars($espectaculo['hora']) ?></li>
+                    <li><strong>Dirección:</strong> <?= htmlspecialchars($espectaculo['direccion']) ?></li>
                     <li><strong>Precio:</strong> $<?= number_format($espectaculo['precio'], 2, ',', '.') ?></li>
-                    <li><strong>Entradas disponibles:</strong> <?= $espectaculo['disponibles'] ?></li>
+                    <li><strong>Entradas disponibles:</strong> <?= htmlspecialchars($espectaculo['disponibles']) ?></li>
                 </ul>
             </section>
 
-            <!-- Estado de disponibilidad -->
-            <section class="informacion">
+            <!-- Estado -->
+            <section class="informacion" aria-live="polite">
                 <?php if ($espectaculo['disponibles'] > 0): ?>
                     <p class="estado disponible">¡Todavía hay lugares disponibles!</p>
                 <?php else: ?>
@@ -54,28 +54,26 @@
                 <?php endif; ?>
             </section>
 
-            <!-- Invitación a loguearse -->
+            <!-- Login -->
             <section class="reserva-login">
                 <p class="texto-login">
                     Para reservar entradas, primero debés iniciar sesión.
                 </p>
-                <a href="<?= site_url('login') ?>" class="boton-login">
+                <a href="<?= site_url('login') ?>" class="boton-login" role="button" aria-label="Iniciar sesión para reservar entradas">
                     Iniciar sesión
                 </a>
             </section>
 
-        </div>
+        </article>
     </main>
 
-    <!-- Mapa fuera de la tarjeta -->
-    <section class="mapa-externa">
-        <img src="<?= base_url('activos/imagenes/mapa.jfif') ?>" alt="Mapa del lugar del espectáculo">
-    </section>
-
-    <!-- Texto final fuera de la tarjeta con espaciado armonioso -->
-    <section class="texto-final">
-        Recordá revisar toda la información antes de iniciar sesión para reservar tus entradas.<br>
-        ¡No te pierdas este espectáculo y asegurá tu lugar con anticipación!
+    <!-- Sección mapa con título y descripción -->
+    <section class="mapa-section">
+        <h2 class="mapa-titulo">Ubicación del espectáculo</h2>
+        <p class="mapa-descripcion">Encontrá fácilmente el lugar del evento en el mapa para organizar tu llegada.</p>
+        <div class="mapa-externa" aria-label="Mapa del lugar del espectáculo">
+            <img src="<?= base_url('activos/imagenes/mapa.jfif') ?>" alt="Mapa del lugar del espectáculo">
+        </div>
     </section>
 
 </body>

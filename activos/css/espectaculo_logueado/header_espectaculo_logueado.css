@@ -1,6 +1,6 @@
 /* ================================
    General
-   ================================ */
+================================ */
 body {
     margin: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -10,10 +10,10 @@ body {
 
 /* ================================
    Header principal
-   ================================ */
+================================ */
 .main-header {
     width: 100%;
-    height: 100px;
+    height: 125px; /* 🔹 aún más alto */
     background-color: #000; /* Fondo negro sólido */
     display: flex;
     align-items: center;
@@ -27,15 +27,15 @@ body {
     width: 100%;
     max-width: 1400px;
     margin: auto;
-    padding: 0 30px; /* Más espacio interno */
+    padding: 0 40px; /* más espacio interno */
     display: flex;
     align-items: center;
-    justify-content: space-between; /* Logo a la izquierda, menú a la derecha */
+    justify-content: space-between;
 }
 
 /* ================================
    Logo + título
-   ================================ */
+================================ */
 .brand {
     display: flex;
     align-items: center;
@@ -43,81 +43,90 @@ body {
 }
 
 .logo-img {
-    width: 60px;
-    height: 60px;
+    width: 80px;   /* 🔹 más grande */
+    height: 80px;
     border-radius: 50%;
-    border: 2px solid #ffffff; /* Borde blanco sobrio */
-    margin-right: 12px;
+    border: 2px solid #ffffff;
+    margin-right: 16px;
 }
 
 .site-title {
-    font-size: 1.8rem;
+    font-size: 2.2rem; /* 🔹 más grande */
     font-weight: 700;
     color: #ffffff;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.7px;
 }
 
 /* ================================
    Menú a la derecha
-   ================================ */
+================================ */
 .nav-menu {
     display: flex;
     align-items: center;
-    gap: 20px; /* Separación entre botones */
-    margin-right: 40px; /* Margen para que no se peguen al borde derecho */
+    gap: 28px; /* más separación */
+    margin-right: 50px;
 }
 
 /* ================================
    Botones personalizados
-   ================================ */
+================================ */
 .btn {
-    padding: 10px 22px;
-    border-radius: 8px;
+    padding: 14px 30px; /* 🔹 más grandes */
+    border-radius: 12px;
     font-weight: 600;
+    font-size: 1.2rem; /* 🔹 tipografía más grande */
     text-decoration: none;
     border: none;
     display: inline-block;
 }
 
-/* Botón Cerrar Sesión - Aseguramos que el color de fondo sea rojo */
+/* Botón Cerrar Sesión */
 .btn-cerrar {
-    background-color: #ff4d4d !important; /* Rojo brillante */
-    color: #ffffff !important; /* Texto blanco */
-    border: none !important; /* Elimina el borde predeterminado */
-    transition: background-color 0.3s ease; /* Efecto de transición para el hover */
+    background-color: #ff4d4d !important;
+    color: #ffffff !important;
+    border: none !important;
+    transition: background-color 0.3s ease;
 }
 
 .btn-cerrar:hover {
-    background-color: #cc0000 !important; /* Rojo más oscuro al hacer hover */
+    background-color: #cc0000 !important;
 }
 
 /* ================================
    Responsive
-   ================================ */
+================================ */
 @media (max-width: 768px) {
     .main-header {
-        height: 90px;
+        height: auto;
+        padding: 18px 0;
     }
 
     .site-title {
-        font-size: 1.4rem;
+        font-size: 1.8rem; /* más grande en móviles */
     }
 
     .header-container {
         flex-direction: column;
-        gap: 15px;
-        padding: 10px;
+        gap: 20px;
+        padding: 14px;
     }
 
     .nav-menu {
-        gap: 15px;
+        gap: 20px;
         width: 100%;
-        justify-content: center; /* Centrando los elementos en móviles */
+        justify-content: center;
         margin-right: 0;
     }
 
     .btn {
         width: 100%;
         text-align: center;
+        font-size: 1.1rem;
+        padding: 14px;
+    }
+
+    .logo-img {
+        width: 65px;
+        height: 65px;
     }
 }

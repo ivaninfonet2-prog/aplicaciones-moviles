@@ -11,7 +11,7 @@
    BASE GENERAL
 ====================================================== */
 body {
-    padding-top: 100px;
+    padding-top: 115px; /* más espacio por header más alto */
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #121212;
     color: #f8f9fa;
@@ -25,11 +25,11 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    height: 100px;
+    height: 115px; /* más alto */
     background-color: #000000;
     z-index: 1000;
     display: flex;
-    align-items: center;              /* 🔹 centrado real */
+    align-items: center;
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6);
 }
 
@@ -40,7 +40,7 @@ body {
     width: 100%;
     max-width: 1400px;
     margin: 0 auto;
-    padding: 0 32px;
+    padding: 0 36px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -52,20 +52,20 @@ body {
 .brand {
     display: flex;
     align-items: center;
-    gap: 14px;
+    gap: 16px;
     text-decoration: none;
 }
 
 .logo-img {
-    width: 56px;
-    height: 56px;
+    width: 64px; /* más grande */
+    height: 64px;
     border-radius: 50%;
     border: 2px solid rgba(255, 255, 255, 0.85);
     object-fit: cover;
 }
 
 .site-title {
-    font-size: 1.7rem;
+    font-size: 1.9rem; /* más grande */
     font-weight: 700;
     color: #ffffff;
     letter-spacing: 0.5px;
@@ -78,17 +78,17 @@ body {
 .nav-menu {
     display: flex;
     align-items: center;
-    gap: 18px;
+    gap: 20px;
 }
 
 /* ======================================================
    BOTONES BASE
 ====================================================== */
 .main-header .btn {
-    padding: 10px 26px;
-    border-radius: 10px;
+    padding: 12px 30px; /* más grandes */
+    border-radius: 12px;
     font-weight: 600;
-    font-size: 0.95rem;
+    font-size: 1rem; /* texto más grande */
     text-decoration: none;
     color: #ffffff;
     border: none;
@@ -129,24 +129,24 @@ body {
 @media (max-width: 768px) {
 
     body {
-        padding-top: 90px;
+        padding-top: 100px;
     }
 
     .main-header {
         height: auto;
-        padding: 14px 0;
+        padding: 16px 0;
     }
 
     .header-container {
         flex-direction: column;
-        gap: 14px;
-        padding: 0 16px;
+        gap: 16px;
+        padding: 0 18px;
     }
 
     .nav-menu {
         width: 100%;
         flex-direction: column;
-        gap: 12px;
+        gap: 14px;
     }
 
     .main-header .btn {
@@ -155,27 +155,27 @@ body {
     }
 
     .site-title {
-        font-size: 1.4rem;
+        font-size: 1.5rem;
     }
 
     .logo-img {
-        width: 48px;
-        height: 48px;
+        width: 52px;
+        height: 52px;
     }
 }
 
 @media (max-width: 480px) {
 
     body {
-        padding-top: 80px;
+        padding-top: 90px;
     }
 
     .site-title {
-        font-size: 1.25rem;
+        font-size: 1.3rem;
     }
 
     .logo-img {
-        width: 42px;
-        height: 42px;
+        width: 46px;
+        height: 46px;
     }
 }

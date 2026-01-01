@@ -6,9 +6,8 @@
     <title><?= $titulo ?? 'UNLa Tienda'; ?></title>
 
     <!-- CSS del header -->
-    <link rel="stylesheet" href="<?= base_url('activos/css/registrar_usuario/header_registrar_usuario.css'); ?>">
+    <link rel="stylesheet" href="<?= base_url('activos/css/registrar_usuario/header_registrar_usuario.css?v=' . time()); ?>">
 </head>
-<body>
 
 <header class="main-header">
     <div class="header-container">
@@ -35,6 +34,4 @@
 
     </div>
 </header>
-
-</body>
 </html>

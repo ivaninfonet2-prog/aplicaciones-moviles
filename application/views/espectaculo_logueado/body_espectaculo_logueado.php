@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><?= $espectaculo['nombre']; ?></title>
+    <title><?= htmlspecialchars($espectaculo['nombre']); ?></title>
 
     <link rel="stylesheet"
           href="<?= base_url('activos/css/espectaculo_logueado/body_espectaculo_logueado.css?v=' . time()); ?>">
@@ -12,7 +12,7 @@
 <body>
 
 <!-- Fondo -->
-<div class="fondo-body" style="background-image: url('<?= $fondo ?>');"></div>
+<div class="fondo-body" style="background-image: url('<?= htmlspecialchars($fondo) ?>');"></div>
 
 <main class="container">
 
@@ -28,36 +28,37 @@
     <!-- TARJETA -->
     <section class="card">
 
-        <h1 class="titulo"><?= $espectaculo['nombre']; ?></h1>
+        <h1 class="titulo"><?= htmlspecialchars($espectaculo['nombre']); ?></h1>
 
         <!-- Imagen -->
         <div class="imagen-wrapper">
             <img src="<?= base_url('activos/imagenes/' . $espectaculo['imagen']) ?>"
-                 alt="<?= $espectaculo['nombre'] ?>"
+                 alt="<?= htmlspecialchars($espectaculo['nombre']); ?>"
                  class="imagen">
         </div>
 
         <!-- Descripción -->
-        <p class="descripcion"><?= $espectaculo['descripcion']; ?></p>
+        <p class="descripcion"><?= htmlspecialchars($espectaculo['descripcion']); ?></p>
 
         <!-- Detalles -->
         <section class="detalles">
             <h3>Detalles del evento</h3>
             <ul>
-                <li><strong>Fecha:</strong> <?= $espectaculo['fecha']; ?></li>
-                <li><strong>Hora:</strong> <?= $espectaculo['hora']; ?></li>
-                <li><strong>Dirección:</strong> <?= $espectaculo['direccion']; ?></li>
+                <li><strong>Fecha:</strong> <?= htmlspecialchars($espectaculo['fecha']); ?></li>
+                <li><strong>Hora:</strong> <?= htmlspecialchars($espectaculo['hora']); ?></li>
+                <li><strong>Dirección:</strong> <?= htmlspecialchars($espectaculo['direccion']); ?></li>
             </ul>
         </section>
 
         <!-- Entradas -->
         <p class="entradas">
             Entradas disponibles:
-            <strong><?= $espectaculo['disponibles']; ?></strong>
+            <strong><?= htmlspecialchars($espectaculo['disponibles']); ?></strong>
         </p>
 
+        <!-- Mensaje -->
         <?php if (!empty($mensaje)): ?>
-            <div class="mensaje"><?= $mensaje; ?></div>
+            <div class="mensaje"><?= htmlspecialchars($mensaje); ?></div>
         <?php endif; ?>
 
         <!-- Reserva -->
@@ -71,22 +72,32 @@
                        name="cantidad_entradas"
                        id="cantidad_entradas"
                        min="1"
-                       max="<?= $espectaculo['disponibles']; ?>"
+                       max="<?= htmlspecialchars($espectaculo['disponibles']); ?>"
                        required>
 
                 <div class="botones">
                     <button type="submit" class="btn reservar">Reservar</button>
-                    <a href="<?= site_url('usuario/usuario_espectaculos') ?>" class="btn volver">Ir a Espectaculos</a>
+                    <a href="<?= site_url('usuario/usuario_espectaculos') ?>" class="btn volver">Ir a Espectáculos</a>
                 </div>
             </form>
         <?php else: ?>
             <div class="error">Entradas agotadas.</div>
             <div class="botones">
-                <a href="<?= site_url('usuario/usuario_espectaculos') ?>" class="btn volver">Ir a Espectaculos</a>
+                <a href="<?= site_url('usuario/usuario_espectaculos') ?>" class="btn volver">Ir a Espectáculos</a>
             </div>
         <?php endif; ?>
 
     </section>
+
+    <!-- Sección mapa con título y descripción -->
+    <section class="mapa-section">
+        <h2 class="mapa-titulo">Ubicación del espectáculo</h2>
+        <p class="mapa-descripcion">Encontrá fácilmente el lugar del evento en el mapa para organizar tu llegada.</p>
+        <div class="mapa-externa" aria-label="Mapa del lugar del espectáculo">
+            <img src="<?= base_url('activos/imagenes/mapa.jfif') ?>" alt="Mapa del lugar del espectáculo">
+        </div>
+    </section>
+
 </main>
 
 </body>

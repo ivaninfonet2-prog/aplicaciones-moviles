@@ -6,6 +6,7 @@ body {
     font-family: 'Segoe UI', Arial, sans-serif;
     color: #ffffff;
     background: transparent;
+    line-height: 1.7; /* más aire entre líneas */
 }
 
 /* ===============================
@@ -19,6 +20,7 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;
     z-index: -1;
+    filter: brightness(1.1) contrast(1.05);
 }
 
 /* ===============================
@@ -26,7 +28,7 @@ body {
 ================================ */
 main.container {
     min-height: 100vh;
-    padding: 7.5rem 1rem 4rem;
+    padding: 8rem 1rem 4rem; /* más separación superior */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -38,123 +40,133 @@ main.container {
 .intro {
     max-width: 700px;
     text-align: center;
-    margin-bottom: 2.5rem;
+    margin-bottom: 3rem;
 }
 
 .intro h2 {
-    font-size: 2rem;
-    margin-bottom: 0.6rem;
+    font-size: 2.3rem; /* más grande */
+    margin-bottom: 0.8rem;
     color: #ffffff;
-    text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+    font-weight: 700;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
 }
 
 .intro p {
-    font-size: 1.15rem;
-    color: #f2f2f2;
-    text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+    font-size: 1.3rem; /* más grande */
+    color: #f9f9f9;
+    font-weight: 500;
+    text-shadow: 1px 1px 6px rgba(0,0,0,0.6);
 }
 
 /* ===============================
    TARJETA CLARA
 ================================ */
 .card {
-    max-width: 520px;
+    max-width: 560px;
     width: 100%;
-    background: rgba(255, 255, 255, 0.30);
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
-    border: 1px solid rgba(255,255,255,0.45);
-    border-radius: 14px;
-    padding: 2rem 1.6rem;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,0.4);
+    border-radius: 16px;
+    padding: 2.4rem 2rem;
     text-align: center;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
 }
 
 /* ===============================
    TEXTO TARJETA (OSCURO)
 ================================ */
 .card * {
-    color: #1f2933; /* gris oscuro elegante */
+    color: #1f2933;
 }
 
 .titulo {
-    font-size: 2rem;
-    margin-bottom: 1rem;
+    font-size: 2.2rem; /* más grande */
+    margin-bottom: 1.2rem;
     color: #111827;
+    font-weight: 700;
 }
 
 .descripcion {
-    font-size: 1.1rem;
-    color: #374151;
-    margin-bottom: 1.2rem;
-    line-height: 1.6;
+    font-size: 1.25rem; /* más grande */
+    color: #333333;
+    margin-bottom: 1.4rem;
+    line-height: 1.7;
+    font-weight: 500;
 }
 
 /* ===============================
    IMAGEN
 ================================ */
 .imagen-wrapper {
-    margin-bottom: 1.2rem;
+    margin-bottom: 1.4rem;
 }
 
 .imagen {
-    width: 190px;
-    height: 190px;
+    width: 200px;
+    height: 200px;
     object-fit: cover;
-    border-radius: 12px;
-    border: 2px solid rgba(0,0,0,0.15);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    border-radius: 14px;
+    border: 2px solid rgba(0,0,0,0.2);
+    box-shadow: 0 4px 14px rgba(0,0,0,0.3);
 }
 
 /* ===============================
    DETALLES
 ================================ */
 .detalles h3 {
-    font-size: 1.25rem;
+    font-size: 1.5rem; /* más grande */
     color: #065f46;
-    margin-bottom: 0.6rem;
+    margin-bottom: 0.8rem;
+    font-weight: 700;
 }
 
 .detalles ul {
     list-style: none;
     padding: 0;
-    margin: 0 0 1.3rem 0;
+    margin: 0 0 1.5rem 0;
 }
 
 .detalles li {
-    font-size: 1.05rem;
-    margin-bottom: 0.45rem;
+    font-size: 1.2rem; /* más grande */
+    margin-bottom: 0.6rem;
     color: #1f2933;
+    font-weight: 500;
 }
 
 /* ===============================
    ENTRADAS
 ================================ */
 .entradas {
-    font-size: 1.15rem;
-    margin-bottom: 1.1rem;
+    font-size: 1.3rem; /* más grande */
+    margin-bottom: 1.3rem;
     color: #1e40af;
+    font-weight: 600;
 }
 
 /* ===============================
    MENSAJES
 ================================ */
 .mensaje {
-    background: rgba(76,175,80,0.20);
-    border: 1px solid rgba(76,175,80,0.7);
+    background: rgba(76,175,80,0.25);
+    border: 1px solid rgba(76,175,80,0.8);
     color: #14532d;
-    padding: 0.8rem;
+    padding: 1rem;
     border-radius: 8px;
-    margin-bottom: 1rem;
+    margin-bottom: 1.2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
 }
 
 .error {
-    background: rgba(220,53,69,0.20);
-    border: 1px solid rgba(220,53,69,0.7);
+    background: rgba(220,53,69,0.25);
+    border: 1px solid rgba(220,53,69,0.8);
     color: #7f1d1d;
-    padding: 0.8rem;
+    padding: 1rem;
     border-radius: 8px;
-    margin-bottom: 1rem;
+    margin-bottom: 1.2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
 }
 
 /* ===============================
@@ -162,26 +174,22 @@ main.container {
 ================================ */
 .formulario label {
     display: block;
-    margin-bottom: 0.4rem;
-    font-size: 1.05rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem; /* más grande */
     color: #111827;
+    font-weight: 600;
 }
 
 .formulario input[type="number"] {
-    width: 60%;
-    padding: 0.55rem;
-    border-radius: 6px;
+    width: 65%;
+    padding: 0.7rem;
+    border-radius: 8px;
     border: 1px solid #9ca3af;
-    margin-bottom: 1.1rem;
-    font-size: 1.05rem;
+    margin-bottom: 1.2rem;
+    font-size: 1.1rem;
     background-color: #ffffff;
     color: #000000;
     text-align: center;
-}
-
-.formulario input[type="number"]::-webkit-inner-spin-button,
-.formulario input[type="number"]::-webkit-outer-spin-button {
-    opacity: 1;
 }
 
 /* ===============================
@@ -190,16 +198,17 @@ main.container {
 .botones {
     display: flex;
     justify-content: center;
-    gap: 1.1rem;
+    gap: 1.2rem;
+    margin-top: 1rem;
 }
 
 .btn {
-    padding: 0.6rem 1.1rem;
-    border-radius: 7px;
-    font-size: 1rem;
+    padding: 0.7rem 1.3rem;
+    border-radius: 8px;
+    font-size: 1.1rem; /* más grande */
     font-weight: 600;
     text-decoration: none;
-    color: #ffffff; /* botones siguen blancos */
+    color: #ffffff;
     transition: transform 0.2s ease, box-shadow 0.3s ease;
 }
 
@@ -220,15 +229,58 @@ main.container {
 }
 
 /* ===============================
+   SECCIÓN MAPA
+================================ */
+.mapa-section {
+    text-align: center;
+    margin: 40px auto 60px;
+    max-width: 850px;
+    width: 90%;
+}
+.mapa-titulo {
+    font-size: 2.2rem; /* más grande */
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 12px;
+    text-shadow: 1px 1px 6px rgba(0,0,0,0.6);
+}
+.mapa-descripcion {
+    font-size: 1.25rem; /* más grande */
+    color: #f9f9f9;
+    margin-bottom: 24px;
+    font-weight: 500;
+    text-shadow: 1px 1px 6px rgba(0,0,0,0.6);
+}
+.mapa-externa {
+    display: flex;
+    justify-content: center;
+}
+.mapa-externa img {
+    width: 100%;
+    max-width: 480px;
+    border-radius: 18px;
+    box-shadow: 0 6px 22px rgba(0,0,0,0.65);
+    filter: contrast(1.15) brightness(1.1);
+}
+
+/* ===============================
    RESPONSIVE
 ================================ */
 @media (max-width: 480px) {
     .intro h2 {
-        font-size: 1.6rem;
+        font-size: 1.8rem;
+    }
+
+    .intro p {
+        font-size: 1.1rem;
     }
 
     .titulo {
-        font-size: 1.6rem;
+        font-size: 1.8rem;
+    }
+
+    .descripcion {
+        font-size: 1.05rem;
     }
 
     .imagen {
@@ -238,5 +290,12 @@ main.container {
 
     .formulario input[type="number"] {
         width: 80%;
+    }
+
+    .mapa-section {
+        width: 95%;
+    }
+    .mapa-externa img {
+        max-width: 360px;
     }
 }

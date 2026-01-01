@@ -1,96 +1,112 @@
 /* ================================
-   RESET BÁSICO
-   ================================ */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #121212;
-    color: #ffffff;
-
-    /* Compensa la altura del header */
-    padding-top: 88px;
-}
-
-/* ================================
-   HEADER PRINCIPAL
+   Header principal
    ================================ */
 .main-header {
+    width: 100%;
+    height: 100px; /* 🔹 altura incrementada */
+    background-color: #000;
+    display: flex;
+    align-items: center;
     position: fixed;
     top: 0;
-    left: 0;
-    width: 100%;
-    height: 88px;
-    background-color: #000;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
     z-index: 1000;
 }
 
-/* ================================
-   CONTENEDOR
-   ================================ */
+/* Contenedor interno */
 .header-container {
-    max-width: 1280px;
-    height: 100%;
-    margin: 0 auto;
-
+    width: 100%;
+    max-width: 1400px;
+    margin: auto;
+    padding: 0 32px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-
-    padding-right: 24px;
 }
 
 /* ================================
-   LOGO + TÍTULO
+   Logo + título
    ================================ */
 .brand {
     display: flex;
     align-items: center;
-    gap: 14px;
     text-decoration: none;
-
-    /* Más a la izquierda sin pegar */
-    margin-left: 20px;
 }
 
 .logo-img {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;          /* ⬅️ redondo */
-    object-fit: cover;           /* ⬅️ evita deformación */
-    border: 2px solid #ffffff;   /* igual que los otros */
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    border: 2px solid #ffffff;
+    margin-right: 12px;
 }
 
 .site-title {
-    font-size: 1.3rem;
-    font-weight: 600;
+    font-size: 1.7rem;
+    font-weight: 700;
     color: #ffffff;
+    letter-spacing: 0.5px;
 }
 
 /* ================================
-   BOTÓN
+   Menú
    ================================ */
 .nav-menu {
     display: flex;
     align-items: center;
+    gap: 20px;
 }
 
-.btn-login {
-    padding: 11px 20px;
-    border-radius: 6px;
-    background-color: #0d6efd;
-    color: #ffffff;
-    font-size: 0.95rem;
-    font-weight: 500;
+/* ================================
+   Botones
+   ================================ */
+.btn {
+    padding: 10px 22px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
     text-decoration: none;
-    transition: background-color 0.25s ease;
+    border: none;
+    display: inline-block;
+    cursor: pointer;
+}
+
+/* Botón azul para "Ir al Inicio" */
+.btn-login {
+    background-color: #007bff; /* Botón azul */
+    color: #ffffff;
+    transition: background-color 0.3s ease;
 }
 
 .btn-login:hover {
-    background-color: #0b5ed7;
+    background-color: #0056b3; /* Hover más oscuro */
+}
+
+/* ================================
+   Responsive
+   ================================ */
+@media (max-width: 768px) {
+    .main-header {
+        height: auto;
+        padding: 14px 0;
+    }
+
+    .header-container {
+        flex-direction: column;
+        gap: 16px;
+        padding: 10px;
+    }
+
+    .site-title {
+        font-size: 1.5rem;
+    }
+
+    .nav-menu {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .btn {
+        width: 100%;
+        text-align: center;
+    }
 }

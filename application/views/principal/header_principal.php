@@ -1,5 +1,5 @@
 <!-- CSS del header principal -->
-<link rel="stylesheet" href="<?= base_url('activos/css/principal/header_principal.css'); ?>">
+<link rel="stylesheet" href="<?= base_url('activos/css/principal/header_principal.css?v=' . time()); ?>">
 
 <header class="main-header">
     <div class="header-container">

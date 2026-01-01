@@ -1,13 +1,13 @@
 /* ================================
    RESET Y ESTILOS GENERALES
-   ================================ */
+================================ */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-body {
+html {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #121212;
     color: #f8f9fa;
@@ -15,11 +15,11 @@ body {
 
 /* ================================
    HEADER PRINCIPAL
-   ================================ */
+================================ */
 .main-header {
     width: 100%;
-    height: 85px;
-    background-color: #000000; /* Fondo negro sólido */
+    height: 95px; /* altura cómoda */
+    background: linear-gradient(90deg, #000000, #1c1c1c);
     box-shadow: 0 4px 18px rgba(0,0,0,0.6);
     display: flex;
     align-items: center;
@@ -40,7 +40,7 @@ body {
 
 /* ================================
    LOGO Y TÍTULO
-   ================================ */
+================================ */
 .brand {
     display: flex;
     align-items: center;
@@ -48,81 +48,91 @@ body {
 }
 
 .logo-img {
-    width: 60px;
-    height: 60px;
+    width: 62px;
+    height: 62px;
     border-radius: 50%;
     margin-right: 12px;
+    border: 2px solid #ffffff33;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.4);
 }
 
 .site-title {
-    font-size: 1.8rem;
+    font-size: 2rem;
     font-weight: 700;
     color: #ffffff;
     letter-spacing: 0.5px;
+    transition: color 0.3s ease;
+}
+
+.brand:hover .site-title {
+    color: #00cfff;
 }
 
 /* ================================
    MENÚ DE NAVEGACIÓN
-   ================================ */
+================================ */
 .nav-menu {
     display: flex;
     align-items: center;
-    gap: 25px;
+    gap: 18px;
 }
 
 /* ================================
    BOTONES PERSONALIZADOS
-   ================================ */
+================================ */
 .btn {
-    padding: 10px 22px;
-    border-radius: 8px;
+    padding: 4px 10px;
+    border-radius: 5px;
     font-weight: 600;
     text-decoration: none;
-    transition: background-color 0.2s ease;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+    font-size: 0.8rem;
 }
 
 /* Botón Login - verde */
 .btn-login {
-    background-color: #28a745;
+    background: linear-gradient(135deg, #28a745, #218838);
     color: #ffffff;
 }
 
 .btn-login:hover {
-    background-color: #1e7e34;
+    background: linear-gradient(135deg, #34d058, #28a745);
+    transform: scale(1.05);
 }
 
 /* Botón Ir al Inicio - azul */
 .btn-home {
-    background-color: #007bff;
+    background: linear-gradient(135deg, #007bff, #0056b3);
     color: #ffffff;
 }
 
 .btn-home:hover {
-    background-color: #0056b3;
+    background: linear-gradient(135deg, #3399ff, #007bff);
+    transform: scale(1.05);
 }
 
 /* ================================
    RESPONSIVE
-   ================================ */
+================================ */
 @media (max-width: 768px) {
-
     .main-header {
         height: auto;
-        padding: 10px 0;
+        padding: 12px 0;
     }
 
     .header-container {
         flex-direction: column;
-        gap: 10px;
+        gap: 12px;
         padding: 10px;
     }
 
     .site-title {
-        font-size: 1.4rem;
+        font-size: 1.5rem;
     }
 
     .nav-menu {
-        gap: 15px;
+        gap: 12px;
         width: 100%;
         justify-content: center;
     }

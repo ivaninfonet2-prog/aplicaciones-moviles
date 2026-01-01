@@ -3,7 +3,9 @@
     <!-- Texto encima de la tarjeta -->
     <div class="registro-texto-encima">
         <h2 class="titulo-encima">Bienvenido, por favor regístrate para continuar</h2>
-        <p class="subtitulo-encima">Rellena tus datos personales para crear una cuenta y acceder a todos nuestros servicios.</p>
+        <p class="subtitulo-encima">
+            Rellena tus datos personales para crear una cuenta y acceder a todos nuestros servicios.
+        </p>
     </div>
 
     <!-- Tarjeta de registro -->
@@ -11,7 +13,7 @@
         
         <!-- Aviso de error -->
         <?php if (isset($error)): ?>
-            <div class="alert alert-danger">
+            <div class="alert-danger">
                 <strong>Atención:</strong> <?= $error; ?>
             </div>
         <?php endif; ?>

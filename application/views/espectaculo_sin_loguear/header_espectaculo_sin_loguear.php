@@ -5,9 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= $titulo ?? 'UNLa Tienda'; ?></title>
 
-    <!-- CSS del header (versionado para evitar cache) -->
-    <link rel="stylesheet"
-          href="<?= base_url('activos/css/espectaculo_sin_loguear/header_espectaculo_sin_loguear.css?v=' . time()); ?>">
+    <!-- Enlace al CSS -->
+    <link rel="stylesheet" href="<?= base_url('activos/css/espectaculo_sin_loguear/header_espectaculo_sin_loguear.css?v=' . time()); ?>">
 </head>
 
 <body>
@@ -26,9 +25,9 @@
             <span class="site-title">UNLa Tienda</span>
         </a>
 
-        <!-- Acción -->
+        <!-- Menú -->
         <nav class="nav-menu">
-            <a href="<?= base_url(); ?>" class="btn-login">
+            <a href="<?= base_url(); ?>" class="btn btn-login">
                 Ir al Inicio
             </a>
         </nav>
