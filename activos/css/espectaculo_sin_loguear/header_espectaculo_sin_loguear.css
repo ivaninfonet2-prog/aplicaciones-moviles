@@ -1,93 +1,123 @@
-/* =====================================================
+/* ======================================================
+   BASE GENERAL
+====================================================== */
+body {
+    margin: 0;
+    padding-top: 80px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #121212;
+    color: #f8f9fa;
+}
+
+/* ======================================================
    HEADER PRINCIPAL
-===================================================== */
+====================================================== */
 .main-header {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 80px;
-    background-color: #000; /* fondo negro */
+    background-color: #000000;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
     z-index: 1000;
+    display: flex;
+    align-items: center;
 }
 
-/* Contenedor interno */
+/* ======================================================
+   CONTENEDOR
+====================================================== */
 .header-container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 30px;
+    width: 100%;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-/* Logo + título */
+/* ======================================================
+   LOGO + TÍTULO
+====================================================== */
 .brand {
     display: flex;
     align-items: center;
+    gap: 12px;
     text-decoration: none;
 }
 
-/* Logo */
 .logo-img {
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    border: 2px solid #fff;
+    border: 2px solid #ffffff;
+    object-fit: cover;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .logo-img:hover {
-    transform: scale(1.1) rotate(5deg);
+    transform: scale(1.08) rotate(4deg);
     box-shadow: 0 0 14px rgba(255, 255, 255, 0.7);
 }
 
-/* Título */
 .site-title {
     font-size: 1.6rem;
     font-weight: 700;
-    color: #fff;
-    margin-left: 12px;
+    color: #ffffff;
     white-space: nowrap;
 }
 
-/* Botón Volver al Inicio */
+/* ======================================================
+   MENÚ
+====================================================== */
 .nav-menu {
     display: flex;
     align-items: center;
 }
 
-.btn-login {
-    background-color: #007bbf; /* azul principal */
-    color: #fff;
-    text-decoration: none;
-    font-weight: 500;
-    border-radius: 6px;
+/* ======================================================
+   BOTONES
+====================================================== */
+.main-header .btn {
     padding: 12px 26px;
-    font-size: 16px;
-    margin-right: 0;
-    transition: all 0.3s ease;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    color: #ffffff;
+    transition: background-color 0.25s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.btn-login:hover {
-    background-color: #005f8f; /* azul oscuro al hover */
-    transform: scale(1.05);
+/* Botón Ir al Inicio */
+.main-header .btn-login {
+    background-color: #007bbf;
+}
+
+.main-header .btn-login:hover {
+    background-color: #005f8f;
+    transform: translateY(-1px);
     box-shadow: 0 0 10px rgba(0, 123, 191, 0.6);
 }
 
-/* =====================================================
+/* ======================================================
    RESPONSIVE
-===================================================== */
+====================================================== */
 @media (max-width: 768px) {
+
+    body {
+        padding-top: 75px;
+    }
+
     .site-title {
         font-size: 1.3rem;
     }
 
     .btn-login {
         padding: 10px 18px;
-        font-size: 15px;
+        font-size: 0.9rem;
     }
 
     .logo-img {
@@ -97,6 +127,11 @@
 }
 
 @media (max-width: 480px) {
+
+    body {
+        padding-top: 70px;
+    }
+
     .site-title {
         font-size: 1.1rem;
     }
@@ -108,6 +143,6 @@
 
     .btn-login {
         padding: 8px 14px;
-        font-size: 14px;
+        font-size: 0.85rem;
     }
 }

@@ -9,7 +9,6 @@
     <!-- =======================
          BIENVENIDA
     ======================== -->
-
     <section class="bienvenida">
         <div class="texto-limitado animate__animated animate__zoomIn">
 
@@ -29,7 +28,6 @@
     <!-- =======================
          CARTELERA
     ======================== -->
-
     <section class="cartelera animate__animated animate__fadeInUp">
 
         <div class="tarjetas-container">
@@ -89,7 +87,7 @@
 
         </div>
 
-        <!-- Texto final -->
+        <!-- TEXTO FINAL -->
         <div class="texto-general texto-limitado">
             <p>
                 ¡No te pierdas ninguno de nuestros eventos destacados!

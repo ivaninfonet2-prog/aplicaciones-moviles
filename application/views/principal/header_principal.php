@@ -1,8 +1,7 @@
-<!-- CSS del header -->
+<!-- CSS del header principal -->
 <link rel="stylesheet" href="<?= base_url('activos/css/principal/header_principal.css'); ?>">
 
 <header class="main-header">
-
     <div class="header-container">
 
         <!-- Logo / Marca -->
@@ -26,5 +25,4 @@
         </nav>
 
     </div>
-
 </header>

@@ -28,7 +28,7 @@ body {
 ====================================================== */
 .inicio-container {
     flex: 1;
-    padding-top: 120px;
+    padding-top: 80px;          /* ⬆️ más arriba */
     padding-bottom: 40px;
     background-size: cover;
     background-position: center;
@@ -50,17 +50,18 @@ body {
 .bienvenida {
     text-align: center;
     margin-bottom: 60px;
+    margin-top: -40px;          /* ⬆️ sube título y descripción */
 }
 
 .mensaje-bienvenida {
-    font-size: 2.5rem; /* más grande */
+    font-size: 2.5rem;
     font-weight: 800;
     margin-bottom: 20px;
     color: #ffffff;
 }
 
 .mensaje-sub {
-    font-size: 1.25rem; /* más grande */
+    font-size: 1.25rem;
     line-height: 1.7;
     color: #f2f2f2;
 }
@@ -85,7 +86,7 @@ body {
 }
 
 .tarjeta {
-    background-color: rgba(0, 0, 0, 0.35); /* un poco más clara */
+    background-color: rgba(0, 0, 0, 0.35);
     backdrop-filter: blur(6px);
     border-radius: 18px;
     padding-bottom: 28px;
@@ -98,7 +99,7 @@ body {
 }
 
 /* ======================================================
-   IMAGEN ARTISTA (MÁS GRANDE)
+   IMAGEN ARTISTA
 ====================================================== */
 .tarjeta .imagen {
     width: 200px;
@@ -121,24 +122,24 @@ body {
 }
 
 .tarjeta h3 {
-    font-size: 1.45rem; /* más grande */
+    font-size: 1.45rem;
     font-weight: 800;
     margin-bottom: 12px;
     color: #ffffff;
 }
 
 .descripcion {
-    font-size: 1.1rem; /* más grande */
+    font-size: 1.1rem;
     line-height: 1.6;
     color: #e6e6e6;
     margin-bottom: 16px;
 }
 
 .precio {
-    font-size: 1.3rem; /* más grande */
+    font-size: 1.3rem;
     font-weight: 800;
     margin-bottom: 16px;
-    color: #4da3ff; /* azul claro legible */
+    color: #4da3ff;
 }
 
 /* ======================================================
@@ -174,6 +175,10 @@ body {
    RESPONSIVE
 ====================================================== */
 @media (max-width: 768px) {
+
+    .bienvenida {
+        margin-top: -20px;
+    }
 
     .mensaje-bienvenida {
         font-size: 2rem;
