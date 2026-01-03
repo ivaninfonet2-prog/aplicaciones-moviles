@@ -20,9 +20,9 @@ class Registrar extends CI_Controller
             'fondo'  => base_url('activos/imagenes/mi_fondo.jpg'),
         ];
 
-        $this->load->view('registrar_usuario/header_registrar_usuario', $data);
+        $this->load->view('header_footer/header_footer_principal', $data);
         $this->load->view('registrar_usuario/body_registrar_usuario', $data);
-        $this->load->view('registrar_usuario/footer_registrar_usuario');
+        $this->load->view('footer_footer/footer_footer_principal');
     }
 
     public function registro_exitoso()
@@ -33,9 +33,9 @@ class Registrar extends CI_Controller
             'fondo'  => base_url('activos/imagenes/mi_fondo.jpg'),
         ];
 
-        $this->load->view('registro_exitoso/header_registro_exitoso', $data);
+        $this->load->view('header_footer/header_footer_principal', $data);
         $this->load->view('registro_exitoso/body_registro_exitoso', $data);
-        $this->load->view('registro_exitoso/footer_registro_exitoso');
+        $this->load->view('footer_footer/footer_footer_principal');
     }
 
     public function registrar_usuario()

@@ -3,7 +3,7 @@
 ================================ */
 body {
     margin: 0;
-    padding-top: 84px; /* igual a la altura del header */
+    padding-top: 94px; /* ajustado a la nueva altura del header */
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #121212;
     color: #f8f9fa;
@@ -17,7 +17,7 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    height: 84px; /* ALTURA DEFINITIVA */
+    height: 94px; /* altura aumentada */
     background-color: #000000;
     box-shadow: 0 3px 12px rgba(0, 0, 0, 0.6);
     z-index: 1000;
@@ -50,16 +50,16 @@ body {
 }
 
 .logo-img {
-    width: 52px;
-    height: 52px;
+    width: 60px;  /* tamaño del logo incrementado */
+    height: 60px;  /* tamaño del logo incrementado */
     border-radius: 50%;
     border: 2px solid #ffffff;
-    margin-right: 12px;
+    margin-right: 16px;  /* un poco más de espacio entre el logo y el texto */
     object-fit: cover;
 }
 
 .site-title {
-    font-size: 1.6rem;
+    font-size: 1.8rem;  /* tamaño de la letra incrementado */
     font-weight: 700;
     color: #ffffff;
     white-space: nowrap;
@@ -71,28 +71,30 @@ body {
 .nav-menu {
     display: flex;
     align-items: center;
+    margin-right: 20px;  /* espacio adicional para que el botón no esté pegado a la derecha */
 }
 
 /* ================================
    BOTONES
 ================================ */
 .btn {
-    padding: 9px 20px;
+    padding: 12px 25px;  /* Aumenté el padding del botón */
     border-radius: 7px;
-    font-weight: 600;
-    font-size: 0.95rem;
+    font-weight: 700;  /* Hice el texto más grueso */
+    font-size: 1.1rem;  /* Aumenté el tamaño de la fuente */
     text-decoration: none;
-    color: #ffffff;
+    color: #ffffff !important;  /* Fuerza el color blanco en el texto del botón */
     transition: background-color 0.2s ease, transform 0.15s ease;
+    outline: none;  /* Eliminar borde de enfoque (focus) */
 }
 
-/* Botón azul */
+/* Botón azul con !important para evitar que se sobreescriba */
 .btn-login {
-    background-color: #0066ff;
+    background-color: #0066ff !important; /* Color azul con !important */
 }
 
 .btn-login:hover {
-    background-color: #004bb3;
+    background-color: #004bb3 !important; /* Azul oscuro al pasar el ratón */
     transform: translateY(-1px);
     box-shadow: 0 0 8px rgba(0, 102, 255, 0.6);
 }
@@ -103,11 +105,11 @@ body {
 @media (max-width: 768px) {
 
     body {
-        padding-top: 78px;
+        padding-top: 88px; /* ajustado por la nueva altura del header */
     }
 
     .main-header {
-        height: 78px;
+        height: 88px; /* ajustado */
     }
 
     .site-title {
@@ -131,7 +133,7 @@ body {
     }
 
     .logo-img {
-        width: 46px;
-        height: 46px;
+        width: 50px;  /* logo un poco más pequeño en pantallas pequeñas */
+        height: 50px;  /* logo un poco más pequeño en pantallas pequeñas */
     }
 }

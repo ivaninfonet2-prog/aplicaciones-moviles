@@ -24,9 +24,9 @@ class Login extends CI_Controller
     {
         $data = $this->datos_base();
 
-        $this->load->view('login/header_login', $data);
+        $this->load->view('header_footer/header_footer_principal', $data);
         $this->load->view('login/body_login', $data); // aquí ya va el formulario dentro
-        $this->load->view('login/footer_login');
+        $this->load->view('footer_footer/footer_footer_principal');
     }
 
     public function autenticar()
@@ -37,6 +37,7 @@ class Login extends CI_Controller
         if (empty($nombre_usuario) || empty($palabra_clave)) 
         {
             $this->session->set_flashdata('error', 'Debe ingresar usuario y contraseña');
+            
             redirect('login');
             return;
         }

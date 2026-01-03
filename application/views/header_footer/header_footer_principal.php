@@ -28,7 +28,7 @@
         <!-- Botón a la derecha -->
         <nav class="nav-menu">
             <a href="<?= base_url(); ?>" class="btn btn-login">
-                Volver al Inicio
+                Ir al Inicio
             </a>
         </nav>
 
