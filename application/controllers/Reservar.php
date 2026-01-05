@@ -114,8 +114,7 @@ class Reservar extends CI_Controller
 
         $this->cliente->crear_cliente($datos['usuario']);
 
-        redirect(
-            "ventas/crear_venta/{$id_espectaculo}/{$datos['cantidad_entradas']}"
+        redirect("ventas/crear_venta/{$id_espectaculo}/{$datos['cantidad_entradas']}"
         );
     }
 
@@ -131,11 +130,12 @@ class Reservar extends CI_Controller
         }
 
         $data['reservas'] = $this->reserva->obtener_reservas($usuario);
+        
         $data['fondo']    = base_url('activos/imagenes/mi_fondo.jpg');
 
-        $this->load->view('usuario_reservas/usuario_reservas_header', $data);
+        $this->load->view('header_footer/header_footer_usuario', $data);
         $this->load->view('usuario_reservas/usuario_reservas_body', $data);
-        $this->load->view('usuario_reservas/usuario_reservas_footer', $data);
+        $this->load->view('footer_footer/footer_footer_usuario', $data);
     }
 
    // ---------------------- CANCELAR RESERVA ----------------------
@@ -280,7 +280,8 @@ class Reservar extends CI_Controller
 
     public function reserva_exitosa()
     {
-        $data = [
+        $data = 
+        [
             'titulo' => 'Mis Reservas',
             'fondo'  => base_url('activos/imagenes/mi_fondo.jpg')
         ];

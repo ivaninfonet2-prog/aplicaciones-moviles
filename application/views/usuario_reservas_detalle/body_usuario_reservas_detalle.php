@@ -6,6 +6,7 @@
 
     <!-- CSS ÚNICO necesario -->
     <link rel="stylesheet" href="<?= base_url('activos/css/usuario_reservas_detalle/body_usuario_reservas_detalle.css'); ?>">
+    <link rel="stylesheet" href="<?= base_url('activos/css/confirmacion/eliminar_espectaculo.css'); ?>"> <!-- CSS para el modal -->
 </head>
 
 <?php
@@ -79,13 +80,12 @@ $total_abonado   = number_format($reserva['monto_total'], 2, ',', '.');
         <?php else: ?>
 
             <div class="acciones">
-                <a href="<?= site_url('confirmacion/cancelar_reserva/' . $reserva['id_reserva']); ?>"
-                   class="boton cancelar">
+                <!-- Botón que abre el modal de confirmación -->
+                <button id="btnCancelar" class="boton cancelar">
                     Cancelar reserva
-                </a>
+                </button>
 
-                <a href="<?= site_url('usuario/usuario_reservas'); ?>"
-                   class="boton volver">
+                <a href="<?= site_url('usuario/usuario_reservas'); ?>" class="boton volver">
                     Volver a reservas
                 </a>
             </div>
@@ -95,6 +95,42 @@ $total_abonado   = number_format($reserva['monto_total'], 2, ',', '.');
     </section>
 
 </main>
+
+<!-- Modal de confirmación -->
+<div id="modalConfirmacion" class="confirmacion-container" style="display: none;">
+    <div class="confirmacion-card peligro">
+        <h1>¿Estás seguro de cancelar la reserva?</h1>
+        <p>Esta acción es irreversible, ¿quieres proceder?</p>
+
+        <div class="acciones">
+            <!-- Botón para confirmar la cancelación -->
+            <a href="<?= site_url('reservar/cancelar_reserva/' . $reserva['id_reserva']); ?>" class="btn confirmar">
+                Confirmar cancelación
+            </a>
+            <!-- Botón para cerrar el modal -->
+            <button id="btnCerrarModal" class="btn cancelar">
+                Cancelar
+            </button>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Obtener el botón de cancelar y el modal
+    const btnCancelar = document.getElementById('btnCancelar');
+    const modalConfirmacion = document.getElementById('modalConfirmacion');
+    const btnCerrarModal = document.getElementById('btnCerrarModal');
+
+    // Abrir el modal cuando se hace clic en el botón "Cancelar reserva"
+    btnCancelar.addEventListener('click', function() {
+        modalConfirmacion.style.display = 'flex';
+    });
+
+    // Cerrar el modal cuando se hace clic en el botón "Cancelar"
+    btnCerrarModal.addEventListener('click', function() {
+        modalConfirmacion.style.display = 'none';
+    });
+</script>
 
 </body>
 </html>
