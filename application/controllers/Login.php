@@ -81,7 +81,7 @@ class Login extends CI_Controller
             ->set_header("Pragma: no-cache");
 
         // Redirigir a login o principal
-        redirect('login');
+        redirect('principal');
     }
 }
 ?>

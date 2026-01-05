@@ -1,79 +1,65 @@
-/* ===== RESET ===== */
-* {
-    box-sizing: border-box;
+/* Estilo general para el modal */
+.modal-content {
+    background-color: rgba(255, 255, 255, 0.9);  /* Fondo blanco con opacidad para que sea más claro */
+    border-radius: 10px;                         /* Bordes redondeados */
+    color: #333;                                 /* Color de letras oscuro para contraste */
+    padding: 20px;                               /* Espaciado interno */
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1); /* Sombra suave para darle profundidad */
 }
 
-/* ===== BODY ===== */
-body {
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    background: #f1f5f9;
-    min-height: 100vh;
+/* Título del modal */
+.modal-title {
+    font-size: 1.5rem;                           /* Tamaño de fuente */
+    font-weight: bold;                           /* Negrita */
+    text-align: center;                          /* Centrado */
+    color: #333;                                 /* Color de texto más oscuro */
 }
 
-/* ===== CONTENEDOR ===== */
-.confirmacion-container {
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
+/* Cuerpo del modal */
+.modal-body {
+    font-size: 1rem;                             /* Tamaño de fuente */
+    text-align: center;                          /* Centrado */
+    margin-bottom: 20px;                         /* Espaciado inferior */
+    color: #555;                                 /* Color de texto para el cuerpo */
 }
 
-/* ===== TARJETA ===== */
-.confirmacion-card {
-    background: #ffffff;
-    padding: 30px;
-    max-width: 420px;
-    width: 100%;
-    border-radius: 10px;
-    text-align: center;
-    box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+/* Botones del modal */
+.modal-footer .btn {
+    font-size: 1rem;                             /* Tamaño de fuente */
+    padding: 10px 20px;                          /* Tamaño del botón */
+    border-radius: 5px;                          /* Bordes redondeados */
+    transition: background-color 0.3s ease;      /* Transición suave en hover */
 }
 
-/* ===== TEXTO ===== */
-.confirmacion-card h1 {
-    margin-top: 0;
-    font-size: 1.6rem;
-    color: #1e293b;
+/* Botón de "Sí, cerrar sesión" */
+.modal-footer .btn-danger {
+    background-color: #d9534f;                  /* Color de fondo rojo */
+    border: none;
+    color: white;                                /* Texto blanco */
 }
 
-.confirmacion-card p {
-    margin: 15px 0 25px;
-    font-size: 1rem;
-    color: #475569;
+.modal-footer .btn-danger:hover {
+    background-color: #c9302c;                  /* Color de fondo rojo más oscuro en hover */
 }
 
-/* ===== ACCIONES ===== */
-.acciones {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
+/* Botón de "Cancelar" */
+.modal-footer .btn-secondary {
+    background-color: #6c757d;                  /* Color de fondo gris */
+    border: none;
+    color: white;                                /* Texto blanco */
 }
 
-/* ===== BOTONES ===== */
-.btn {
-    padding: 10px 20px;
-    border-radius: 6px;
-    font-weight: bold;
-    text-decoration: none;
-    font-size: 0.95rem;
-    transition: opacity 0.2s ease;
+.modal-footer .btn-secondary:hover {
+    background-color: #5a6268;                  /* Color de fondo gris más oscuro en hover */
 }
 
-/* Confirmar cerrar sesión */
-.btn.confirmar {
-    background: #ef4444;
-    color: #ffffff;
+/* Ajuste para que el modal se muestre centrado en la pantalla */
+.modal-dialog {
+    max-width: 500px;                            /* Ancho máximo */
+    margin: 10% auto;                            /* Centrado vertical y horizontal */
 }
 
-/* Cancelar */
-.btn.cancelar {
-    background: #e5e7eb;
-    color: #1f2937;
-}
-
-/* Hover */
-.btn:hover {
-    opacity: 0.9;
+/* Fondo del modal con transparencia y desenfoque suave */
+.modal-backdrop {
+    background-color: rgba(0, 0, 0, 0.5) !important;  /* Fondo oscuro pero no completamente negro */
 }
