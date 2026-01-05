@@ -122,12 +122,14 @@ $total_abonado   = number_format($reserva['monto_total'], 2, ',', '.');
     const btnCerrarModal = document.getElementById('btnCerrarModal');
 
     // Abrir el modal cuando se hace clic en el botón "Cancelar reserva"
-    btnCancelar.addEventListener('click', function() {
+    btnCancelar.addEventListener('click', function() 
+    {
         modalConfirmacion.style.display = 'flex';
     });
 
     // Cerrar el modal cuando se hace clic en el botón "Cancelar"
-    btnCerrarModal.addEventListener('click', function() {
+    btnCerrarModal.addEventListener('click', function()
+    {
         modalConfirmacion.style.display = 'none';
     });
 </script>

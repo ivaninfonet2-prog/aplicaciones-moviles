@@ -79,7 +79,7 @@ class Reservar extends CI_Controller
     {
         $datos = $this->get_datos_reserva();
 
-        if (!$datos)
+        if ( !$datos)
         {
             return $this->error("No hay datos de reserva.");
         }
@@ -108,7 +108,7 @@ class Reservar extends CI_Controller
                 'Error: No hay suficientes entradas.'
             );
 
-            redirect("espectaculos/ver_espectaculo_logueado/{$id_espectaculo}");
+            redirect("espectaculos/espectaculo_logueado/{$id_espectaculo}");
             return;
         }
 
@@ -124,7 +124,7 @@ class Reservar extends CI_Controller
     {
         $usuario = $this->session->userdata('id_usuario');
 
-        if (!$usuario)
+        if ( !$usuario)
         {
             return $this->error("Debes iniciar sesión.");
         }
@@ -139,13 +139,14 @@ class Reservar extends CI_Controller
     }
 
    // ---------------------- CANCELAR RESERVA ----------------------
-    public function cancelar_reserva($id_reserva)
+   
+   public function cancelar_reserva($id_reserva)
     {
         $usuario_id = $this->session->userdata('id_usuario');
 
         $reserva = $this->reserva->obtener_reserva_por_id($id_reserva);
 
-        if (!$reserva)
+        if ( !$reserva)
         {
             $this->session->set_flashdata(
                 'mensaje',
@@ -189,7 +190,7 @@ class Reservar extends CI_Controller
     {
         $datos = $this->get_datos_reserva();
 
-        if (!$datos)
+        if ( !$datos)
         {
             return $this->error("No hay datos de reserva.");
         }
@@ -224,6 +225,7 @@ class Reservar extends CI_Controller
     public function enviar_email()
     {
         $filename = $this->session->userdata('pdf_filename');
+        
         $datos    = $this->get_datos_reserva();
 
         if (!$filename || !$datos)
@@ -233,7 +235,7 @@ class Reservar extends CI_Controller
 
         $usuario_data = $this->usuario->get_usuario_email($datos['usuario']);
 
-        if (!$usuario_data)
+        if ( !$usuario_data)
         {
             return $this->error("No se encontró email del usuario.");
         }
