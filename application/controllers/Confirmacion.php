@@ -9,7 +9,7 @@ class Confirmacion extends CI_Controller
         // Si no está logueado, afuera
         if (!$this->session->userdata('logged_in'))
         {
-            redirect('login');
+            redirect('principal');
             exit;
         }
 
@@ -28,7 +28,7 @@ class Confirmacion extends CI_Controller
 
         $this->load->view('usuario/header_usuario', $data);
         $this->load->view('confirmacion/cerrar_sesion_usuario', $data);
-        $this->load->view('usuario/footer_usuario');
+        $this->load->view('footer_footer/footer_footer_usuario');
     }
 
     /** LOGOUT FORZADO (USADO POR EL LOGO) */
@@ -44,7 +44,7 @@ class Confirmacion extends CI_Controller
              ->set_header("Pragma: no-cache")
              ->set_header("Expires: 0");
 
-        redirect('login');
+        redirect('principal');
         exit;
     }
 
@@ -54,7 +54,7 @@ class Confirmacion extends CI_Controller
         // Si no está logueado, afuera
         if (!$this->session->userdata('logged_in'))
         {
-            redirect('login');
+            redirect('principal');
             exit;
         }
 
@@ -74,7 +74,7 @@ class Confirmacion extends CI_Controller
 
         $this->load->view('administrador/header_administrador', $data);
         $this->load->view('confirmacion/cerrar_sesion_administrador', $data);
-        $this->load->view('administrador/footer_administrador');
+        $this->load->view('footer_footer/footer_footer_administrador');
     }
 
      /** Confirmar cancelar reserva */
@@ -83,7 +83,7 @@ class Confirmacion extends CI_Controller
         // Si no está logueado, afuera
         if (!$this->session->userdata('logged_in'))
         {
-            redirect('login');
+            redirect('principal');
             return;
         }
 
@@ -102,26 +102,36 @@ class Confirmacion extends CI_Controller
 
         $this->load->view('usuario/header_usuario', $data);
         $this->load->view('confirmacion/cancelar_reserva', $data);
-        $this->load->view('usuario/footer_usuario');
+        $this->load->view('footer_footer/footer_footer_usuario');
     }
 
     /** Confirmar eliminar usuario */
+    
     public function eliminar_usuario()
     {
+        $data =
+        [
+            'titulo'     => 'Confirmar cancelación de reserva',
+            'fondo'      => base_url('activos/imagenes/mi_fondo.jpg'),
+        ];
+        
+        $this->load->view('header_footer/header_footer_administrador', $data);
         $this->load->view('confirmacion/eliminar_usuario');
+        $this->load->view('footer_footer/footer_footer_administrador');
     }
 
     /** Confirmar eliminar espectáculo */
+
     public function eliminar_espectaculo()
     {
-          $data =
+        $data =
         [
             'titulo'     => 'Confirmar cancelación de reserva',
             'fondo'      => base_url('activos/imagenes/mi_fondo.jpg'),
         ];
 
-        $this->load->view('administrador/header_administrador', $data);
+        $this->load->view('header_footer/header_footer_administrador', $data);
         $this->load->view('confirmacion/eliminar_espectaculo');
-        $this->load->view('administrador/footer_administrador');
+        $this->load->view('footer_footer/footer_footer_administrador');
     }
 }
