@@ -39,7 +39,7 @@
                     <img
                         src="<?= !empty($espectaculo['imagen'])
                             ? base_url('activos/imagenes/' . htmlspecialchars($espectaculo['imagen'], ENT_QUOTES, 'UTF-8'))
-                            : base_url('activos/imagenes/default.jpg'); ?>"
+                            : base_url('activos/imagenes/default.jpg'); ?> "
                         alt="<?= htmlspecialchars($espectaculo['nombre'], ENT_QUOTES, 'UTF-8'); ?>"
                         class="imagen"
                         loading="lazy"
@@ -58,7 +58,7 @@
                         </p>
 
                         <!-- Agregamos la descripción -->
-                        <p><strong>Descripción:</strong> 
+                        <p><strong>Descripción:</strong>
                             <?= isset($espectaculo['descripcion'])
                                 ? htmlspecialchars($espectaculo['descripcion'], ENT_QUOTES, 'UTF-8')
                                 : 'Sin descripción disponible'; ?>
@@ -68,9 +68,10 @@
                             <a href="<?= site_url('espectaculos/editar_espectaculo/' . $espectaculo['id_espectaculo']); ?>"
                                class="boton boton-editar">Editar</a>
 
-                            <a href="<?= site_url('espectaculos/eliminar_espectaculo/' . $espectaculo['id_espectaculo']); ?>"
+                            <!-- Aquí modificamos el enlace para que vaya a la función de confirmación -->
+                            <a href="<?= site_url('confirmacion/eliminar_espectaculo/' . $espectaculo['id_espectaculo']); ?>"
                                class="boton boton-eliminar"
-                               onclick="return confirm('¿Eliminar espectáculo y todos sus datos asociados?');">
+                               onclick="return confirm('¿Estás seguro de que quieres eliminar este espectáculo y todos sus datos asociados?');">
                                Eliminar
                             </a>
                         </div>
