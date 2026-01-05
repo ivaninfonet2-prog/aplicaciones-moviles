@@ -24,6 +24,7 @@ body {
     right: 0;
     bottom: 0;
     background: rgba(0, 0, 0, 0.5); /* Fondo oscuro */
+    display: none; /* Inicialmente oculto */
 }
 
 /* ===== TARJETA ===== */

@@ -6,6 +6,7 @@
 
     <!-- Enlace al archivo CSS específico -->
     <link rel="stylesheet" href="<?= base_url('activos/css/lista_usuarios/body_lista_usuarios.css'); ?>">
+    <link rel="stylesheet" href="<?= base_url('activos/css/confirmacion/modificar_usuario.css'); ?>"> <!-- Enlace al nuevo archivo CSS -->
 </head>
 <body>
 
@@ -44,14 +45,8 @@
                             <td><?= htmlspecialchars($usuario->nombre_usuario) ?></td>
                             <td><?= htmlspecialchars($usuario->dni) ?></td>
                             <td class="acciones">
-                                <a href="<?= base_url('usuario/editar_usuario/'.$usuario->id_usuario) ?>" class="boton editar">
-                                    Editar
-                                </a>
-                                <a href="<?= base_url('usuario/eliminar_usuario/'.$usuario->id_usuario) ?>"
-                                   class="boton eliminar"
-                                   onclick="return confirm('¿Seguro que deseas eliminar este usuario?')">
-                                    Eliminar
-                                </a>
+                                <button class="boton editar" onclick="openModal('editar', <?= $usuario->id_usuario ?>)">Editar</button>
+                                <button class="boton eliminar" onclick="openModal('eliminar', <?= $usuario->id_usuario ?>)">Eliminar</button>
                             </td>
                         </tr>
                     <?php endforeach; ?>
@@ -71,6 +66,50 @@
     </section>
 
 </main>
+
+<!-- Modal de Confirmación -->
+<div id="modal" class="confirmacion-container" style="display: none;">
+    <div class="confirmacion-card">
+        <h1 id="modal-titulo">¿Estás seguro?</h1>
+        <p id="modal-descripcion">¿Quieres proceder con esta acción?</p>
+        <div class="acciones">
+            <a href="#" id="modal-confirmar" class="btn confirmar">Confirmar</a>
+            <button onclick="closeModal()" class="btn cancelar">Cancelar</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    let action = '';
+    let itemId = null;
+
+    function openModal(type, id)
+    {
+        action = type;
+        itemId = id;
+
+        if (action === 'eliminar') 
+        {
+
+            document.getElementById('modal-titulo').textContent = 'Eliminar Usuario';
+            document.getElementById('modal-descripcion').textContent = '¿Estás seguro de que deseas eliminar este usuario?';
+            document.getElementById('modal-confirmar').href = '<?= base_url('usuario/eliminar_usuario/'); ?>' + itemId;
+        } 
+        else if (action === 'editar') 
+        {
+            document.getElementById('modal-titulo').textContent = 'Editar Usuario';
+            document.getElementById('modal-descripcion').textContent = '¿Quieres editar los detalles de este usuario?';
+            document.getElementById('modal-confirmar').href = '<?= base_url('usuario/editar_usuario/'); ?>' + itemId;
+        }
+
+        document.getElementById('modal').style.display = 'flex';
+    }
+
+    function closeModal() 
+    {
+        document.getElementById('modal').style.display = 'none';
+    }
+</script>
 
 </body>
 </html>

@@ -6,7 +6,7 @@
 
     <!-- CSS ÚNICO necesario -->
     <link rel="stylesheet" href="<?= base_url('activos/css/usuario_reservas_detalle/body_usuario_reservas_detalle.css'); ?>">
-    <link rel="stylesheet" href="<?= base_url('activos/css/confirmacion/eliminar_espectaculo.css'); ?>"> <!-- CSS para el modal -->
+    <link rel="stylesheet" href="<?= base_url('activos/css/confirmacion/cancelar_reserva.css'); ?>"> <!-- CSS para el modal -->
 </head>
 
 <?php
@@ -97,7 +97,7 @@ $total_abonado   = number_format($reserva['monto_total'], 2, ',', '.');
 </main>
 
 <!-- Modal de confirmación -->
-<div id="modalConfirmacion" class="confirmacion-container" style="display: none;">
+<div id="modalConfirmacion" class="confirmacion-container">
     <div class="confirmacion-card peligro">
         <h1>¿Estás seguro de cancelar la reserva?</h1>
         <p>Esta acción es irreversible, ¿quieres proceder?</p>
