@@ -28,7 +28,7 @@ body {
 ====================================================== */
 .inicio-container {
     flex: 1;
-    padding-top: 80px;          /* ⬆️ más arriba */
+    padding-top: 80px;  /* Ajustado para no solaparse con el header */
     padding-bottom: 40px;
     background-size: cover;
     background-position: center;
@@ -50,21 +50,24 @@ body {
 .bienvenida {
     text-align: center;
     margin-bottom: 60px;
-    margin-top: -40px;          /* ⬆️ sube título y descripción */
+    margin-top: -40px;
+}
+
+.mensaje {
+    font-weight: 700;
+    color: #f2f2f2;
 }
 
 .mensaje-bienvenida {
     font-size: 2.5rem;
-    font-weight: 900; /* Más fuerte */
+    font-weight: 900;
     margin-bottom: 20px;
     color: #ffffff;
 }
 
 .mensaje-sub {
     font-size: 1.25rem;
-    font-weight: 700; /* Más fuerte */
     line-height: 1.7;
-    color: #f2f2f2;
 }
 
 /* ======================================================
@@ -87,10 +90,10 @@ body {
 }
 
 .tarjeta {
-    background-color: rgba(0, 0, 0, 0.2); /* Reducir la opacidad del fondo negro */
+    background-color: rgba(0, 0, 0, 0.2);
     backdrop-filter: blur(6px);
-    border-radius: 10px; /* Tarjetas más pequeñas */
-    padding-bottom: 16px; /* Reducir aún más el espacio inferior */
+    border-radius: 10px;
+    padding-bottom: 16px;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -106,7 +109,7 @@ body {
     width: 160px; /* Imagen más pequeña */
     height: 160px;
     object-fit: cover;
-    border-radius: 10px; /* Bordes más suaves */
+    border-radius: 10px;
     margin: 18px auto;
     display: block;
 }
@@ -115,7 +118,7 @@ body {
    CONTENIDO TARJETA
 ====================================================== */
 .tarjeta .contenido {
-    padding: 16px 20px; /* Reducir espacio de padding */
+    padding: 16px 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -123,15 +126,15 @@ body {
 }
 
 .tarjeta h3 {
-    font-size: 1.4rem; /* Título más grande */
-    font-weight: 900; /* Más fuerte */
+    font-size: 1.4rem;
+    font-weight: 900;
     margin-bottom: 12px;
     color: #ffffff;
 }
 
 .descripcion {
     font-size: 1.1rem;
-    font-weight: 600; /* Más fuerte */
+    font-weight: 600;
     line-height: 1.6;
     color: #e6e6e6;
     margin-bottom: 16px;
@@ -139,7 +142,7 @@ body {
 
 .precio {
     font-size: 1.3rem;
-    font-weight: 900; /* Más fuerte */
+    font-weight: 900;
     margin-bottom: 16px;
     color: #4da3ff;
 }
@@ -148,13 +151,13 @@ body {
    BOTÓN
 ====================================================== */
 .boton-ver {
-    padding: 8px 18px; /* Botón más pequeño */
+    padding: 8px 18px;
     font-size: 1rem;
     background-color: #0d6efd;
     color: #ffffff;
     text-decoration: none;
     font-weight: 700;
-    border-radius: 6px; /* Bordes más suaves */
+    border-radius: 6px;
     transition: background-color 0.2s ease, transform 0.1s ease;
 }
 
@@ -169,7 +172,7 @@ body {
 .texto-general {
     text-align: center;
     font-size: 1.2rem;
-    font-weight: 600; /* Más fuerte */
+    font-weight: 600;
     color: #f0f0f0;
     margin-top: 30px;
 }
@@ -178,7 +181,6 @@ body {
    RESPONSIVE
 ====================================================== */
 @media (max-width: 768px) {
-
     .bienvenida {
         margin-top: -20px;
     }
@@ -192,7 +194,7 @@ body {
     }
 
     .tarjeta .imagen {
-        width: 140px; /* Imagen aún más pequeña */
+        width: 140px;
         height: 140px;
     }
 

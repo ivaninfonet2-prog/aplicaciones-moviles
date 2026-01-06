@@ -11,10 +11,10 @@
    BASE GENERAL
 ====================================================== */
 body {
-    padding-top: 115px; /* más espacio por header más alto */
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #121212;
     color: #f8f9fa;
+    padding-top: 115px; /* Ajuste dinámico */
 }
 
 /* ======================================================
@@ -25,39 +25,33 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    height: 115px; /* más alto */
-    background-color: #000000;
+    height: 115px;
+    background-color: #000;
     z-index: 1000;
     display: flex;
     align-items: center;
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6);
 }
 
-/* ======================================================
-   CONTENEDOR
-====================================================== */
+/* Aseguramos que el contenedor ocupe toda la pantalla */
 .header-container {
     width: 100%;
-    max-width: 1400px;
-    margin: 0 auto;
     padding: 0 36px;
     display: flex;
+    justify-content: space-between; /* Asegura que los elementos estén a los extremos */
     align-items: center;
-    justify-content: space-between;
 }
 
-/* ======================================================
-   LOGO / MARCA
-====================================================== */
 .brand {
     display: flex;
     align-items: center;
     gap: 16px;
     text-decoration: none;
+    margin-left: 0; /* Alinea el logo al borde izquierdo */
 }
 
 .logo-img {
-    width: 64px; /* más grande */
+    width: 64px;
     height: 64px;
     border-radius: 50%;
     border: 2px solid rgba(255, 255, 255, 0.85);
@@ -65,59 +59,52 @@ body {
 }
 
 .site-title {
-    font-size: 1.9rem; /* más grande */
+    font-size: 1.9rem;
     font-weight: 700;
-    color: #ffffff;
+    color: #fff;
     letter-spacing: 0.5px;
-    white-space: nowrap;
 }
 
 /* ======================================================
-   MENÚ
+   MENÚ Y BOTONES
 ====================================================== */
 .nav-menu {
     display: flex;
-    align-items: center;
     gap: 20px;
+    margin-right: 0; /* Alinea los botones al borde derecho */
 }
 
-/* ======================================================
-   BOTONES BASE
-====================================================== */
-.main-header .btn {
-    padding: 12px 30px; /* más grandes */
+.nav-menu a {
+    text-decoration: none; /* Elimina la subrayado de los enlaces */
+}
+
+.btn {
+    padding: 12px 30px;
     border-radius: 12px;
     font-weight: 600;
-    font-size: 1rem; /* texto más grande */
-    text-decoration: none;
-    color: #ffffff;
+    font-size: 1rem;
+    color: #fff;
+    background: none;
     border: none;
-    transition: background-color 0.2s ease,
-                transform 0.15s ease,
-                box-shadow 0.15s ease;
+    outline: none; /* Elimina cualquier borde en foco */
+    transition: background-color 0.2s ease, transform 0.15s ease, box-shadow 0.15s ease;
 }
 
-/* ======================================================
-   BOTÓN LOGIN
-====================================================== */
-.main-header .btn-login {
+.btn-login {
     background-color: #0d6efd;
 }
 
-.main-header .btn-login:hover {
+.btn-login:hover {
     background-color: #0b5ed7;
     transform: translateY(-1px);
     box-shadow: 0 6px 16px rgba(13, 110, 253, 0.35);
 }
 
-/* ======================================================
-   BOTÓN REGISTRAR
-====================================================== */
-.main-header .btn-register {
+.btn-register {
     background-color: #198754;
 }
 
-.main-header .btn-register:hover {
+.btn-register:hover {
     background-color: #146c43;
     transform: translateY(-1px);
     box-shadow: 0 6px 16px rgba(25, 135, 84, 0.35);
@@ -127,7 +114,6 @@ body {
    RESPONSIVE
 ====================================================== */
 @media (max-width: 768px) {
-
     body {
         padding-top: 100px;
     }
@@ -149,7 +135,7 @@ body {
         gap: 14px;
     }
 
-    .main-header .btn {
+    .btn {
         width: 100%;
         text-align: center;
     }
@@ -165,7 +151,6 @@ body {
 }
 
 @media (max-width: 480px) {
-
     body {
         padding-top: 90px;
     }

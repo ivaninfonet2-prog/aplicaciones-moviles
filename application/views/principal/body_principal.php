@@ -1,4 +1,3 @@
-
 <!-- CSS base -->
 <link rel="stylesheet" href="<?= base_url('activos/css/principal/body_principal.css'); ?>">
 
@@ -11,7 +10,6 @@
             <p class="mensaje-sub">
                 Descubrí nuestra selección de eventos destacados: conciertos,
                 obras de teatro y experiencias culturales únicas.<br>
-                Elegí tu próximo espectáculo y disfrutá de una experiencia inolvidable.
             </p>
         </div>
     </section>
@@ -62,7 +60,6 @@
         <div class="texto-general texto-limitado">
             <p>
                 ¡No te pierdas ninguno de nuestros eventos destacados!
-                Explorá la cartelera y asegurá tu lugar en los mejores espectáculos.
             </p>
         </div>
 

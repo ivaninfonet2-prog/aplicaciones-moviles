@@ -20,6 +20,7 @@
   width: 100%;
   max-width: 460px;
   text-align: center;
+  margin: 0 auto;  /* Centra el contenido */
 }
 
 /* =====================================================
@@ -131,6 +132,28 @@
   font-size: 18px;   /* Aumentado */
   font-weight: 700;  /* Fuerte */
   border-radius: 12px;
+}
+
+.login-actions .btn-primary {
+  background-color: #007bff;
+  border: none;
+  color: white;
+  transition: background-color 0.3s;
+}
+
+.login-actions .btn-primary:hover {
+  background-color: #0056b3;
+}
+
+.login-actions .btn-success {
+  background-color: #28a745;
+  border: none;
+  color: white;
+  transition: background-color 0.3s;
+}
+
+.login-actions .btn-success:hover {
+  background-color: #218838;
 }
 
 /* =====================================================
