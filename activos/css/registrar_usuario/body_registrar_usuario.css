@@ -1,4 +1,4 @@
-/* ================================
+/* ==============================
    BASE GENERAL
 ================================ */
 body {
@@ -8,141 +8,161 @@ body {
     color: #f8f9fa;
 }
 
-/* ================================
-   HEADER PRINCIPAL
+/* ==============================
+   CONTENEDOR PRINCIPAL (registro-container)
 ================================ */
-.main-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 94px; /* Altura fija para el header */
-    background-color: #000000;
-    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.6);
-    z-index: 1000;
+.registro-container {
     display: flex;
-    align-items: center;
     justify-content: center;
-    transition: none; /* Elimina cualquier transición para la altura */
+    align-items: center;
+    height: calc(100vh - 94px); /* Ajuste para no solaparse con el header */
+    background-size: cover;
+    background-position: center;
+    flex-direction: column;
+    padding: 20px;
+    margin-top: 94px; /* Separación adicional desde el header */
 }
 
-/* ================================
-   CONTENEDOR DEL HEADER
+.registro-texto-encima,
+.registro-texto-debajo {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.registro-texto-encima h2 {
+    font-size: 2.8rem; /* Aumentamos el tamaño de la fuente */
+    margin-bottom: 15px;
+    margin-top: 40px; /* Bajamos más el título */
+}
+
+.registro-texto-encima p {
+    font-size: 1.2rem; /* Aumentamos el tamaño de la fuente */
+    margin-bottom: 25px; /* Separación entre el texto y la tarjeta */
+}
+
+/* ==============================
+   TARJETA DE REGISTRO (registro-form)
 ================================ */
-.header-container {
+.registro-form {
+    background-color: rgba(0, 0, 0, 0.6); /* Menos oscura */
+    border-radius: 15px;
+    padding: 40px 25px; /* Aumentamos el padding para hacerla más grande */
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
     width: 100%;
-    max-width: 1200px; /* Disminuido el tamaño del contenedor */
-    margin: 0 auto;
-    padding: 0 20px; /* Reducido el padding */
+    max-width: 560px; /* Agrandamos un poquito más la tarjeta */
+    margin-top: 20px;
+    text-align: center; /* Centra el contenido dentro de la tarjeta */
+}
+
+.form-group-row {
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    gap: 20px; /* Aumentamos el espacio entre las columnas */
+    flex-wrap: wrap;
 }
 
-/* ================================
-   LOGO + TÍTULO
+.form-group {
+    width: 48%;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px 12px; /* Ajustamos el padding para no estar tan ajustados */
+    margin-top: 5px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    background-color: #222;
+    color: #f8f9fa;
+    font-size: 1rem;
+    text-align: center; /* Centrar texto dentro de los campos */
+    box-sizing: border-box; /* Asegura que el padding no afecte el ancho del campo */
+}
+
+/* ==============================
+   ESTILOS DE ALERTAS (error)
 ================================ */
-.brand {
+.alert-danger {
+    background-color: #f44336;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+/* ==============================
+   BOTONES (comunes)
+================================ */
+.botones {
     display: flex;
-    align-items: center;
-    text-decoration: none;
+    justify-content: space-between;
+    gap: 15px;
+    margin-top: 20px;
 }
 
-.logo-img {
-    width: 50px;  /* Tamaño más pequeño del logo */
-    height: 50px;  /* Tamaño más pequeño del logo */
-    border-radius: 50%;
-    border: 2px solid #ffffff;
-    margin-right: 12px;  /* Espacio entre logo y texto reducido */
-    object-fit: cover;
-}
-
-.site-title {
-    font-size: 1.6rem; /* Reducido el tamaño del título */
-    font-weight: 700;
-    color: #ffffff;
-    white-space: nowrap;
-    margin-top: -5px; /* Movido el título hacia abajo */
-}
-
-/* ================================
-   MENÚ DERECHO
-================================ */
-.nav-menu {
-    display: flex;
-    align-items: center;
-    margin-right: 15px; /* Reducido el margen */
-}
-
-/* ================================
-   BOTONES
-================================ */
 .btn {
-    padding: 6px 16px;  /* Reducido el tamaño del botón */
+    padding: 10px 18px; /* Reducimos un poco más el padding */
     border-radius: 7px;
     font-weight: 700;
-    font-size: 0.9rem; /* Reducido el tamaño de la fuente */
+    font-size: 1rem;
     text-decoration: none;
-    color: #ffffff !important;
+    color: #ffffff;
     transition: background-color 0.2s ease, transform 0.15s ease;
     outline: none;
+    width: 45%; /* Hacemos los botones más angostos */
+    text-align: center;
+    box-sizing: border-box;
 }
 
-.btn-login {
-    background-color: #0066ff !important;
+/* BOTÓN VERDE */
+.btn-success {
+    background-color: #28a745;
 }
 
-.btn-login:hover {
-    background-color: #004bb3 !important;
-    transform: translateY(-1px);
-    box-shadow: 0 0 8px rgba(0, 102, 255, 0.6);
+.btn-success:hover {
+    background-color: #218838;
 }
 
-/* ================================
-   TARJETA MÁS TRANSPARENTE Y MENOS OSCURA
-================================ */
-.card {
-    background-color: rgba(0, 0, 0, 0.7); /* Menos oscuro, más transparente */
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* Sombra más suave */
+/* BOTÓN AZUL */
+.btn-primary {
+    background-color: #007bff;
 }
 
-/* ================================
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+/* ==============================
    RESPONSIVE
 ================================ */
 @media (max-width: 768px) {
-    .main-header {
-        height: 80px; /* Reducción de altura para pantallas pequeñas */
+    .registro-texto-encima h2 {
+        font-size: 2rem;
     }
 
-    .site-title {
-        font-size: 1.4rem; /* Reducción de tamaño de texto para el título */
-        margin-top: -3px; /* Ajuste para el título en pantallas pequeñas */
+    .registro-texto-encima p {
+        font-size: 1rem;
     }
 
-    .header-container {
+    .form-group-row {
         flex-direction: column;
-        gap: 10px;
-        padding: 10px;
+        gap: 15px; /* Aumentamos un poco el gap */
     }
 
-    .nav-menu {
+    .form-group {
         width: 100%;
-        justify-content: center;
+    }
+
+    .registro-form {
+        padding: 25px;
+        max-width: 90%; /* Ajuste para pantallas más pequeñas */
     }
 
     .btn {
-        width: 100%;
-        text-align: center;
-    }
-
-    .logo-img {
-        width: 45px;  /* Logo más pequeño en pantallas pequeñas */
-        height: 45px;  /* Logo más pequeño en pantallas pequeñas */
-    }
-
-    .card {
-        padding: 15px;  /* Menos padding en pantallas pequeñas */
+        width: 100%; /* Los botones se vuelven de ancho completo en pantallas pequeñas */
     }
 }
