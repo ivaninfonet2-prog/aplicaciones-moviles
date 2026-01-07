@@ -1,6 +1,6 @@
 /* ================================
    General
-   ================================ */
+=============================== */
 body {
     margin: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -10,7 +10,7 @@ body {
 
 /* ================================
    Header principal
-   ================================ */
+=============================== */
 .main-header {
     width: 100%;
     height: 100px;
@@ -35,7 +35,7 @@ body {
 
 /* ================================
    Logo + título
-   ================================ */
+=============================== */
 .brand {
     display: flex;
     align-items: center;
@@ -59,42 +59,35 @@ body {
 
 /* ================================
    Menú a la derecha
-   ================================ */
+=============================== */
 .nav-menu {
     display: flex;
     align-items: center;
-    gap: 20px;          /* separación entre botones */
+    gap: 20px; /* separación entre botones */
     margin-right: 40px; /* margen para que no se peguen al borde derecho */
 }
 
 /* ================================
-   Botones personalizados
-   ================================ */
-.btn {
+   Botón Cerrar Sesión (Rojo)
+=============================== */
+.nav-menu .btn-cerrar {
     padding: 10px 22px;
     border-radius: 8px;
     font-weight: 600;
     text-decoration: none;
-    border: none;
+    border: 2px solid #ffffff; /* Borde blanco */
+    background-color: #ff4d4d; /* Rojo brillante */
     color: #ffffff; /* Texto blanco */
-    display: inline-block;
-}
-
-/* Botón Cerrar Sesión (Rojo) */
-.nav-menu .btn-cerrar {
-    background-color: #ff4d4d !important; /* Rojo brillante */
-    color: #ffffff !important; /* Texto blanco */
-    border: 2px solid #ffffff !important; /* Borde blanco */
 }
 
 .nav-menu .btn-cerrar:hover {
-    background-color: #cc0000 !important; /* Rojo más oscuro */
-    border-color: #990000 !important; /* Borde más oscuro */
+    background-color: #cc0000; /* Rojo más oscuro */
+    border-color: #990000; /* Borde más oscuro */
 }
 
 /* ================================
    Responsive
-   ================================ */
+=============================== */
 @media (max-width: 768px) {
     .main-header {
         height: 90px;

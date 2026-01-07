@@ -18,23 +18,17 @@
 <body>
 
 <header class="main-header">
-    <div class="header-container d-flex justify-content-between align-items-center">
-        <!-- Logo + título (MODAL DE CIERRE DE SESIÓN) -->
-        <a href="javascript:void(0);" class="brand d-flex align-items-center text-decoration-none" title="Ir al Administrador"
-           data-bs-toggle="modal" data-bs-target="#logoutModal">
-            <img src="<?= base_url('activos/imagenes/logo.jpg'); ?>" class="logo-img me-2" alt="Logo UNLa">
+    <div class="header-container">
+        <!-- Logo + título -->
+        <a href="javascript:void(0);" class="brand" title="Ir al Administrador" data-bs-toggle="modal" data-bs-target="#logoutModal">
+            <img src="<?= base_url('activos/imagenes/logo.jpg'); ?>" class="logo-img" alt="Logo UNLa">
             <span class="site-title">UNLa Tienda</span>
         </a>
 
         <!-- Menú de navegación -->
-        <nav class="nav-menu d-flex gap-3">
-            <a href="<?= site_url('administrador'); ?>" class="btn btn-volver">
-                Ir al Administrador
-            </a>
-            <!-- Botón que abre el modal de confirmación de cerrar sesión -->
-            <button type="button" class="btn btn-cerrar" data-bs-toggle="modal" data-bs-target="#logoutModal">
-                Cerrar Sesión
-            </button>
+        <nav class="nav-menu">
+            <a href="<?= site_url('administrador'); ?>" class="btn btn-volver">Ir al Administrador</a>
+            <button type="button" class="btn btn-cerrar" data-bs-toggle="modal" data-bs-target="#logoutModal">Cerrar Sesión</button>
         </nav>
     </div>
 </header>
@@ -51,14 +45,8 @@
                 ¿Estás seguro de que deseas cerrar tu sesión actual?
             </div>
             <div class="modal-footer">
-                <!-- El enlace que ejecuta el logout -->
-                <a href="<?= site_url('login/logout'); ?>" class="btn btn-danger">
-                    Sí, cerrar sesión
-                </a>
-                <!-- Botón de cancelar -->
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                    Cancelar
-                </button>
+                <a href="<?= site_url('login/logout'); ?>" class="btn btn-danger">Sí, cerrar sesión</a>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
             </div>
         </div>
     </div>
@@ -76,8 +64,7 @@
 
     window.onpageshow = function(event) 
     {
-        if (event.persisted || !<?= json_encode($this->session->userdata('logged_in')); ?>) 
-        {
+        if (event.persisted || !<?= json_encode($this->session->userdata('logged_in')); ?>) {
             window.location.replace('<?= site_url("login"); ?>');
         }
     };

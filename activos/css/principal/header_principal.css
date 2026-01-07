@@ -14,7 +14,7 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #121212;
     color: #f8f9fa;
-    padding-top: 115px; /* Ajuste dinámico */
+    padding-top: 115px; /* Ajuste dinámico para compensar el header fijo */
 }
 
 /* ======================================================

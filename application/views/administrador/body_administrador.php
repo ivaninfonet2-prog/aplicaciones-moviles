@@ -7,6 +7,7 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="<?= base_url('activos/css/administrador/body_administrador.css'); ?>">
+
 </head>
 
 <body>
@@ -30,26 +31,26 @@
             Seleccioná una opción para administrar el contenido del sistema.
         </p>
 
-        <!--  MENSAJE FLASH CORREGIDO -->
+        <!-- MENSAJES FLASH -->
         <?php if ($this->session->flashdata('success')): ?>
-            <div class="mensaje-exito">
+            <div class="mensaje mensaje-exito">
                 <?= $this->session->flashdata('success'); ?>
             </div>
         <?php endif; ?>
 
         <?php if ($this->session->flashdata('error')): ?>
-            <div class="mensaje-error">
+            <div class="mensaje mensaje-error">
                 <?= $this->session->flashdata('error'); ?>
             </div>
         <?php endif; ?>
 
         <!-- BOTONES -->
-        <a href="<?= base_url('administrador/administrador_espectaculos'); ?>" class="boton">Espectáculos</a>
-        <a href="<?= base_url('ventas/mostrar_ventas'); ?>" class="boton">Ventas</a>
-        <a href="<?= base_url('clientes/mostrar_clientes'); ?>" class="boton">Clientes</a>
-        <a href="<?= base_url('administrador/crear_espectaculo'); ?>" class="boton">Agregar Espectáculo</a>
-        <a href="<?= base_url('administrador/lista_usuarios'); ?>" class="boton">Usuarios</a>
-        <a href="<?= base_url('administrador/crear_usuario'); ?>" class="boton">Agregar Usuario</a>
+        <a href="<?= base_url('administrador/administrador_espectaculos'); ?>" class="boton boton-1">Espectáculos</a>
+        <a href="<?= base_url('ventas/mostrar_ventas'); ?>" class="boton boton-2">Ventas</a>
+        <a href="<?= base_url('clientes/mostrar_clientes'); ?>" class="boton boton-3">Clientes</a>
+        <a href="<?= base_url('administrador/crear_espectaculo'); ?>" class="boton boton-4">Agregar Espectáculo</a>
+        <a href="<?= base_url('administrador/lista_usuarios'); ?>" class="boton boton-5">Usuarios</a>
+        <a href="<?= base_url('administrador/crear_usuario'); ?>" class="boton boton-6">Agregar Usuario</a>
 
     </section>
 

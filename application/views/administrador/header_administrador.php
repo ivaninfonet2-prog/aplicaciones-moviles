@@ -7,7 +7,7 @@
 
     <!-- CSS Header -->
     <link rel="stylesheet" href="<?= base_url('activos/css/administrador/header_administrador.css'); ?>">
-     <!-- CSS Header -->
+    <!-- CSS de Confirmación -->
     <link rel="stylesheet" href="<?= base_url('activos/css/confirmacion/cerrar_sesion.css'); ?>">
 
     <!-- Bootstrap 5 -->

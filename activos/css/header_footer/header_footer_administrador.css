@@ -1,6 +1,4 @@
-/* ================================
-   General
-================================ */
+/* ================================ General =============================== */
 body {
     margin: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -8,9 +6,7 @@ body {
     color: #f8f9fa;
 }
 
-/* ================================
-   Header principal
-================================ */
+/* ================================ Header Principal =============================== */
 .main-header {
     width: 100%;
     height: 100px;
@@ -23,7 +19,6 @@ body {
     box-shadow: 0 2px 5px rgba(0,0,0,0.3);
 }
 
-/* Contenedor interno */
 .header-container {
     width: 100%;
     max-width: 1400px;
@@ -34,9 +29,7 @@ body {
     justify-content: space-between;
 }
 
-/* ================================
-   Logo + título
-================================ */
+/* ================================ Logo + Título =============================== */
 .brand {
     display: flex;
     align-items: center;
@@ -58,18 +51,14 @@ body {
     letter-spacing: 0.5px;
 }
 
-/* ================================
-   Menú a la derecha
-================================ */
+/* ================================ Menú de Navegación =============================== */
 .nav-menu {
     display: flex;
     align-items: center;
-    gap: 30px; /* Más espacio entre botones */
+    gap: 30px;
 }
 
-/* ================================
-   Botones personalizados
-================================ */
+/* ================================ Botones =============================== */
 .btn {
     padding: 10px 24px;
     border-radius: 8px;
@@ -81,7 +70,6 @@ body {
     transition: all 0.3s ease;
 }
 
-/* Botón rojo para Cerrar Sesión */
 .btn-cerrar {
     background-color: #ff4d4d !important;
     color: #ffffff !important;
@@ -92,7 +80,6 @@ body {
     transform: scale(1.05);
 }
 
-/* Botón azul para Ir al Administrador */
 .btn-volver {
     background-color: #007bff !important;
     color: #ffffff !important;
@@ -103,9 +90,7 @@ body {
     transform: scale(1.05);
 }
 
-/* ================================
-   Responsive
-================================ */
+/* ================================ Responsive =============================== */
 @media (max-width: 992px) {
     .header-container {
         flex-direction: column;
