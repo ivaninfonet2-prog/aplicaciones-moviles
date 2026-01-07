@@ -102,4 +102,5 @@ class Registrar extends CI_Controller
         return $this->form_validation->run();
     }
 }
+
 ?>

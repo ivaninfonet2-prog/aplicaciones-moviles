@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="<?= base_url('activos/css/editar_espectaculo/body_editar.css') ?>">
+<link rel="stylesheet" href="<?= base_url('activos/css/editar_espectaculo/body_editar_espectaculo.css') ?>">
 
 <main class="main-content" style="background-image: url('<?= $fondo ?? '' ?>');">
 
@@ -10,7 +10,7 @@
     <!-- MENSAJES -->
     <?php if ($this->session->flashdata('error_imagen')): ?>
         <div class="alert error">
-            ❌ <?= $this->session->flashdata('error_imagen') ?>
+             <?= $this->session->flashdata('error_imagen') ?>
         </div>
     <?php endif; ?>
 

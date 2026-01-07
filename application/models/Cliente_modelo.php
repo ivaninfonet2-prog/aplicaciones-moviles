@@ -56,3 +56,5 @@ class Cliente_modelo extends CI_Model
         return $this->obtener_clientes();
     }
 }
+
+?>;

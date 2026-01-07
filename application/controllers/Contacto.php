@@ -50,4 +50,5 @@ class Contacto extends CI_Controller
         $this->load->view('footer_footer/footer_footer_administrador');
     }
 }
+
 ?>

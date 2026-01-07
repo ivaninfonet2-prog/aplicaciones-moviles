@@ -10,15 +10,14 @@ class Espectaculo_modelo extends CI_Model
     }
 
     // OBTENER LISTA COMPLETA (ARRAY)
-    // -------------------------------------------------------
+    
     public function obtener_espectaculos() 
     {
         return $this->db->get('espectaculos')->result_array();
     }
 
-    // -------------------------------------------------------
-    // OBTENER ESPECTÁCULO POR ID (ARRAY)
-    // -------------------------------------------------------
+    // OBTENER ESPECTACULO POR ID (ARRAY)
+   
     public function obtener_espectaculo_por_id($id) 
     {
         return $this->db
@@ -27,9 +26,8 @@ class Espectaculo_modelo extends CI_Model
                     ->row_array();
     }
 
-    // -------------------------------------------------------
     // OBTENER PRECIO (DEVUELVE VALOR SIMPLE)
-    // -------------------------------------------------------
+    
     public function obtener_precio($id_espectaculo)
     {
         $query = $this->db
@@ -37,14 +35,18 @@ class Espectaculo_modelo extends CI_Model
                       ->where('id_espectaculo', $id_espectaculo)
                       ->get('espectaculos');
 
-        return ($query->num_rows() > 0)
-            ? $query->row()->precio
-            : false;
+        if ($query->num_rows() > 0) 
+        {
+            return $query->row()->precio;
+        } 
+        else 
+        {
+            return false;
+        }
     }
 
-    // -------------------------------------------------------
     // VERIFICAR SI ESPECTÁCULO ESTÁ HABILITADO (OBJETO)
-    // -------------------------------------------------------
+  
     public function esta_habilitado($id_espectaculo) 
     {
         $es = $this->db
@@ -52,14 +54,23 @@ class Espectaculo_modelo extends CI_Model
                    ->get('espectaculos')
                    ->row();
 
-        if (!$es) return false;
+        if (!$es) 
+        {
+            return false;
+        }
 
-        return ($es->disponibles > 0 && $es->fecha >= date('Y-m-d'));
+        if ($es->disponibles > 0 && $es->fecha >= date('Y-m-d')) 
+        {
+            return true;
+        } 
+        else 
+        {
+            return false;
+        }
     }
 
-    // -------------------------------------------------------
     // OBTENER ESPECTÁCULO HABILITADO (OBJETO)
-    // -------------------------------------------------------
+
     public function obtener_espectaculo_habilitado($id_espectaculo)
     {
         return $this->db
@@ -70,9 +81,8 @@ class Espectaculo_modelo extends CI_Model
                     ->row();
     }
 
-    // -------------------------------------------------------
     // RESTAR ENTRADAS DISPONIBLES
-    // -------------------------------------------------------
+  
     public function restar_entradas($id_espectaculo, $cantidad) 
     {
         $es = $this->db
@@ -91,9 +101,8 @@ class Espectaculo_modelo extends CI_Model
         return false;
     }
 
-    // -------------------------------------------------------
     // OBTENER DETALLES (SI EL CAMPO EXISTE)
-    // -------------------------------------------------------
+    
     public function obtener_detalles($id_espectaculo) 
     {
         $q = $this->db
@@ -101,31 +110,38 @@ class Espectaculo_modelo extends CI_Model
                   ->where('id_espectaculo', $id_espectaculo)
                   ->get('espectaculos');
 
-        return ($q->num_rows() > 0)
-            ? $q->row()->detalles
-            : '';
+        if ($q->num_rows() > 0) 
+        {
+            return $q->row()->detalles;
+        } 
+        else 
+        {
+            return '';
+        }
     }
 
-    // -------------------------------------------------------
     // AGREGAR ESPECTÁCULO (PROTEGIDO CONTRA NULL)
-    // -------------------------------------------------------
+ 
     public function agregar_espectaculo($data)
     {
         // Protección extra: imagen NUNCA NULL
-        if (!isset($data['imagen']) || empty($data['imagen'])) {
+
+        if (!isset($data['imagen']) || empty($data['imagen'])) 
+        {
             $data['imagen'] = 'activos/imagenes/espectaculos/default.jpg';
         }
 
         return $this->db->insert('espectaculos', $data);
     }
 
-    // -------------------------------------------------------
     // ACTUALIZAR ESPECTÁCULO
-    // -------------------------------------------------------
+   
     public function actualizar_espectaculo($id, $datos)
     {
         // Si viene vacía, no se actualiza la imagen
-        if (isset($datos['imagen']) && empty($datos['imagen'])) {
+
+        if (isset($datos['imagen']) && empty($datos['imagen']))
+        {
             unset($datos['imagen']);
         }
 
@@ -134,9 +150,8 @@ class Espectaculo_modelo extends CI_Model
                     ->update('espectaculos', $datos);
     }
 
-    // -------------------------------------------------------
     // ELIMINAR TOTALMENTE UN ESPECTÁCULO + DATOS RELACIONADOS
-    // -------------------------------------------------------
+  
     public function eliminar_espectaculo_completo($id_espectaculo)
     {
         $this->db->where('espectaculo_id', $id_espectaculo)->delete('ventas');
@@ -147,9 +162,8 @@ class Espectaculo_modelo extends CI_Model
                     ->delete('espectaculos');
     }
 
-    // -------------------------------------------------------
     // OBTENER USUARIO (ARRAY)
-    // -------------------------------------------------------
+  
     public function obtener_usuario($id_usuario, $campo = null)
     {
         $usuario = $this->db
@@ -157,10 +171,20 @@ class Espectaculo_modelo extends CI_Model
                         ->get('usuarios')
                         ->row_array();
 
-        if (!$usuario) return false;
+        if (!$usuario) 
+        {
+            return false;
+        }
 
-        return ($campo !== null && isset($usuario[$campo]))
-            ? $usuario[$campo]
-            : $usuario;
+        if ($campo !== null && isset($usuario[$campo])) 
+        {
+            return $usuario[$campo];
+        } 
+        else 
+        {
+            return $usuario;
+        }
     }
 }
+
+?>;

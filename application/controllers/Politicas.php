@@ -50,6 +50,6 @@ class Politicas extends CI_Controller
         // Cargar footer común
         $this->load->view('footer_footer/footer_footer_administrador');
     }
-
 }
+
 ?>

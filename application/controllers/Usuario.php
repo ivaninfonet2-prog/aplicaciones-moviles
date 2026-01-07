@@ -17,7 +17,7 @@ class Usuario extends CI_Controller
         $this->load->helper(['url', 'form']);
 
         // Protección global: si no está logueado, afuera
-        if (!$this->session->userdata('logged_in'))
+        if ( !$this->session->userdata('logged_in'))
         {
             redirect('login');
             exit;
@@ -164,8 +164,10 @@ class Usuario extends CI_Controller
             );
         }
     }
-
-    // crear usuario
+    
+    // --------------------------------------------------------------------------------
+    // ----------------------- FUNCIONES DE ADMINISTRADOR ------------------------------
+    //---------------------------------------------------------------------------------
 
     public function crear_usuario()
     {
@@ -220,12 +222,14 @@ class Usuario extends CI_Controller
             show_error('Usuario no encontrado.', 404);
         }
 
-        // Reglas de validación (sin password obligatorio)
+        // Reglas de validacion (sin password obligatorio)
+
         $this->validar_usuario(false);
 
         if ($this->form_validation->run() === FALSE)
         {
-            $data = [
+            $data = 
+            [
                 'titulo'     => 'Editar Usuario',
                 'fondo'      => base_url('activos/imagenes/mi_fondo.jpg'),
                 'id_usuario' => $this->session->userdata('id_usuario'),

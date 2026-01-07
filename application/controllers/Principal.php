@@ -27,7 +27,7 @@ class Principal extends CI_Controller
         // Redirige al controlador de espectáculos (responsabilidad correcta)
         redirect('espectaculos/espectaculo_sin_loguear/' . $id);
     }
-
 }
+
 ?>
 
