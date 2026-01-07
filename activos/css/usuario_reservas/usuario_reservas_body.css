@@ -29,19 +29,18 @@ body {
 .intro {
     max-width: 900px;
     text-align: center;
-    margin-bottom: 2.2rem;
-    margin-top: 2.2rem;
+    margin: 2.2rem 0;
 }
 
 .titulo {
-    font-size: 2.6rem; /* ⬆️ más grande */
+    font-size: 2.6rem;
     margin-bottom: 0.6rem;
     color: #ffffff;
     text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
 }
 
 .descripcion {
-    font-size: 1.25rem; /* ⬆️ más grande */
+    font-size: 1.25rem;
     color: #f3f3f3;
     line-height: 1.7;
     text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
@@ -63,10 +62,10 @@ body {
 
 .tabla-reservas th,
 .tabla-reservas td {
-    padding: 16px 18px; /* ⬆️ más aire */
+    padding: 16px 18px;
     text-align: center;
     color: #1f1f1f;
-    font-size: 1.05rem; /* ⬆️ */
+    font-size: 1.05rem;
     border-bottom: 1px solid rgba(0,0,0,0.06);
 }
 
@@ -74,7 +73,6 @@ body {
     background: #dcebf8;
     color: #1f3a5f;
     font-weight: 700;
-    font-size: 1.1rem;
 }
 
 .tabla-reservas tr:nth-child(even) {
@@ -100,17 +98,15 @@ body {
 }
 
 /* ===============================
-   TEXTO DEBAJO (SIN TARJETA)
+   TEXTO DEBAJO
 ================================ */
 .texto-inferior {
     max-width: 900px;
     margin-top: 1.6rem;
     text-align: center;
-
-    font-size: 1.2rem; /* ⬆️ más grande */
+    font-size: 1.2rem;
     line-height: 1.8;
     color: #ffffff;
-
     text-shadow: 2px 2px 6px rgba(0,0,0,0.65);
 }
 
@@ -151,9 +147,7 @@ body {
     .titulo {
         font-size: 2.2rem;
     }
-
-    .descripcion,
-    .texto-inferior {
+    .descripcion, .texto-inferior {
         font-size: 1.1rem;
     }
 }

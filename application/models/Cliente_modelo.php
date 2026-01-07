@@ -9,9 +9,9 @@ class Cliente_modelo extends CI_Model
         $this->load->database();
     }
 
-    /* ======================================================
-       OBTENER CLIENTE POR USUARIO
-    ====================================================== */
+  
+    //   OBTENER CLIENTE POR USUARIO
+    
     public function obtener_cliente_por_usuario($usuario_id)
     {
         return $this->db
@@ -20,9 +20,8 @@ class Cliente_modelo extends CI_Model
             ->row_array();
     }
 
-    /* ======================================================
-       CREAR CLIENTE
-    ====================================================== */
+    //   CREAR CLIENTE
+
     public function crear_cliente($usuario_id)
     {
         return $this->db->insert('clientes', [
@@ -30,10 +29,8 @@ class Cliente_modelo extends CI_Model
         ]);
     }
 
-    /* ======================================================
-       LISTADO COMPLETO DE CLIENTES CON EMAIL
-       👉 email = nombre_usuario
-    ====================================================== */
+    //   LISTADO COMPLETO DE CLIENTES CON EMAIL
+       
     public function obtener_clientes()
     {
         return $this->db
@@ -51,9 +48,9 @@ class Cliente_modelo extends CI_Model
             ->result_array();
     }
 
-    /* ======================================================
-       MÉTODO ANTIGUO (COMPATIBILIDAD CON CONTROLADOR)
-    ====================================================== */
+   
+    //   METODO ANTIGUO (COMPATIBILIDAD CON CONTROLADOR)
+   
     public function obtener_clientes_por_usuario()
     {
         return $this->obtener_clientes();

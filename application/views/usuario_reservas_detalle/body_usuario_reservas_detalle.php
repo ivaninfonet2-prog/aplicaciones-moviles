@@ -70,6 +70,11 @@ $total_abonado   = number_format($reserva['monto_total'], 2, ',', '.');
 
         </div>
 
+        <!-- TEXTO DEBAJO DE LA TARJETA -->
+        <div class="texto-inferior">
+            Si necesitas realizar alguna modificación o cancelar esta reserva, puedes hacerlo a través de los botones de abajo.
+        </div>
+
         <!-- MENSAJE O ACCIONES -->
         <?php if ($mensaje): ?>
 
@@ -116,21 +121,26 @@ $total_abonado   = number_format($reserva['monto_total'], 2, ',', '.');
 </div>
 
 <script>
-    // Obtener el botón de cancelar y el modal
+    // Función para mostrar o cerrar el modal
+    function toggleModal(modal, action) {
+        if (action === 'open') {
+            modal.style.display = 'flex';
+        } else if (action === 'close') {
+            modal.style.display = 'none';
+        }
+    }
+
     const btnCancelar = document.getElementById('btnCancelar');
     const modalConfirmacion = document.getElementById('modalConfirmacion');
     const btnCerrarModal = document.getElementById('btnCerrarModal');
 
-    // Abrir el modal cuando se hace clic en el botón "Cancelar reserva"
-    btnCancelar.addEventListener('click', function() 
-    {
-        modalConfirmacion.style.display = 'flex';
+    // Event listeners
+    btnCancelar.addEventListener('click', function() {
+        toggleModal(modalConfirmacion, 'open');
     });
 
-    // Cerrar el modal cuando se hace clic en el botón "Cancelar"
-    btnCerrarModal.addEventListener('click', function()
-    {
-        modalConfirmacion.style.display = 'none';
+    btnCerrarModal.addEventListener('click', function() {
+        toggleModal(modalConfirmacion, 'close');
     });
 </script>
 

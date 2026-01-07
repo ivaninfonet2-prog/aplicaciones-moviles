@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Mis Reservas</title>
-
     <link rel="stylesheet" href="<?= base_url('activos/css/usuario_reservas/usuario_reservas_body.css'); ?>">
 </head>
 
@@ -60,7 +59,7 @@
             </tbody>
         </table>
 
-        <!-- TEXTO DEBAJO (SIN TARJETA) -->
+        <!-- TEXTO DEBAJO -->
         <div class="texto-inferior">
             Si necesitás modificar o cancelar alguna reserva,
             ingresá al detalle del espectáculo correspondiente.

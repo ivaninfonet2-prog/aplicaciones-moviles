@@ -9,7 +9,6 @@ class Espectaculo_modelo extends CI_Model
         $this->load->database();
     }
 
-    // -------------------------------------------------------
     // OBTENER LISTA COMPLETA (ARRAY)
     // -------------------------------------------------------
     public function obtener_espectaculos() 
