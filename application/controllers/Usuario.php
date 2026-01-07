@@ -40,7 +40,7 @@ class Usuario extends CI_Controller
         }
 
         $this->output
-             ->set_header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0")
+            ->set_header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0")
             ->set_header("Cache-Control: post-check=0, pre-check=0", false)
             ->set_header("Pragma: no-cache");
 
@@ -255,10 +255,7 @@ class Usuario extends CI_Controller
 
             $this->Usuario_modelo->actualizar_usuario($id_usuario, $usuario_data);
 
-            $this->session->set_flashdata(
-                'mensaje_exito',
-                'Usuario actualizado correctamente.'
-            );
+            $this->session->set_flashdata('mensaje_exito','Usuario actualizado correctamente.');
 
             redirect('usuario/editar_usuario/' . $id_usuario);
         }
@@ -276,25 +273,20 @@ class Usuario extends CI_Controller
         }
 
         // Verificar clientes asociados
+        
         $this->db->where('usuario_id', $id_usuario);
         
         $clientes = $this->db->get('clientes');
 
         if ($clientes->num_rows() > 0)
         {
-            $this->session->set_flashdata(
-                'mensaje_error',
-                'No se puede eliminar el usuario porque tiene clientes asociados.'
-            );
+            $this->session->set_flashdata('mensaje_error','No se puede eliminar el usuario ya tiene clientes asociados.');
         }
         else
         {
             $this->Usuario_modelo->eliminar_usuario($id_usuario);
         
-            $this->session->set_flashdata(
-                'mensaje_exito',
-                'Usuario eliminado correctamente.'
-                );
+            $this->session->set_flashdata('mensaje_exito','Usuario eliminado correctamente.');
         }
 
         redirect('administrador');
