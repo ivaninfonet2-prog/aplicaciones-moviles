@@ -1,12 +1,20 @@
 <?php
+
+
+// ================================================================
+// INDEX.PHP LIMPIO PARA CODEIGNITER
+// ================================================================
+
+// Define el entorno de la aplicación
 define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'development');
 
+// Configuración de errores según el entorno
 switch (ENVIRONMENT)
 {
     case 'development':
         error_reporting(-1);
         ini_set('display_errors', 1);
-    break;
+        break;
 
     case 'testing':
     case 'production':
@@ -19,7 +27,7 @@ switch (ENVIRONMENT)
         {
             error_reporting(E_ALL & ~E_NOTICE & ~E_STRICT & ~E_USER_NOTICE);
         }
-    break;
+        break;
 
     default:
         header('HTTP/1.1 503 Service Unavailable.', TRUE, 503);
@@ -27,51 +35,48 @@ switch (ENVIRONMENT)
         exit(1); // EXIT_ERROR
 }
 
+// ---------------------------------------------------------------
+// Rutas principales
+// ---------------------------------------------------------------
 $system_path = 'system';
 $application_folder = 'application';
 $view_folder = '';
 
-// Set the current directory correctly for CLI requests
+// Ajuste de directorio actual para CLI
 if (defined('STDIN'))
 {
     chdir(dirname(__FILE__));
 }
 
+// Resolución de ruta del sistema
 if (($_temp = realpath($system_path)) !== FALSE)
 {
-    $system_path = $_temp.DIRECTORY_SEPARATOR;
+    $system_path = $_temp . DIRECTORY_SEPARATOR;
 }
 else
 {
-    // Ensure there's a trailing slash
     $system_path = strtr(
         rtrim($system_path, '/\\'),
         '/\\',
-        DIRECTORY_SEPARATOR.DIRECTORY_SEPARATOR
-    ).DIRECTORY_SEPARATOR;
+        DIRECTORY_SEPARATOR . DIRECTORY_SEPARATOR
+    ) . DIRECTORY_SEPARATOR;
 }
 
-// Is the system path correct?
-if ( ! is_dir($system_path))
+// Verificar que el sistema existe
+if (!is_dir($system_path))
 {
     header('HTTP/1.1 503 Service Unavailable.', TRUE, 503);
-    echo 'Your system folder path does not appear to be set correctly. Please open the following file and correct this: '.pathinfo(__FILE__, PATHINFO_BASENAME);
+    echo 'Your system folder path does not appear to be set correctly. Please open the following file and correct this: ' . pathinfo(__FILE__, PATHINFO_BASENAME);
     exit(3); // EXIT_CONFIG
 }
 
-// The name of THIS file
+// Definiciones de constantes
 define('SELF', pathinfo(__FILE__, PATHINFO_BASENAME));
-
-// Path to the system directory
 define('BASEPATH', $system_path);
-
-// Path to the front controller (this file) directory
-define('FCPATH', dirname(__FILE__).DIRECTORY_SEPARATOR);
-
-// Name of the "system" directory
+define('FCPATH', dirname(__FILE__) . DIRECTORY_SEPARATOR);
 define('SYSDIR', basename(BASEPATH));
 
-// The path to the "application" directory
+// Ruta de la aplicación
 if (is_dir($application_folder))
 {
     if (($_temp = realpath($application_folder)) !== FALSE)
@@ -83,31 +88,31 @@ if (is_dir($application_folder))
         $application_folder = strtr(
             rtrim($application_folder, '/\\'),
             '/\\',
-            DIRECTORY_SEPARATOR.DIRECTORY_SEPARATOR
+            DIRECTORY_SEPARATOR . DIRECTORY_SEPARATOR
         );
     }
 }
-elseif (is_dir(BASEPATH.$application_folder.DIRECTORY_SEPARATOR))
+elseif (is_dir(BASEPATH . $application_folder . DIRECTORY_SEPARATOR))
 {
-    $application_folder = BASEPATH.strtr(
+    $application_folder = BASEPATH . strtr(
         trim($application_folder, '/\\'),
         '/\\',
-        DIRECTORY_SEPARATOR.DIRECTORY_SEPARATOR
+        DIRECTORY_SEPARATOR . DIRECTORY_SEPARATOR
     );
 }
 else
 {
     header('HTTP/1.1 503 Service Unavailable.', TRUE, 503);
-    echo 'Your application folder path does not appear to be set correctly. Please open the following file and correct this: '.SELF;
+    echo 'Your application folder path does not appear to be set correctly. Please open the following file and correct this: ' . SELF;
     exit(3); // EXIT_CONFIG
 }
 
-define('APPPATH', $application_folder.DIRECTORY_SEPARATOR);
+define('APPPATH', $application_folder . DIRECTORY_SEPARATOR);
 
-// The path to the "views" directory
-if ( ! isset($view_folder[0]) && is_dir(APPPATH.'views'.DIRECTORY_SEPARATOR))
+// Ruta de las vistas
+if (!isset($view_folder[0]) && is_dir(APPPATH . 'views' . DIRECTORY_SEPARATOR))
 {
-    $view_folder = APPPATH.'views';
+    $view_folder = APPPATH . 'views';
 }
 elseif (is_dir($view_folder))
 {
@@ -120,25 +125,28 @@ elseif (is_dir($view_folder))
         $view_folder = strtr(
             rtrim($view_folder, '/\\'),
             '/\\',
-            DIRECTORY_SEPARATOR.DIRECTORY_SEPARATOR
+            DIRECTORY_SEPARATOR . DIRECTORY_SEPARATOR
         );
     }
 }
-elseif (is_dir(APPPATH.$view_folder.DIRECTORY_SEPARATOR))
+elseif (is_dir(APPPATH . $view_folder . DIRECTORY_SEPARATOR))
 {
-    $view_folder = APPPATH.strtr(
+    $view_folder = APPPATH . strtr(
         trim($view_folder, '/\\'),
         '/\\',
-        DIRECTORY_SEPARATOR.DIRECTORY_SEPARATOR
+        DIRECTORY_SEPARATOR . DIRECTORY_SEPARATOR
     );
 }
 else
 {
     header('HTTP/1.1 503 Service Unavailable.', TRUE, 503);
-    echo 'Your view folder path does not appear to be set correctly. Please open the following file and correct this: '.SELF;
+    echo 'Your view folder path does not appear to be set correctly. Please open the following file and correct this: ' . SELF;
     exit(3); // EXIT_CONFIG
 }
 
-define('VIEWPATH', $view_folder.DIRECTORY_SEPARATOR);
+define('VIEWPATH', $view_folder . DIRECTORY_SEPARATOR);
 
-require_once BASEPATH.'core/CodeIgniter.php';
+// ---------------------------------------------------------------
+// Carga del núcleo de CodeIgniter
+// ---------------------------------------------------------------
+require_once BASEPATH . 'core/CodeIgniter.php';

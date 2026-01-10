@@ -8,7 +8,6 @@
     <!-- CSS exclusivo del header -->
     <link rel="stylesheet" href="<?= base_url('activos/css/principal/header_principal.css?v=' . time()) ?>">
 </head>
-<body>
 
 <header class="main-header">
     <div class="header-container">

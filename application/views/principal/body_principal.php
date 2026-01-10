@@ -2,9 +2,9 @@
 <link rel="stylesheet" href="<?= base_url('activos/css/principal/body_principal.css?v=' . time()) ?>">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 
-<body style="background-image: url('<?= $fondo; ?>');">
-
 <main class="inicio-container">
+
+<body style="background-image: url('<?= isset($fondo) ? $fondo : '' ?>');">
 
     <!-- BIENVENIDA -->
     <section class="bienvenida">
@@ -23,14 +23,16 @@
             <?php if (!empty($espectaculos)): ?>
                 <?php foreach ($espectaculos as $e): ?>
                     <article class="tarjeta">
-                        <img src="<?= base_url('activos/imagenes/' . $e['imagen']) ?>" alt="<?= $e['nombre'] ?>" class="imagen">
+                        <img src="<?= base_url('activos/imagenes/' . $e['imagen']) ?>"
+                             alt="<?= $e['nombre'] ?>" class="imagen">
 
                         <div class="contenido">
                             <h3><?= $e['nombre'] ?></h3>
                             <p class="descripcion"><?= $e['descripcion'] ?></p>
                             <p class="precio">$<?= number_format($e['precio'], 2, ',', '.') ?></p>
 
-                            <a href="<?= site_url('principal/espectaculo_principal/' . $e['id_espectaculo']) ?>" class="boton-ver">
+                            <a href="<?= site_url('principal/espectaculo_principal/' . $e['id_espectaculo']) ?>"
+                               class="boton-ver">
                                 Ver espectáculo
                             </a>
                         </div>
@@ -45,4 +47,5 @@
             ¡No te pierdas ninguno de nuestros eventos destacados!
         </div>
     </section>
+
 </main>
