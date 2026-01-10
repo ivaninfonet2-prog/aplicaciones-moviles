@@ -20,9 +20,9 @@ class Principal extends CI_Controller
             'espectaculos' => $this->Espectaculo_modelo->obtener_espectaculos()
         ];
 
-        //$this->load->view('principal/header_principal', $data);
-        //$this->load->view('principal/body_principal', $data);
-        //$this->load->view('footer_footer/footer_footer_principal', $data);
+        $this->load->view('principal/header_principal', $data);
+        $this->load->view('principal/body_principal', $data);
+        $this->load->view('footer_footer/footer_footer_principal', $data);
     }
 
     public function espectaculo_principal($id = null)

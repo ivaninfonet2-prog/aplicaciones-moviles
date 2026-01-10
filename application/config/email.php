@@ -15,3 +15,4 @@ $config = array(
 );
 $this->load->library('email', $config);
 
+?>
