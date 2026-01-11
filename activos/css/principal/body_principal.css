@@ -63,6 +63,10 @@ body {
 /* ======================================================
    CARTELERA
 ====================================================== */
+.cartelera {
+    padding-bottom: 40px;
+}
+
 .tarjetas-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -76,11 +80,15 @@ body {
    TARJETA
 ====================================================== */
 .tarjeta {
-    background: rgba(0, 0, 0, 0.15);
-    backdrop-filter: blur(6px);
+    background: rgba(0, 0, 0, 0.35);  /* Fondo más oscuro con transparencia */
+    backdrop-filter: blur(8px);  /* Fondo borroso para un efecto más suave */
     border-radius: 10px;
     padding: 20px;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%; /* Para que la tarjeta ocupe todo el alto disponible */
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -89,18 +97,25 @@ body {
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
 }
 
-.tarjeta .imagen {
-    width: 160px;
-    height: 160px;
-    object-fit: cover;
-    border-radius: 10px;
-    margin-bottom: 15px;
+.tarjeta .contenido {
+    position: relative;
+    padding-top: 10px;
 }
 
-.tarjeta h3 {
-    font-size: 1.6rem;
+.tarjeta .nombre-artista {
+    font-size: 1.8rem;  /* Tamaño grande */
     font-weight: 900;
-    margin-bottom: 10px;
+    color: #ffffff;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);  /* Sombra sutil para mejorar la visibilidad */
+    margin-bottom: 10px; /* Espaciado entre el nombre y la imagen */
+}
+
+.tarjeta .imagen {
+    width: 160px;  /* Tamaño original */
+    height: 160px; /* Tamaño original */
+    object-fit: cover;
+    border-radius: 10px;
+    margin: 0 auto; /* Centrado de la imagen */
 }
 
 .descripcion {
@@ -153,5 +168,9 @@ body {
     .tarjeta .imagen {
         width: 130px;
         height: 130px;
+    }
+
+    .tarjeta .nombre-artista {
+        font-size: 1.5rem;  /* Tamaño más pequeño para pantallas pequeñas */
     }
 }
