@@ -3,130 +3,116 @@ body {
     margin: 0;
     padding: 0;
     min-height: 100vh;
-    background: url('<?= $fondo; ?>') no-repeat center center fixed;
-    background-size: cover; /* La imagen cubre toda la pantalla */
     font-family: 'Segoe UI', Arial, sans-serif;
     color: #fff;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
 }
 
-/* =============================== TEXTO FUERA DE LA TARJETA =============================== */
+/* =============================== TEXTO ARRIBA DE LA TARJETA =============================== */
 .intro-text {
     text-align: center;
-    margin-top: 120px; /* Más separación desde el header */
+    margin: 120px auto 30px;
     padding: 0 20px;
     max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
 }
 
 .intro-text h1 {
-    font-size: 3rem; /* Aumenté el tamaño */
+    font-size: 3rem;
     font-weight: 600;
-    color: #e9f3ff; /* Color claro */
+    color: #e9f3ff;
     margin-bottom: 12px;
-    text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.6); /* Sombra suave */
+    text-shadow: 1px 1px 6px rgba(0,0,0,0.6);
 }
 
 .intro-text p {
-    font-size: 1.3rem; /* Aumenté el tamaño */
-    opacity: 0.9;
+    font-size: 1.4rem; /* aumentado ligeramente */
+    opacity: 0.95;
     margin: 0;
 }
 
-/* =============================== MAIN =============================== */
+/* =============================== MAIN TARJETA =============================== */
 .main-content {
-    min-height: calc(100vh - 250px);
     display: flex;
     justify-content: center;
-    align-items: flex-start;
     padding: 20px;
-    margin-top: 30px;
 }
 
-/* =============================== TARJETA =============================== */
 .cuadro-ayuda {
-    background: rgba(0, 0, 0, 0.5); /* Fondo oscuro con transparencia */
+    background: rgba(0,0,0,0.5);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     border-radius: 16px;
-    border: 1px solid rgba(255, 255, 255, 0.15); /* Borde sutil */
+    border: 1px solid rgba(255,255,255,0.15);
     padding: 35px 30px;
     max-width: 500px;
     width: 90%;
-    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 8px 28px rgba(0,0,0,0.4);
     text-align: center;
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Hover suave */
 .cuadro-ayuda:hover {
-    background-color: rgba(0, 0, 0, 0.6); /* Aumenta la oscuridad al pasar el mouse */
-    box-shadow: 0 10px 32px rgba(0, 0, 0, 0.45);
-    transform: none;
+    background: rgba(0,0,0,0.6);
+    box-shadow: 0 10px 32px rgba(0,0,0,0.45);
 }
 
-/* =============================== TÍTULO =============================== */
+/* TÍTULO TARJETA */
 .cuadro-ayuda h2 {
-    font-size: 2.5rem; /* Aumenté el tamaño */
+    font-size: 2.5rem;
     font-weight: 700;
     margin-bottom: 16px;
-    color: #7ee8fa; /* Color azul claro */
-    text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.6); /* Sombra suave */
+    color: #7ee8fa;
+    text-shadow: 1px 1px 6px rgba(0,0,0,0.6);
 }
 
-/* =============================== TEXTO INTERNO =============================== */
+/* TEXTO INTERNO TARJETA */
 .cuadro-ayuda p {
-    font-size: 1.2rem; /* Aumenté el tamaño */
-    line-height: 1.6;
+    font-size: 1.3rem; /* aumentado */
+    line-height: 1.7;
     color: #eef9ff;
     opacity: 0.95;
     margin-bottom: 12px;
 }
 
 .extra-info {
-    font-size: 1rem; /* Aumenté el tamaño */
+    font-size: 1.1rem; /* ligeramente mayor */
     color: #d6f1ff;
-    opacity: 0.9;
+    opacity: 0.95;
 }
 
-/* =============================== TEXTO FUERA DE LA TARJETA =============================== */
+/* =============================== TEXTO DE ABAJO =============================== */
 .small-info-container {
     text-align: center;
-    margin-top: 50px; /* Más separación entre la tarjeta y el texto */
+    margin-top: 30px;   /* espacio entre tarjeta y texto */
+    margin-bottom: 40px; /* espacio entre texto y footer */
 }
 
 .small-info {
-    font-size: 1.2rem; /* Aumenté el tamaño */
-    color: #ffffff; /* Blanco fuerte para un buen contraste */
-    opacity: 1; /* Totalmente opaco */
-    font-weight: bold; /* Puse el texto en negrita */
-    font-style: italic; /* Mantengo la cursiva */
+    font-size: 2rem; /* aumentado */
+    color: #ffffff;
+    opacity: 1;
+    font-weight: bold;
+    font-style: italic;
 }
 
 /* =============================== RESPONSIVE =============================== */
 @media (max-width: 768px) {
-    .intro-text h1 {
-        font-size: 2.5rem; /* Tamaño ajustado para pantallas más pequeñas */
-    }
+    .intro-text h1 { font-size: 2.5rem; }
+    .intro-text p { font-size: 1.2rem; }
+    .cuadro-ayuda { padding: 25px; max-width: 92%; }
+    .cuadro-ayuda h2 { font-size: 2rem; }
+    .cuadro-ayuda p { font-size: 1.15rem; }
+    .small-info { font-size: 1.7rem; }
+}
 
-    .intro-text p {
-        font-size: 1.1rem;
-    }
-
-    .cuadro-ayuda {
-        padding: 25px;
-        max-width: 92%;
-    }
-
-    .cuadro-ayuda h2 {
-        font-size: 2rem; /* Aumenté un poco el tamaño */
-    }
-
-    .cuadro-ayuda p {
-        font-size: 1rem;
-    }
-
-    .small-info {
-        font-size: 1rem; /* Ajusté el tamaño para pantallas pequeñas */
-    }
+@media (max-width: 480px) {
+    .intro-text h1 { font-size: 2rem; }
+    .intro-text p { font-size: 1rem; }
+    .cuadro-ayuda { padding: 20px; }
+    .cuadro-ayuda h2 { font-size: 1.8rem; }
+    .cuadro-ayuda p { font-size: 1rem; }
+    .small-info { font-size: 1.3rem; }
 }

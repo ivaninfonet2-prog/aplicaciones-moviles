@@ -4,11 +4,11 @@
 body {
     margin: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-size: cover;
-    background-position: center;
+    background-size: cover;           /* cubre toda la pantalla */
+    background-position: center;      /* centrado */
     background-repeat: no-repeat;
-    /* Fondo más brillante y contraste definido */
-    filter: brightness(1.2) contrast(1.1);
+    background-attachment: fixed;     /* mantiene la imagen al hacer scroll */
+    /* eliminamos filtros para que la imagen quede nítida */
 }
 
 /* ===============================
@@ -17,7 +17,7 @@ body {
 .fondo-animado {
     position: fixed;
     inset: 0;
-    background: rgba(0, 0, 0, 0.08); /* más clara */
+    background: rgba(0, 0, 0, 0.15); /* ligera capa oscura para contraste del texto */
     z-index: -1;
 }
 
@@ -28,7 +28,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 100px 20px 40px; /* menos padding inferior para acercar texto al footer */
+    padding: 100px 20px 40px;
     min-height: 100vh;
     box-sizing: border-box;
 }
@@ -37,10 +37,11 @@ body {
    TÍTULO
 ================================ */
 .titulo-principal {
-    font-size: 2.5rem;
+    font-size: 2.8rem;
     margin-bottom: 20px;
     color: #f5f8fb;
     text-shadow: 0 3px 10px rgba(0,0,0,0.45);
+    text-align: center;
 }
 
 /* ===============================
@@ -50,8 +51,8 @@ body {
     max-width: 520px;
     text-align: center;
     color: #f1f1f1;
-    font-size: 1.1rem;
-    line-height: 1.7;
+    font-size: 1.3rem;
+    line-height: 1.8;
     margin-bottom: 36px;
 }
 
@@ -63,28 +64,28 @@ body {
    TARJETA
 ================================ */
 .contenedor-mensaje {
-    background: rgba(255, 255, 255, 0.55);
-    padding: 32px 40px;
-    border-radius: 16px;
+    background: rgba(0, 0, 0, 0.5); /* negra semitransparente */
+    padding: 40px 50px;
+    border-radius: 20px;
     text-align: center;
-    max-width: 460px;
+    max-width: 500px;
     width: 100%;
     backdrop-filter: blur(6px);
-    box-shadow: 0 10px 24px rgba(0,0,0,0.25);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.4);
 }
 
 /* ===============================
    DETALLE DENTRO DE TARJETA
 ================================ */
 .detalle-reserva {
-    font-size: 1rem;
-    line-height: 1.7;
-    color: #1f3b4d;
+    font-size: 1.3rem;
+    line-height: 1.9;
+    color: #ffffff;
     margin-bottom: 28px;
 }
 
 .detalle-reserva p {
-    margin-bottom: 14px;
+    margin-bottom: 16px;
 }
 
 .detalle-reserva p:last-child {
@@ -94,7 +95,7 @@ body {
 .detalle-reserva .agradecimiento {
     margin-top: 16px;
     font-style: italic;
-    color: #2a4d69;
+    color: #ffffff;
 }
 
 /* ===============================
@@ -102,7 +103,7 @@ body {
 ================================ */
 .acciones {
     display: flex;
-    gap: 16px;
+    gap: 18px;
     justify-content: center;
     flex-wrap: wrap;
 }
@@ -111,13 +112,13 @@ body {
    BOTONES BASE
 ================================ */
 .boton {
-    padding: 14px 28px;
+    padding: 14px 32px;
     font-weight: 600;
     text-decoration: none;
     border-radius: 10px;
     transition: all 0.3s ease;
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    font-size: 1rem;
+    font-size: 1.1rem;
 }
 
 /* ===============================
@@ -150,13 +151,14 @@ body {
    TEXTO ADICIONAL DEBAJO DE TARJETA
 ================================ */
 .texto-debajo {
-    margin-top: 12px; /* más cercano a la tarjeta */
-    font-size: 1.2rem; /* legible */
+    margin-top: 14px;
+    font-size: 1.4rem;
     color: #ffffff;
     text-align: center;
-    max-width: 550px;
+    max-width: 600px;
     line-height: 1.8;
     padding: 0 20px;
+    margin-bottom: 20px;
 }
 
 /* ===============================
@@ -164,26 +166,31 @@ body {
 ================================ */
 @media (max-width: 480px) {
     .titulo-principal {
-        font-size: 2rem;
+        font-size: 2.2rem;
     }
 
     .texto-intro {
-        font-size: 1rem;
+        font-size: 1.15rem;
     }
 
     .contenedor-mensaje {
-        padding: 28px 26px;
+        padding: 32px 28px;
+    }
+
+    .detalle-reserva {
+        font-size: 1.15rem;
     }
 
     .boton {
         width: 100%;
         text-align: center;
-        font-size: 0.95rem;
+        font-size: 1rem;
     }
 
     .texto-debajo {
-        font-size: 1.1rem;
+        font-size: 1.2rem;
         padding: 0 16px;
-        margin-top: 10px;
+        margin-top: 12px;
+        margin-bottom: 12px;
     }
 }

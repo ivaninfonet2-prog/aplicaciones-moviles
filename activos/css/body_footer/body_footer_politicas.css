@@ -3,82 +3,76 @@ body {
     margin: 0;
     padding: 0;
     min-height: 100vh;
-    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); 
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center center;
     font-family: 'Segoe UI', Arial, sans-serif;
     color: #fff;
+
+    /* Fondo dinámico desde PHP */
+    background-color: rgba(255, 255, 255, 0.08); /* Overlay ligero para claridad */
+    background-blend-mode: lighten;
 }
 
-/* =============================== TEXTO FUERA DE LA TARJETA =============================== */
+/* =============================== TEXTO INTRO =============================== */
 .intro-text {
     text-align: center;
-    margin-top: 120px; /* Más separación desde el header */
-    padding: 0 20px;
+    margin: 120px auto 40px auto;
     max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
+    padding: 0 20px;
 }
 
 .intro-text h1 {
-    font-size: 3rem; /* Aumenté el tamaño */
+    font-size: 3rem;
     font-weight: 600;
-    color: #e9f3ff; /* Color claro */
+    color: #e9f3ff;
     margin-bottom: 12px;
-    text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.6); /* Sombra suave */
+    text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.35);
 }
 
 .intro-text p {
-    font-size: 1.3rem; /* Aumenté el tamaño */
+    font-size: 1.3rem;
     opacity: 0.9;
     margin: 0;
 }
 
-/* =============================== MAIN =============================== */
+/* =============================== MAIN TARJETA =============================== */
 .main-content {
-    min-height: calc(100vh - 250px);
     display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    padding: 20px;
-    margin-top: 30px;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 20px;
+    margin-bottom: 50px;
 }
 
-/* =============================== TARJETA =============================== */
 .cuadro-politicas {
-    background: rgba(0, 0, 0, 0.5); /* Fondo oscuro con transparencia */
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+    background: rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     border-radius: 16px;
-    border: 1px solid rgba(255, 255, 255, 0.15); /* Borde sutil */
-    padding: 35px 30px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    padding: 40px 30px;
     max-width: 500px;
     width: 90%;
-    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.25);
     text-align: center;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    transition: all 0.3s ease;
 }
 
-/* Hover suave */
 .cuadro-politicas:hover {
-    background-color: rgba(0, 0, 0, 0.6); /* Aumenta la oscuridad al pasar el mouse */
-    box-shadow: 0 10px 32px rgba(0, 0, 0, 0.45);
-    transform: none;
+    background-color: rgba(0, 0, 0, 0.45);
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.3);
 }
 
-/* =============================== TÍTULO =============================== */
+/* TÍTULO TARJETA */
 .cuadro-politicas h2 {
-    font-size: 2.5rem; /* Aumenté el tamaño */
+    font-size: 2.5rem;
     font-weight: 700;
     margin-bottom: 16px;
-    color: #7ee8fa; /* Color azul claro */
-    text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.6); /* Sombra suave */
+    color: #7ee8fa;
+    text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.35);
 }
 
-/* =============================== TEXTO INTERNO =============================== */
+/* TEXTO INTERNO TARJETA */
 .cuadro-politicas p {
-    font-size: 1.2rem; /* Aumenté el tamaño */
+    font-size: 1.2rem;
     line-height: 1.6;
     color: #eef9ff;
     opacity: 0.95;
@@ -86,49 +80,44 @@ body {
 }
 
 .extra-info {
-    font-size: 1rem; /* Aumenté el tamaño */
+    font-size: 1.1rem;
     color: #d6f1ff;
-    opacity: 0.9;
+    opacity: 0.95;
 }
 
-/* =============================== TEXTO FUERA DE LA TARJETA =============================== */
-.small-info-container {
-    text-align: center;
-    margin-top: 50px; /* Más separación entre la tarjeta y el texto */
+/* =============================== TEXTO DEBAJO DE LA TARJETA =============================== */
+.texto-debajo {
+    margin-top: 30px;
+    max-width: 700px;
 }
 
-.small-info {
-    font-size: 1.2rem; /* Aumenté el tamaño */
-    color: #ffffff; /* Blanco fuerte para un buen contraste */
-    opacity: 1; /* Totalmente opaco */
-    font-weight: bold; /* Puse el texto en negrita */
-    font-style: italic; /* Mantengo la cursiva */
+.texto-debajo p {
+    font-size: 1.25rem; /* Más grande y legible */
+    font-weight: 500;
+    color: #ffffff;
+    opacity: 0.95;
+    line-height: 1.6;
 }
 
 /* =============================== RESPONSIVE =============================== */
 @media (max-width: 768px) {
-    .intro-text h1 {
-        font-size: 2.5rem; /* Tamaño ajustado para pantallas más pequeñas */
-    }
+    .intro-text h1 { font-size: 2.5rem; }
+    .intro-text p { font-size: 1.15rem; }
 
-    .intro-text p {
-        font-size: 1.1rem;
-    }
+    .cuadro-politicas { padding: 30px; max-width: 92%; }
+    .cuadro-politicas h2 { font-size: 2rem; }
+    .cuadro-politicas p { font-size: 1rem; }
 
-    .cuadro-politicas {
-        padding: 25px;
-        max-width: 92%;
-    }
+    .texto-debajo p { font-size: 1.15rem; }
+}
 
-    .cuadro-politicas h2 {
-        font-size: 2rem; /* Aumenté un poco el tamaño */
-    }
+@media (max-width: 480px) {
+    .intro-text h1 { font-size: 2rem; margin-top: 100px; }
+    .intro-text p { font-size: 1rem; }
 
-    .cuadro-politicas p {
-        font-size: 1rem;
-    }
+    .cuadro-politicas { padding: 25px; }
+    .cuadro-politicas h2 { font-size: 1.6rem; }
+    .cuadro-politicas p { font-size: 0.95rem; }
 
-    .small-info {
-        font-size: 1rem; /* Ajusté el tamaño para pantallas pequeñas */
-    }
+    .texto-debajo p { font-size: 1rem; }
 }

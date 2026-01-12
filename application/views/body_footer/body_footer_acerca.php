@@ -5,29 +5,27 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><?= $titulo; ?></title>
-  
+
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  
+
   <!-- Estilos personalizados -->
   <link rel="stylesheet" href="<?= base_url('activos/css/body_footer/body_footer_acerca.css'); ?>">
 </head>
 
-<body class="background-image" style="background-image: url('<?= $fondo; ?>');">
+<body style="background-image: url('<?= $fondo; ?>'); background-size: cover; background-position: center center;">
 
-  <!-- Sección de introducción -->
-  <section class="intro-text container text-center">
-    <h1 class="titulo-principal">Bienvenido a nuestra plataforma</h1>
+  <!-- Texto fuera de la tarjeta -->
+  <section class="intro-text text-center">
+    <h1><?= $titulo; ?></h1>
     <p>Un espacio pensado para estudiantes</p>
   </section>
 
-  <!-- Sección principal de contenido -->
-  <main class="main-content container d-flex flex-column align-items-center">
-    
-    <!-- Cuadro con información sobre la plataforma -->
-    <div class="cuadro-acerca mt-4">
-      <h2 class="animated-title"><?= $titulo; ?></h2>
-      <p class="animated-text">
+  <!-- Contenedor principal -->
+  <main class="main-content d-flex flex-column align-items-center">
+    <div class="cuadro-acerca">
+      <h2><?= $titulo; ?></h2>
+      <p>
         Te ofrecemos productos y actividades diseñadas para acompañarte en tu vida universitaria.
       </p>
       <p class="extra-info">
@@ -35,11 +33,9 @@
       </p>
     </div>
 
-    <!-- Texto debajo de la tarjeta -->
-    <div class="texto-debajo mt-4">
+    <div class="texto-debajo text-center">
       <p>¡Aprovecha todas las herramientas y recursos que tenemos para ti!</p>
     </div>
-
   </main>
 
   <!-- Bootstrap JS -->

@@ -12,7 +12,7 @@
 
         <!-- TEXTO SUPERIOR (FUERA DE LA TARJETA) -->
         <section class="mensaje-superior">
-            <h2>¡Bienvenido a UNLa Tienda!</h2>
+            <h2>Accion completada</h2>
             <p>Tu registro se completó correctamente. Estás a un paso de comenzar.</p>
         </section>
 

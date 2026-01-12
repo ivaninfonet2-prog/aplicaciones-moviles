@@ -5,21 +5,22 @@
     <title><?= $titulo; ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- Enlace al CSS -->
+    <!-- CSS externo -->
     <link rel="stylesheet" href="<?= base_url('activos/css/body_footer/body_footer_ayuda.css'); ?>">
 </head>
 <body style="background-image: url('<?= $fondo; ?>');">
-    
-    <!-- Texto fuera de la tarjeta -->
-    <section class="intro-text">
+
+    <!-- TEXTO FUERA DE LA TARJETA -->
+    <section class="intro-text text-center">
         <h1>¿Necesitas asistencia?</h1>
         <p>Estamos aquí para ayudarte a utilizar nuestra plataforma de manera sencilla y efectiva.</p>
     </section>
-    
+
+    <!-- TARJETA PRINCIPAL -->
     <main class="main-content">
-        <div class="cuadro-ayuda text-center text-white">
-            <h2 class="animated-title">Ayuda</h2>
-            <p class="animated-text">
+        <div class="cuadro-ayuda">
+            <h2>Ayuda</h2>
+            <p>
                 En esta sección encontrarás información y soporte para aprovechar al máximo UNLa Tienda.
             </p>
             <p class="extra-info">
@@ -28,12 +29,12 @@
         </div>
     </main>
 
-    <!-- Texto mínimo fuera de la tarjeta -->
-    <div class="small-info-container">
+    <!-- TEXTO DEBAJO DE LA TARJETA -->
+    <section class="small-info-container">
         <p class="small-info">
-            © 2026 Plataforma Universitaria. Todos los derechos reservados.
+            Contáctanos para cualquier consulta adicional. ¡Estamos para ayudarte!
         </p>
-    </div>
+    </section>
 
 </body>
 </html>

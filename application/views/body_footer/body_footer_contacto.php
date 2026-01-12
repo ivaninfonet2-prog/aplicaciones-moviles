@@ -4,18 +4,21 @@
     <meta charset="UTF-8">
     <title><?= $titulo; ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Enlace al CSS -->
+
+    <!-- CSS personalizado -->
     <link rel="stylesheet" href="<?= base_url('activos/css/body_footer/body_footer_contacto.css'); ?>">
 </head>
-<body style="background-image: url('<?= $fondo; ?>');">
-    <!-- Texto fuera de la tarjeta -->
-    <section class="intro-text">
+<body style="background-image: url('<?= $fondo; ?>'); background-size: cover; background-position: center center; background-attachment: fixed;">
+
+    <!-- Texto introductorio -->
+    <section class="intro-text text-center">
         <h1>¿Necesitas ayuda o información?</h1>
         <p>Estamos aquí para asistirte en todo lo relacionado con nuestros servicios universitarios.</p>
     </section>
 
+    <!-- Tarjeta de contacto -->
     <main class="main-content">
-        <div class="cuadro-contacto text-center text-white">
+        <div class="cuadro-contacto text-center">
             <h2 class="animated-title">Contacto</h2>
             <p class="animated-text">
                 Escríbenos a <strong>contacto@unla.edu.ar</strong> o llámanos al <strong>(011) 1234-5678</strong> para recibir atención personalizada.
@@ -26,16 +29,10 @@
         </div>
     </main>
 
-    <!-- Texto mínimo fuera de la tarjeta -->
-    <div class="small-info-container">
-        <p class="small-info">
-            © 2026 Plataforma Universitaria. Todos los derechos reservados.
-        </p>
-    </div>
-
-    <!-- Texto adicional fuera de la tarjeta -->
-    <div class="texto-adicional">
+    <!-- Texto adicional debajo de la tarjeta -->
+    <div class="texto-adicional text-center">
         <p>Si tienes alguna consulta o inquietud adicional, no dudes en ponerte en contacto con nosotros. ¡Estamos aquí para ayudarte!</p>
     </div>
+
 </body>
 </html>

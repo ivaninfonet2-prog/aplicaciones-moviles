@@ -24,10 +24,10 @@
 ================================ */
 .titulo {
     font-size: 3rem;
-    font-weight: 800;
+    font-weight: 600; /* Menos grueso */
     color: #ffffff;
     text-shadow: 0 3px 12px rgba(0, 0, 0, 0.5);
-    margin-top: 8rem;
+    margin-top: 5rem; /* Subido un poquito */
     margin-bottom: 1rem;
 }
 
@@ -43,7 +43,7 @@
    TARJETA
 ================================ */
 .usuario-contenido {
-    background: rgba(0, 0, 0, 0.4); /* Un poquito más negra */
+    background: rgba(0, 0, 0, 0.4);
     backdrop-filter: blur(14px);
     border-radius: 20px;
     padding: 3rem 2.5rem;
@@ -59,7 +59,7 @@
 
 /* Texto interno */
 .body-text {
-    font-size: 1.4rem; /* Texto más grande dentro de la tarjeta */
+    font-size: 1.4rem;
     color: #ffffff;
     line-height: 1.8;
     margin-bottom: 2.5rem;
@@ -107,11 +107,11 @@
    TEXTO FUERA DE LA TARJETA
 ================================ */
 .texto-extra {
-    font-size: 1.2rem; /* Texto más chico debajo de la tarjeta */
+    font-size: 1.35rem; /* Agrandado */
     color: #f0f0f0;
     max-width: 85%;
-    margin: 0 auto;
-    line-height: 1.5;
+    margin: 3rem auto 2rem auto; /* Menos espacio abajo */
+    line-height: 1.6;
     text-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
 }
 
@@ -121,7 +121,7 @@
 @media (max-width: 768px) {
     .titulo {
         font-size: 2.2rem;
-        margin-top: 5rem;
+        margin-top: 4rem;
     }
     .subtitulo {
         font-size: 1.4rem;
@@ -139,6 +139,7 @@
     }
     .texto-extra {
         max-width: 95%;
-        font-size: 1.05rem; /* Más chico también en móviles */
+        font-size: 1.15rem; /* Más grande también en móviles */
+        margin: 2rem auto 1.5rem auto; /* Menos espacio abajo en móviles */
     }
 }

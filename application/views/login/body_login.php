@@ -52,7 +52,7 @@
                         Ingresar
                     </button>
 
-                    <a href="<?= site_url('registro'); ?>" class="btn btn-success">
+                    <a href="<?= site_url('registrar'); ?>" class="btn btn-success">
                         Registrarme
                     </a>
                 </div>

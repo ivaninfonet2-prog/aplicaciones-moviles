@@ -12,8 +12,8 @@
 
 <?php
 $estilo_fondo = '';
-
-if (isset($fondo) && !empty($fondo)) {
+if (isset($fondo) && !empty($fondo))
+{
     $estilo_fondo = 'style="background-image: url(' . $fondo . ');"';
 }
 ?>
@@ -22,10 +22,10 @@ if (isset($fondo) && !empty($fondo)) {
 
     <!-- Bienvenida -->
     <section class="bienvenida">
-        <h3 class="mensaje-bienvenida">Lista de los mejores espectáculos</h3>
+        <h1 class="mensaje-bienvenida">Lista de los mejores espectáculos</h1>
         <p class="mensaje-sub">
             Descubrí nuestra selección de eventos destacados: conciertos,
-            obras de teatro y experiencias culturales únicas.<br>
+            obras de teatro y experiencias culturales únicas.
         </p>
     </section>
 
@@ -36,20 +36,17 @@ if (isset($fondo) && !empty($fondo)) {
             <?php if (!empty($espectaculos)): ?>
                 <?php foreach ($espectaculos as $espectaculo): ?>
                     <div class="tarjeta-wrapper">
-                        <article class="tarjeta">
 
+                        <!-- Tarjeta principal -->
+                        <article class="tarjeta">
                             <img src="<?= base_url('activos/imagenes/' . $espectaculo['imagen']); ?>"
                                  alt="<?= $espectaculo['nombre']; ?>"
                                  class="imagen">
 
                             <div class="contenido">
-                                <h3 class="titulo"><?= $espectaculo['nombre']; ?></h3>
+                                <h2 class="titulo"><?= $espectaculo['nombre']; ?></h2>
                                 <p class="descripcion"><?= $espectaculo['descripcion']; ?></p>
-
-                                <p class="precio">
-                                    $<?= number_format($espectaculo['precio'], 2, ',', '.'); ?>
-                                </p>
-
+                                <p class="precio">$<?= number_format($espectaculo['precio'], 2, ',', '.'); ?></p>
                                 <a href="<?= site_url('espectaculos/espectaculo_logueado/' . $espectaculo['id_espectaculo']); ?>"
                                    class="boton-ver">
                                     Ver espectáculo

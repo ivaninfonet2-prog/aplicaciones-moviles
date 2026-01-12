@@ -70,11 +70,6 @@ $total_abonado   = number_format($reserva['monto_total'], 2, ',', '.');
 
         </div>
 
-        <!-- TEXTO DEBAJO DE LA TARJETA -->
-        <div class="texto-inferior">
-            Si necesitas realizar alguna modificación o cancelar esta reserva, puedes hacerlo a través de los botones de abajo.
-        </div>
-
         <!-- MENSAJE O ACCIONES -->
         <?php if ($mensaje): ?>
 
@@ -93,6 +88,11 @@ $total_abonado   = number_format($reserva['monto_total'], 2, ',', '.');
                 <a href="<?= site_url('usuario/usuario_reservas'); ?>" class="boton volver">
                     Volver a reservas
                 </a>
+            </div>
+
+            <!-- TEXTO DEBAJO DE LOS BOTONES -->
+            <div class="texto-inferior">
+                Si necesitas realizar alguna modificación o cancelar esta reserva, puedes hacerlo a través de los botones de arriba.
             </div>
 
         <?php endif; ?>

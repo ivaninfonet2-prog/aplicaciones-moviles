@@ -17,10 +17,8 @@ class Espectaculos extends CI_Controller
         $this->ruta_imagenes = FCPATH . 'activos/imagenes/';
     }
 
-    /* =========================
-       AVISOS
-    ========================= */
-
+    //   AVISOS
+  
     private function generar_aviso($e)
     {
         $ahora  = new DateTime();
@@ -42,9 +40,7 @@ class Espectaculos extends CI_Controller
         return 'Todavía falta tiempo.';
     }
 
-    /* =========================
-       LISTADO PRINCIPAL
-    ========================= */
+     //  LISTADO PRINCIPAL
 
     public function index()
     {
@@ -73,9 +69,7 @@ class Espectaculos extends CI_Controller
         $this->load->view('footer_footer/footer_footer_principal', $data);
     }
 
-    /* =========================
-       LISTADO USUARIO
-    ========================= */
+    //   LISTADO USUARIO
 
     public function usuario_espectaculos()
     {
@@ -104,9 +98,7 @@ class Espectaculos extends CI_Controller
         $this->load->view('footer_footer/footer_footer_usuario', $data);
     }
 
-    /* =========================
-       LISTADO ADMIN
-    ========================= */
+     //  LISTADO ADMINISTRADOR
 
     public function administrador_espectaculos()
     {
@@ -129,15 +121,16 @@ class Espectaculos extends CI_Controller
         $this->load->view('footer_footer/footer_footer_administrador', $data);
     }
 
-    /* =========================
-       VER ESPECTÁCULO
-    ========================= */
-
+    //   VER ESPECTÁCULO
+   
     public function espectaculo_sin_loguear($id)
     {
         $espectaculo = $this->Espectaculo_modelo->obtener_espectaculo_por_id($id);
 
-        if ( !$espectaculo) show_404();
+        if ( !$espectaculo) 
+        { 
+            show_404();
+        }    
 
         $data = 
         [
@@ -155,7 +148,10 @@ class Espectaculos extends CI_Controller
     {
         $espectaculo = $this->Espectaculo_modelo->obtener_espectaculo_por_id($id);
 
-        if ( !$espectaculo) show_404();
+        if ( !$espectaculo) 
+        {   
+            show_404();
+        }    
 
         $data = 
         [
@@ -169,9 +165,7 @@ class Espectaculos extends CI_Controller
         $this->load->view('footer_footer/footer_footer_usuario', $data);
     }
 
-    /* =========================
-       FORMULARIOS
-    ========================= */
+     //  FORMULARIOS
 
     private function reglas_formulario()
     {
@@ -198,9 +192,7 @@ class Espectaculos extends CI_Controller
         ];
     }
 
-    /* =========================
-       SUBIR IMAGEN
-    ========================= */
+    //   SUBIR IMAGEN
 
     private function subir_imagen()
     {
@@ -256,9 +248,7 @@ class Espectaculos extends CI_Controller
         return $data['file_name'];
     }
 
-    /* =========================
-       CRUD
-    ========================= */
+     //  CRUD
 
     public function crear_espectaculo()
     {
