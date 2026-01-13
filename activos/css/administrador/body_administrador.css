@@ -1,14 +1,26 @@
 /* ================================
-   CONTENEDOR PRINCIPAL
+   BODY Y CONTENEDOR PRINCIPAL
 =============================== */
+body {
+    font-family: 'Arial', sans-serif;
+    font-size: 1.1rem;
+    margin: 0;
+    padding: 0;
+    color: #f1f1f1;
+}
+
 .inicio-container {
     min-height: 100vh;
-    background: url('<?= $fondo ?>') center/cover no-repeat;
+
+    /* Fondo nítido y definido */
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 120px 20px 60px;
-    color: #f1f1f1;
 }
 
 /* ================================
@@ -17,31 +29,30 @@
 .bienvenida-admin {
     max-width: 760px;
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
 }
 
 .bienvenida-admin h1 {
-    font-size: 2.5rem;
-    font-weight: 600;
-    margin-bottom: 14px;
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 16px;
     text-shadow: 0 4px 8px rgba(0,0,0,0.45);
-    color: #f1f1f1; /* Blanco claro */
 }
 
 .bienvenida-admin p {
-    font-size: 1.2rem;
-    line-height: 1.6;
-    color: rgba(255,255,255,0.9);
+    font-size: 1.35rem;
+    line-height: 1.75;
+    color: rgba(255,255,255,0.95);
     text-shadow: 0 3px 6px rgba(0,0,0,0.35);
 }
 
 /* ================================
-   MENSAJES GLOBALES
+   MENSAJES FLASH
 =============================== */
 .mensaje {
     margin-bottom: 35px;
     padding: 18px 26px;
-    font-size: 1.2rem;
+    font-size: 1.25rem;
     font-weight: 600;
     border-radius: 14px;
     box-shadow: 0 10px 28px rgba(0,0,0,0.30);
@@ -50,57 +61,49 @@
     width: 100%;
 }
 
-.mensaje-exito {
-    background: rgba(46, 204, 113, 0.90);
-    color: #ffffff;
-}
-
-.mensaje-error {
-    background: rgba(231, 76, 60, 0.90);
-    color: #ffffff;
-}
+.mensaje-exito { background: rgba(46, 204, 113, 0.90); color: #fff; }
+.mensaje-error { background: rgba(231, 76, 60, 0.90); color: #fff; }
 
 /* ================================
    TARJETA PANEL
 =============================== */
 .botones-container {
-    background: rgba(255, 255, 255, 0.40);
-    backdrop-filter: blur(12px); /* Más desenfoque */
-    padding: 32px 30px 36px;
+    background: rgba(0, 0, 0, 0.55); /* Semi-transparente negro */
+    padding: 40px 30px;
     border-radius: 18px;
     box-shadow: 0 14px 36px rgba(0,0,0,0.30);
     width: 100%;
     max-width: 600px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 18px 24px;
-    z-index: 1; /* Para que la tarjeta esté encima del fondo */
+    gap: 20px 24px;
+    color: #ffffff;
 }
 
 /* ================================
-   TÍTULO Y TEXTO
+   TÍTULO Y DESCRIPCIÓN
 =============================== */
 .panel-title {
     grid-column: 1 / -1;
-    font-size: 1.8rem;
-    font-weight: 600;
-    color: #2c3e50; /* Color oscuro para el título */
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #ffffff;
     text-align: center;
+    margin-bottom: 14px;
 }
 
 .panel-descripcion {
     grid-column: 1 / -1;
-    font-size: 1.1rem;
+    font-size: 1.45rem; /* Texto más grande */
     text-align: center;
-    color: #34495e; /* Color oscuro para la descripción */
-    margin-bottom: 6px;
+    color: rgba(255,255,255,0.95);
+    margin-bottom: 24px;
 }
 
 /* ================================
    BOTONES
 =============================== */
 .boton {
-    justify-self: center;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -110,8 +113,7 @@
     border-radius: 10px;
     color: #ffffff;
     text-decoration: none;
-    text-align: center;
-    font-size: 0.95rem;
+    font-size: 1.1rem;
     font-weight: 500;
     transition: all 0.3s ease;
 }
@@ -121,27 +123,13 @@
     box-shadow: 0 8px 20px rgba(0,0,0,0.30);
 }
 
-/* ================================
-   COLORES BOTONES
-=============================== */
-.botones-container .boton:nth-of-type(1) {
-    background: linear-gradient(135deg, #6a5acd, #483d8b);
-}
-.botones-container .boton:nth-of-type(2) {
-    background: linear-gradient(135deg, #2ecc71, #27ae60);
-}
-.botones-container .boton:nth-of-type(3) {
-    background: linear-gradient(135deg, #3498db, #2c81ba);
-}
-.botones-container .boton:nth-of-type(4) {
-    background: linear-gradient(135deg, #f39c12, #d68910);
-}
-.botones-container .boton:nth-of-type(5) {
-    background: linear-gradient(135deg, #9b59b6, #7d3c98);
-}
-.botones-container .boton:nth-of-type(6) {
-    background: linear-gradient(135deg, #e74c3c, #c0392b);
-}
+/* Colores de los botones */
+.botones-container .boton:nth-of-type(1) { background: linear-gradient(135deg, #6a5acd, #483d8b); }
+.botones-container .boton:nth-of-type(2) { background: linear-gradient(135deg, #2ecc71, #27ae60); }
+.botones-container .boton:nth-of-type(3) { background: linear-gradient(135deg, #3498db, #2c81ba); }
+.botones-container .boton:nth-of-type(4) { background: linear-gradient(135deg, #f39c12, #d68910); }
+.botones-container .boton:nth-of-type(5) { background: linear-gradient(135deg, #9b59b6, #7d3c98); }
+.botones-container .boton:nth-of-type(6) { background: linear-gradient(135deg, #e74c3c, #c0392b); }
 
 /* ================================
    TEXTO INFERIOR
@@ -149,35 +137,22 @@
 .texto-inferior {
     max-width: 1000px;
     text-align: center;
-    margin-top: 40px;
-    font-size: 1.1rem;
-    color: #f1f1f1; /* Blanco claro para mayor visibilidad */
+    margin-top: 60px;
+    font-size: 1.45rem;
+    color: rgba(255,255,255,0.95);
     padding: 10px 20px;
-}
-
-.texto-inferior p {
-    font-size: 1.1rem;
-    color: rgba(255, 255, 255, 0.9); /* Blanco con opacidad */
-    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    text-shadow: 0 2px 4px rgba(0,0,0,0.35);
 }
 
 /* ================================
    RESPONSIVE
 =============================== */
 @media (max-width: 768px) {
-    .botones-container {
-        grid-template-columns: 1fr;
-    }
-
-    .boton {
-        max-width: 100%;
-    }
-
-    .bienvenida-admin h1 {
-        font-size: 2rem;
-    }
-
-    .bienvenida-admin p {
-        font-size: 1rem;
-    }
+    .botones-container { grid-template-columns: 1fr; }
+    .boton { max-width: 100%; }
+    .bienvenida-admin h1 { font-size: 2.5rem; }
+    .bienvenida-admin p { font-size: 1.3rem; }
+    .panel-title { font-size: 2rem; }
+    .panel-descripcion { font-size: 1.35rem; }
+    .texto-inferior { font-size: 1.35rem; }
 }

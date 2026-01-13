@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="<?= base_url('activos/css/administrador/body_administrador.css'); ?>">
 
 </head>
-
 <body>
 
 <main class="inicio-container" style="background-image: url('<?= $fondo ?>');">
@@ -23,7 +22,7 @@
         </p>
     </section>
 
-    <!-- TARJETA -->
+    <!-- TARJETA PANEL -->
     <section class="botones-container">
         <h2 class="panel-title">Panel de Control</h2>
 
