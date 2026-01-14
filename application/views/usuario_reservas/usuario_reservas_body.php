@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Mis Reservas</title>
-    <link rel="stylesheet" href="<?= base_url('activos/css/usuario_reservas/usuario_reservas_body.css'); ?>">
+
+    <link rel="stylesheet"
+          href="<?= base_url('activos/css/usuario_reservas/usuario_reservas_body.css'); ?>">
 </head>
 
 <body style="background-image: url('<?= $fondo; ?>');">
@@ -27,6 +29,7 @@
     <?php endif; ?>
 
     <?php if (!empty($reservas)): ?>
+
         <table class="tabla-reservas">
             <thead>
                 <tr>
@@ -49,7 +52,7 @@
                             $<?= number_format($reserva['monto_total'], 2, ',', '.'); ?>
                         </td>
                         <td>
-                            <a href="<?= base_url('usuario/usuario_reservas_detalle/'.$reserva['id_reserva']); ?>"
+                            <a href="<?= base_url('usuario/usuario_reservas_detalle/' . $reserva['id_reserva']); ?>"
                                class="boton-detalle">
                                 Ver detalles
                             </a>
@@ -66,7 +69,7 @@
         </div>
 
     <?php else: ?>
-        <p class="no-reservas">No tienes reservas actualmente.</p>
+        <p class="no-reservas">No tenés reservas actualmente.</p>
     <?php endif; ?>
 
 </main>

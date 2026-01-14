@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <title>Cartelera de espectáculos</title>
 
-    <!-- CSS externo -->
     <link rel="stylesheet"
           href="<?= base_url('activos/css/usuario_espectaculos/usuario_espectaculos_body.css'); ?>">
 </head>
@@ -12,8 +11,7 @@
 
 <?php
 $estilo_fondo = '';
-if (isset($fondo) && !empty($fondo))
-{
+if (!empty($fondo)) {
     $estilo_fondo = 'style="background-image: url(' . $fondo . ');"';
 }
 ?>
@@ -24,8 +22,7 @@ if (isset($fondo) && !empty($fondo))
     <section class="bienvenida">
         <h1 class="mensaje-bienvenida">Lista de los mejores espectáculos</h1>
         <p class="mensaje-sub">
-            Descubrí nuestra selección de eventos destacados: conciertos,
-            obras de teatro y experiencias culturales únicas.
+            Descubrí nuestra selección de eventos destacados y experiencias culturales únicas.
         </p>
     </section>
 
@@ -37,27 +34,35 @@ if (isset($fondo) && !empty($fondo))
                 <?php foreach ($espectaculos as $espectaculo): ?>
                     <div class="tarjeta-wrapper">
 
-                        <!-- Tarjeta principal -->
                         <article class="tarjeta">
+
+                            <!-- Nombre arriba de la imagen -->
+                            <h2 class="titulo"><?= $espectaculo['nombre']; ?></h2>
+
                             <img src="<?= base_url('activos/imagenes/' . $espectaculo['imagen']); ?>"
                                  alt="<?= $espectaculo['nombre']; ?>"
                                  class="imagen">
 
-                            <div class="contenido">
-                                <h2 class="titulo"><?= $espectaculo['nombre']; ?></h2>
-                                <p class="descripcion"><?= $espectaculo['descripcion']; ?></p>
-                                <p class="precio">$<?= number_format($espectaculo['precio'], 2, ',', '.'); ?></p>
-                                <a href="<?= site_url('espectaculos/espectaculo_logueado/' . $espectaculo['id_espectaculo']); ?>"
-                                   class="boton-ver">
-                                    Ver espectáculo
-                                </a>
-                            </div>
+                            <!-- Descripción más grande -->
+                            <p class="descripcion">
+                                <?= $espectaculo['descripcion']; ?>
+                            </p>
+
+                            <p class="precio">
+                                $<?= number_format($espectaculo['precio'], 2, ',', '.'); ?>
+                            </p>
+
+                            <a href="<?= site_url('espectaculos/espectaculo_logueado/' . $espectaculo['id_espectaculo']); ?>"
+                               class="boton-ver">
+                                Ver espectáculo
+                            </a>
                         </article>
 
-                        <!-- Texto debajo de la tarjeta -->
+                        <!-- Texto fuera de la tarjeta -->
                         <p class="texto-extra">
                             ¡No te pierdas esta experiencia única!
                         </p>
+
                     </div>
                 <?php endforeach; ?>
             <?php else: ?>

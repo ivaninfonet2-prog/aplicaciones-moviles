@@ -7,7 +7,6 @@ body {
     background-color: #111;
     color: #ffffff;
     line-height: 1.6;
-    font-size: 18px; /* letras generales un poco más grandes */
 }
 
 /* ===============================
@@ -17,8 +16,7 @@ body {
     min-height: 100vh;
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;
-    padding: 3.5rem 2rem 2.5rem;
+    padding: 3.5rem 2rem;
     position: relative;
 }
 
@@ -26,11 +24,7 @@ body {
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(
-        rgba(0, 0, 0, 0.05),
-        rgba(0, 0, 0, 0.15)
-    );
-    z-index: 0;
+    background: rgba(0, 0, 0, 0.15);
 }
 
 .inicio-container > * {
@@ -43,207 +37,139 @@ body {
 ================================ */
 .bienvenida {
     max-width: 900px;
-    margin: 5rem auto 2.5rem;
+    margin: 5rem auto 3rem;
     text-align: center;
 }
 
 .mensaje-bienvenida {
-    font-size: 2.6rem; /* un poco más grande */
+    font-size: 2.6rem;
     font-weight: 700;
     margin-bottom: 0.8rem;
-    color: #ffffff;
-    text-shadow: 1px 1px 6px rgba(0,0,0,0.5);
 }
 
 .mensaje-sub {
-    font-size: 1.2rem; /* más grande */
-    color: #f5f5f5;
-    max-width: 720px;
-    margin: 0 auto;
+    font-size: 1.2rem;
+    color: #f0f0f0;
 }
 
 /* ===============================
    CARTELERA
 ================================ */
 .cartelera {
-    max-width: 1200px;
+    max-width: 1150px;
     margin: 0 auto;
 }
 
 .tarjetas-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 2.2rem;
+    grid-template-columns: repeat(auto-fit, minmax(270px, 300px));
+    justify-content: center;
+    gap: 2.5rem;
 }
 
 /* ===============================
-   TARJETA TRANSPARENTE
+   TARJETA
 ================================ */
 .tarjeta {
-    background: rgba(0, 0, 0, 0.25); /* Transparente con leve negro */
-    border: 1px solid rgba(255, 255, 255, 0.25);
+    background: rgba(0, 0, 0, 0.3);
     border-radius: 18px;
-    padding: 1.7rem 1.4rem;
+    padding: 1.8rem 1.4rem;
     text-align: center;
-
     backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
-
-    box-shadow: 0 10px 22px rgba(0,0,0,0.35);
-
-    transition: transform 0.35s ease, box-shadow 0.35s ease, background 0.35s ease;
+    box-shadow: 0 10px 22px rgba(0,0,0,0.4);
+    transition: transform 0.3s ease;
 }
 
 .tarjeta:hover {
     transform: translateY(-6px);
-    background: rgba(0, 0, 0, 0.35);
-    box-shadow: 0 16px 34px rgba(0,0,0,0.45);
 }
 
 /* ===============================
-   IMAGEN TARJETA
+   CONTENIDO TARJETA
 ================================ */
-.tarjeta .imagen {
+.titulo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 0.9rem;
+}
+
+.imagen {
     width: 180px;
     height: 180px;
     object-fit: cover;
     border-radius: 14px;
-    margin-bottom: 1.1rem;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.4);
+    margin-bottom: 1rem;
 }
 
-/* ===============================
-   CONTENIDO
-================================ */
-.contenido {
-    display: flex;
-    flex-direction: column;
-    gap: 0.6rem;
-}
-
-.titulo {
-    font-size: 1.7rem; /* más grande */
-    font-weight: 700;
-    color: #ffffff;
-}
-
+/* 👉 descripción más grande */
 .descripcion {
-    font-size: 1.15rem; /* más grande */
-    color: #ededed;
+    font-size: 1.45rem;
+    line-height: 1.7;
+    color: #f2f2f2;
+    margin-bottom: 1rem;
 }
 
 .precio {
-    font-size: 1.45rem; /* más grande */
+    font-size: 1.45rem;
     font-weight: 700;
     color: #7CFF8A;
-    margin-top: 0.6rem;
 }
 
 /* ===============================
-   BOTÓN VER
+   BOTÓN
 ================================ */
 .boton-ver {
-    margin: 1rem auto 0;
+    display: inline-block;
+    margin-top: 1rem;
     padding: 0.7rem 1.6rem;
-    width: fit-content;
-
     background: linear-gradient(135deg, #1b5e20, #2e7d32);
     color: #ffffff;
-    border-radius: 10px;
     text-decoration: none;
+    border-radius: 10px;
     font-weight: 600;
-    font-size: 1rem; /* más grande */
-
-    box-shadow: 0 5px 14px rgba(0,0,0,0.45);
-
-    transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+    transition: transform 0.25s ease;
 }
 
 .boton-ver:hover {
-    background: linear-gradient(135deg, #2e7d32, #1b5e20);
     transform: scale(1.08);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.6);
 }
 
 /* ===============================
-   TEXTO EXTRA FUERA DE TARJETA
+   TEXTO FUERA DE TARJETA
 ================================ */
 .texto-extra {
-    margin-top: 0.8rem;
+    margin-top: 1rem;
     text-align: center;
-    font-size: 1.05rem; /* más grande */
-    color: #f0f0f0;
-    text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: #ffffff;
+    text-shadow: 1px 1px 6px rgba(0,0,0,0.6);
 }
 
 /* ===============================
-   MENSAJE SIN ESPECTÁCULOS
+   SIN ESPECTÁCULOS
 ================================ */
 .sin-espectaculos {
     text-align: center;
-    font-size: 1.3rem; /* más grande */
-    color: #ffffff;
-    margin-top: 2.5rem;
-    text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+    font-size: 1.4rem;
+    margin-top: 3rem;
 }
 
 /* ===============================
    RESPONSIVE
 ================================ */
 @media (max-width: 768px) {
-    .bienvenida {
-        margin-top: 4rem;
-    }
 
     .mensaje-bienvenida {
         font-size: 2.2rem;
     }
 
-    .mensaje-sub {
-        font-size: 1.05rem;
-    }
-
-    .tarjeta .imagen {
-        width: 140px;
-        height: 140px;
-    }
-
-    .titulo {
-        font-size: 1.5rem;
-    }
-
     .descripcion {
-        font-size: 1.05rem;
+        font-size: 1.25rem;
     }
 
-    .precio {
-        font-size: 1.3rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .inicio-container {
-        padding: 3rem 1rem 2rem;
-    }
-
-    .tarjeta {
-        padding: 1.3rem 1rem;
-    }
-
-    .tarjeta .imagen {
-        width: 120px;
-        height: 120px;
-    }
-
-    .titulo {
-        font-size: 1.35rem;
-    }
-
-    .descripcion {
-        font-size: 1rem;
-    }
-
-    .precio {
-        font-size: 1.2rem;
+    .imagen {
+        width: 150px;
+        height: 150px;
     }
 }
