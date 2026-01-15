@@ -101,25 +101,26 @@ class Espectaculos extends CI_Controller
      //  LISTADO ADMINISTRADOR
 
     public function administrador_espectaculos()
+{
+    $espectaculos = $this->Espectaculo_modelo->obtener_espectaculos();
+
+    foreach ($espectaculos as &$e)
     {
-        $espectaculos = $this->Espectaculo_modelo->obtener_espectaculos();
-
-        foreach ($espectaculos as &$e)
-        {
-            $e['aviso'] = $this->generar_aviso($e);
-        }
-
-        $data = 
-        [
-            'titulo'       => 'Cartelera de Espectaculos',
-            'fondo'        => base_url('activos/imagenes/mi_fondo.jpg'),
-            'espectaculos' => $espectaculos
-        ];
-
-        $this->load->view('header_footer/header_footer_administrador', $data);
-        $this->load->view('administrador_espectaculos/body_administrador_espectaculos', $data);
-        $this->load->view('footer_footer/footer_footer_administrador', $data);
+        $e['aviso'] = $this->generar_aviso($e);
     }
+
+    $data = [
+        'titulo'       => 'Cartelera de Espectaculos',
+        'fondo'        => base_url('activos/imagenes/mi_fondo.jpg'),
+        'espectaculos' => $espectaculos
+    ];
+
+    // Cargar vista del panel de administración
+    $this->load->view('header_footer/header_footer_administrador', $data);
+    $this->load->view('administrador_espectaculos/body_administrador_espectaculos', $data);
+    $this->load->view('footer_footer/footer_footer_administrador', $data);
+}
+
 
     //   VER ESPECTÁCULO
    

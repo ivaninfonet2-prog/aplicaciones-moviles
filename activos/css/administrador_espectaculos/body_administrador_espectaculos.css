@@ -4,7 +4,11 @@
 body {
     margin: 0;
     font-family: 'Segoe UI', Arial, sans-serif;
-    color: #ffffff;
+    color: #fff;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 /* ================================
@@ -12,11 +16,7 @@ body {
 ================================ */
 .main-content {
     min-height: 100vh;
-    padding: 120px 30px 60px;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+    padding: 100px 30px 60px;
 }
 
 /* ================================
@@ -31,38 +31,48 @@ body {
 .titulo-principal {
     font-size: 3rem;
     font-weight: 400;
-    margin: 0 0 25px;
-    color: #ffffff;
-    text-shadow: 0 3px 8px rgba(0, 0, 0, 0.6);
+    margin-bottom: 25px;
+    color: #fff;
+    text-shadow: 0 3px 8px rgba(0,0,0,0.6);
 }
 
 .descripcion-principal {
     font-size: 1.8rem;
     color: #f2f2f2;
     line-height: 1.6;
-    margin: 0;
 }
 
 /* ================================
-   Alerta
+   Alertas / mensajes flash
 ================================ */
 .alerta {
-    max-width: 600px;
+    max-width: 700px;
     margin: 0 auto 26px;
-    background: rgba(40, 167, 69, 0.9);
-    color: #fff;
     padding: 14px 20px;
-    border-radius: 8px;
-    position: relative;
+    border-radius: 12px;
     text-align: center;
+    font-size: 1.1rem;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+    position: relative;
+    opacity: 0;
+    animation: fadeIn 0.5s forwards;
+}
+
+.alerta-success {
+    background: rgba(40, 167, 69, 0.9);
+}
+
+.alerta-error {
+    background: rgba(220, 53, 69, 0.9);
 }
 
 .cerrar-alerta {
     position: absolute;
-    right: 12px;
     top: 8px;
+    right: 12px;
     cursor: pointer;
     font-size: 1.4rem;
+    font-weight: bold;
 }
 
 /* ================================
@@ -73,12 +83,12 @@ body {
     flex-wrap: wrap;
     justify-content: center;
     gap: 30px;
-    margin-top: 40px;
 }
 
+/* Tarjeta individual */
 .tarjeta {
     width: 480px;
-    background: rgba(0, 0, 0, 0.55);
+    background: rgba(0,0,0,0.55);
     backdrop-filter: blur(10px);
     border-radius: 14px;
     box-shadow: 0 8px 25px rgba(0,0,0,0.35);
@@ -92,9 +102,7 @@ body {
     transform: translateY(-6px);
 }
 
-/* ================================
-   Imagen
-================================ */
+/* Imagen del espectáculo */
 .imagen {
     width: 160px;
     height: 160px;
@@ -104,73 +112,64 @@ body {
     border: 4px solid #fff;
 }
 
-/* ================================
-   Información tarjeta
-================================ */
+/* Información tarjeta */
 .contenido-info {
     padding: 20px;
 }
 
 .nombre-artista {
-    font-size: 2.2rem;
+    font-size: 2rem;
     font-weight: 600;
-    margin: 0 0 10px;
+    margin-bottom: 10px;
 }
 
 .descripcion-artista {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     color: #ccc;
 }
 
-/* ================================
-   Detalles adicionales
-================================ */
-.contenido p {
+.contenido-info p {
     margin: 6px 0;
-    font-size: 1.2rem;
+    font-size: 1.15rem;
 }
 
 /* ================================
-   Botones
+   Botones de acción personalizados
+   Evita conflicto con Bootstrap
 ================================ */
-.acciones-tarjeta {
-    display: flex;
-    justify-content: center;
-    gap: 25px;
-    margin-top: 20px;
-    width: 100%;
-}
-
-.boton {
+.btn-custom {
     padding: 10px 18px;
     min-width: 120px;
     border-radius: 6px;
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     font-weight: 600;
     text-decoration: none;
-    color: #fff;
     text-align: center;
-    transition: background-color 0.3s ease, transform 0.3s ease;
+    transition: all 0.3s ease;
     display: inline-block;
+    cursor: pointer;
+    color: #fff !important; /* Asegura que sobrescriba Bootstrap */
 }
 
-.boton-editar {
-    background-color: #28a745;
-    border: 2px solid #218838;
+/* Verde: editar */
+.btn-editar {
+    background-color: #28a745 !important;
+    border: 2px solid #218838 !important;
 }
 
-.boton-editar:hover {
-    background-color: #218838;
+.btn-editar:hover {
+    background-color: #218838 !important;
     transform: scale(1.05);
 }
 
-.boton-eliminar {
-    background-color: #dc3545;
-    border: 2px solid #c82333;
+/* Rojo: eliminar */
+.btn-eliminar {
+    background-color: #dc3545 !important;
+    border: 2px solid #c82333 !important;
 }
 
-.boton-eliminar:hover {
-    background-color: #c82333;
+.btn-eliminar:hover {
+    background-color: #c82333 !important;
     transform: scale(1.05);
 }
 
@@ -179,10 +178,17 @@ body {
 ================================ */
 .texto-adicional {
     text-align: center;
-    font-size: 1.6rem;
-    color: #ffffff;
+    font-size: 1.5rem;
+    color: #fff;
     margin-top: 60px;
-    line-height: 1.8;
+    line-height: 1.6;
+}
+
+/* ================================
+   Animaciones
+================================ */
+@keyframes fadeIn {
+    to { opacity: 1; }
 }
 
 /* ================================

@@ -1,7 +1,6 @@
 <link rel="stylesheet" href="<?= base_url('activos/css/crear_usuario/body_crear_usuario.css'); ?>">
 
-<main class="main-content"
-      style="background-image: url('<?= $fondo ?? '' ?>');">
+<main class="main-content crear-usuario-page" style="background-image: url('<?= $fondo ?? '' ?>');">
 
     <!-- TITULO Y DESCRIPCION -->
     <section class="page-header">
@@ -102,13 +101,17 @@
                     Crear usuario
                 </button>
 
-                <a href="<?= base_url('administrador'); ?>"
-                   class="btn btn-danger">
+                <a href="<?= base_url('administrador'); ?>" class="btn btn-danger">
                     Cancelar
                 </a>
             </div>
 
         </form>
+    </div>
+
+    <!-- TEXTO DEBAJO DE LA TARJETA -->
+    <div class="texto-debajo-tarjeta">
+        <p>Si tienes problemas creando un usuario, contacta al administrador del sistema.</p>
     </div>
 
 </main>

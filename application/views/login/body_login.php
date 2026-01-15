@@ -29,7 +29,7 @@
                     type="text"
                     id="nombre_usuario_input"
                     name="nombre_usuario"
-                    class="form-control"
+                    class="login-input form-control"
                     placeholder="Ingresá tu usuario"
                     required
                 >
@@ -39,7 +39,7 @@
                     type="password"
                     id="palabra_clave_input"
                     name="palabra_clave"
-                    class="form-control"
+                    class="login-input form-control"
                     placeholder="Ingresá tu contraseña"
                     required
                 >

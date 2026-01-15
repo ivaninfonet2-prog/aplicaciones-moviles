@@ -1,4 +1,8 @@
+<!-- CSS principal de edición -->
 <link rel="stylesheet" href="<?= base_url('activos/css/editar_espectaculo/body_editar_espectaculo.css') ?>">
+
+<!-- CSS específico de confirmación -->
+<link rel="stylesheet" href="<?= base_url('activos/css/confirmacion/modificar_espectaculo.css') ?>">
 
 <main class="main-content" style="background-image: url('<?= $fondo ?? '' ?>');">
 
@@ -29,10 +33,7 @@
                    value="<?= set_value('nombre', $espectaculo['nombre']) ?>" required>
 
             <label>Descripción</label>
-            <textarea name="descripcion" required><?= set_value(
-                'descripcion',
-                $espectaculo['descripcion']
-            ) ?></textarea>
+            <textarea name="descripcion" required><?= set_value('descripcion', $espectaculo['descripcion']) ?></textarea>
 
             <div class="fila">
                 <input type="date" name="fecha"

@@ -6,7 +6,7 @@
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  padding: 80px 15px 30px;
+  padding: 100px 15px 40px;
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -17,7 +17,7 @@
 ===================================================== */
 .login-wrapper {
   width: 100%;
-  max-width: 460px;
+  max-width: 500px;
   text-align: center;
   margin: 0 auto;
 }
@@ -26,20 +26,19 @@
    ENCABEZADO
 ===================================================== */
 .login-header {
-  margin-bottom: 16px;
+  margin-bottom: 18px;
 }
 
 .login-header h1 {
-  font-size: 2.5rem;
+  font-size: 2.7rem;
   font-weight: 600;
   color: #fff;
   text-shadow: 0 0 16px rgba(0,0,0,0.85);
-  margin-bottom: 10px;
-  margin-top: 20px;
+  margin-bottom: 12px;
 }
 
 .login-header p {
-  font-size: 1.25rem;
+  font-size: 1.3rem;
   color: #fff;
   font-weight: 500;
   line-height: 1.5;
@@ -50,18 +49,19 @@
    TARJETA LOGIN
 ===================================================== */
 .login-card {
-  padding: 24px;
+  padding: 28px;
   background: rgba(0,0,0,0.65);
   backdrop-filter: blur(12px);
   border-radius: 16px;
   border: 1px solid rgba(255,255,255,0.35);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  box-shadow: 0 12px 35px rgba(0,0,0,0.25);
   color: #fff;
+  font-size: 1.05rem;
 }
 
 .login-text {
-  font-size: 1.2rem;
-  margin-bottom: 18px;
+  font-size: 1.25rem;
+  margin-bottom: 20px;
   font-weight: 600;
 }
 
@@ -72,20 +72,24 @@
   display: block;
   margin-bottom: 6px;
   font-weight: 700;
-  font-size: 1rem;
+  font-size: 1.05rem;
   color: #fff;
 }
 
-.login-card .form-control {
-  width: 100%;
-  padding: 12px;
+.login-card .login-input {
+  width: 70%;                 /* inputs más estrechos */
+  max-width: 350px;
+  padding: 12px 14px;
   font-size: 1rem;
   border-radius: 6px;
   border: 1px solid #ccc;
-  margin-bottom: 14px;
+  margin-bottom: 16px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.login-card .form-control:focus {
+.login-card .login-input:focus {
   border-color: #66b0ff;
   box-shadow: 0 0 8px rgba(102,176,255,0.4);
 }
@@ -97,11 +101,11 @@
   display: flex;
   justify-content: center;
   gap: 12px;
-  margin-top: 18px;
+  margin-top: 20px;
 }
 
 .login-actions .btn {
-  padding: 10px 22px;
+  padding: 11px 24px;
   font-size: 1rem;
   font-weight: 700;
   border-radius: 10px;
@@ -129,8 +133,8 @@
    TEXTO DEBAJO DE LA TARJETA
 ===================================================== */
 .login-extra {
-  margin-top: 22px;
-  font-size: 1.15rem;
+  margin-top: 26px;
+  font-size: 1.2rem;
   font-weight: 600;
   color: #fff;
 }
@@ -148,8 +152,8 @@
 ===================================================== */
 .login-card .alert {
   border-radius: 8px;
-  font-size: 1rem;
-  margin-bottom: 16px;
+  font-size: 1.05rem;
+  margin-bottom: 18px;
 }
 
 /* =====================================================
@@ -160,12 +164,16 @@
     padding-top: 60px;
   }
 
+  .login-wrapper {
+    max-width: 380px;
+  }
+
   .login-header h1 {
-    font-size: 2rem;
+    font-size: 2.2rem;
   }
 
   .login-header p {
-    font-size: 1.05rem;
+    font-size: 1.1rem;
   }
 
   .login-extra {
@@ -174,5 +182,15 @@
 
   .login-extra span {
     font-size: 1rem;
+  }
+
+  .login-card .login-input {
+    width: 85%;              /* móvil: inputs un poco más anchos para comodidad */
+    padding: 10px 12px;
+  }
+
+  .login-actions .btn {
+    padding: 9px 18px;
+    font-size: 0.95rem;
   }
 }
