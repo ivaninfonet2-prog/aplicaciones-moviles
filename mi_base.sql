@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-01-2026 a las 12:22:42
+-- Tiempo de generación: 15-01-2026 a las 19:21:04
 -- Versión del servidor: 10.4.25-MariaDB
 -- Versión de PHP: 7.4.30
 
@@ -115,7 +115,7 @@ CREATE TABLE `espectaculos` (
 INSERT INTO `espectaculos` (`id_espectaculo`, `nombre`, `descripcion`, `disponibles`, `precio`, `direccion`, `fecha`, `hora`, `imagen`) VALUES
 (20, 'maria becerra', 'la nena de argentina', 867, '77777.00', 'belgrano 4444', '2025-12-31', '22:11:00', '62df21eab7af8c186e82fddda3749853.jpg'),
 (25, 'duki', 'el mejor del mundo', 8777, '55444.00', 'eva peron 333', '2026-01-22', '22:11:00', 'd94ab42aba3969511412a6dc0af180ea.jpg'),
-(26, 'emilia mernes', 'la princesa del mundo', 2222, '33333.00', 'camin negro 3333', '2026-01-27', '21:12:00', '7da1571f450cb4591ca34fecefba8b5f.jpg'),
+(26, 'emilia mernes', 'la princesa del mundo', 2222, '33333.00', 'camino negro 3333, villa centenario', '2026-01-27', '21:12:00', '7da1571f450cb4591ca34fecefba8b5f.jpg'),
 (27, 'nicky nicole', 'la rapera del mundo', 88888, '77777.00', 'lanus 22111', '2026-01-06', '22:13:00', '91d393c44ddc56c1d9fc4f5a4eb2e5c5.jpg');
 
 -- --------------------------------------------------------
@@ -224,16 +224,6 @@ ALTER TABLE `roles`
 --
 ALTER TABLE `usuarios`
   MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
-
---
--- Restricciones para tablas volcadas
---
-
---
--- Filtros para la tabla `usuarios`
---
-ALTER TABLE `usuarios`
-  ADD CONSTRAINT `fk_usuario_rol` FOREIGN KEY (`rol_id`) REFERENCES `roles` (`id_rol`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -15,16 +15,21 @@ body {
 .inicio-container {
     min-height: 100vh;
     background-size: cover;
-    background-position: center;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    image-rendering: auto;
     padding: 3.5rem 2rem;
     position: relative;
 }
 
+/* 🔹 OVERLAY MÁS CLARO */
 .inicio-container::before {
     content: "";
     position: absolute;
     inset: 0;
-    background: rgba(0, 0, 0, 0.15);
+    background: rgba(0, 0, 0, 0.25); /* ← MÁS CLARO */
+    z-index: 0;
 }
 
 .inicio-container > * {
@@ -45,11 +50,13 @@ body {
     font-size: 2.6rem;
     font-weight: 700;
     margin-bottom: 0.8rem;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
 }
 
 .mensaje-sub {
     font-size: 1.2rem;
-    color: #f0f0f0;
+    color: #f5f5f5;
+    text-shadow: 1px 1px 6px rgba(0,0,0,0.6);
 }
 
 /* ===============================
@@ -71,17 +78,18 @@ body {
    TARJETA
 ================================ */
 .tarjeta {
-    background: rgba(0, 0, 0, 0.3);
+    background: rgba(0, 0, 0, 0.55);
     border-radius: 18px;
     padding: 1.8rem 1.4rem;
     text-align: center;
     backdrop-filter: blur(6px);
-    box-shadow: 0 10px 22px rgba(0,0,0,0.4);
-    transition: transform 0.3s ease;
+    box-shadow: 0 12px 28px rgba(0,0,0,0.6);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .tarjeta:hover {
     transform: translateY(-6px);
+    box-shadow: 0 18px 40px rgba(0,0,0,0.8);
 }
 
 /* ===============================
@@ -99,9 +107,9 @@ body {
     object-fit: cover;
     border-radius: 14px;
     margin-bottom: 1rem;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.6);
 }
 
-/* 👉 descripción más grande */
 .descripcion {
     font-size: 1.45rem;
     line-height: 1.7;
@@ -127,11 +135,12 @@ body {
     text-decoration: none;
     border-radius: 10px;
     font-weight: 600;
-    transition: transform 0.25s ease;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .boton-ver:hover {
     transform: scale(1.08);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.7);
 }
 
 /* ===============================
@@ -143,7 +152,7 @@ body {
     font-size: 1.35rem;
     font-weight: 600;
     color: #ffffff;
-    text-shadow: 1px 1px 6px rgba(0,0,0,0.6);
+    text-shadow: 1px 1px 6px rgba(0,0,0,0.7);
 }
 
 /* ===============================
@@ -153,6 +162,7 @@ body {
     text-align: center;
     font-size: 1.4rem;
     margin-top: 3rem;
+    text-shadow: 1px 1px 6px rgba(0,0,0,0.6);
 }
 
 /* ===============================
@@ -171,5 +181,9 @@ body {
     .imagen {
         width: 150px;
         height: 150px;
+    }
+
+    .inicio-container {
+        background-attachment: scroll;
     }
 }

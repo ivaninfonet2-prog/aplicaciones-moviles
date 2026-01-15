@@ -32,18 +32,17 @@ if (!empty($fondo)) {
 
             <?php if (!empty($espectaculos)): ?>
                 <?php foreach ($espectaculos as $espectaculo): ?>
+
                     <div class="tarjeta-wrapper">
 
                         <article class="tarjeta">
 
-                            <!-- Nombre arriba de la imagen -->
                             <h2 class="titulo"><?= $espectaculo['nombre']; ?></h2>
 
                             <img src="<?= base_url('activos/imagenes/' . $espectaculo['imagen']); ?>"
                                  alt="<?= $espectaculo['nombre']; ?>"
                                  class="imagen">
 
-                            <!-- Descripción más grande -->
                             <p class="descripcion">
                                 <?= $espectaculo['descripcion']; ?>
                             </p>
@@ -58,12 +57,12 @@ if (!empty($fondo)) {
                             </a>
                         </article>
 
-                        <!-- Texto fuera de la tarjeta -->
                         <p class="texto-extra">
                             ¡No te pierdas esta experiencia única!
                         </p>
 
                     </div>
+
                 <?php endforeach; ?>
             <?php else: ?>
                 <p class="sin-espectaculos">
