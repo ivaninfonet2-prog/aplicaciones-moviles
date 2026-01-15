@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-01-2026 a las 23:49:25
+-- Tiempo de generación: 15-01-2026 a las 12:22:42
 -- Versión del servidor: 10.4.25-MariaDB
 -- Versión de PHP: 7.4.30
 
@@ -151,7 +151,7 @@ INSERT INTO `reservas` (`id_reserva`, `usuario_id`, `espectaculo_id`, `cantidad`
 
 CREATE TABLE `roles` (
   `id_rol` int(11) NOT NULL,
-  `nombre` varchar(51) NOT NULL
+  `nombre` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -171,12 +171,12 @@ INSERT INTO `roles` (`id_rol`, `nombre`) VALUES
 CREATE TABLE `usuarios` (
   `id_usuario` int(11) NOT NULL,
   `rol_id` int(11) NOT NULL,
-  `nombre_usuario` varchar(51) NOT NULL,
-  `palabra_clave` varchar(51) NOT NULL,
-  `nombre` varchar(51) NOT NULL,
-  `apellido` varchar(51) NOT NULL,
+  `nombre_usuario` varchar(100) NOT NULL,
+  `palabra_clave` varchar(255) NOT NULL,
+  `nombre` varchar(50) NOT NULL,
+  `apellido` varchar(50) NOT NULL,
   `dni` int(11) NOT NULL,
-  `telefono` varchar(21) NOT NULL
+  `telefono` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -184,69 +184,16 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id_usuario`, `rol_id`, `nombre_usuario`, `palabra_clave`, `nombre`, `apellido`, `dni`, `telefono`) VALUES
-(1, 1, 'ivaninfonet@gmail.com', '1234', 'ivan', 'tolaba', 34571058, '11-2310-6932'),
-(2, 2, 'ivaninfosur@gmail.com', '1234', 'pablo', 'flores', 12618422, '11-4156-3813'),
-(3, 2, 'ivaninfoeste@gmail.com', '1234', 'estiven', 'flores', 42589521, '11-4082-6777'),
-(11, 1, 'ivaninfonorte@gmail.com', '1234', 'jorge', 'cirio', 11122224, '11-4448-6474'),
-(12, 1, 'aaggttt@gmail.com', '1234', 'jorge', 'cirio', 584444, '11-4448-6474'),
-(13, 1, 'alguien@hotmail.com', '1234', 'luciana', 'perez', 12348, '01140826777'),
-(14, 1, 'ivaninfonet2@gmail.com', '1234', 'luci', 'lorent', 2451, '5421'),
-(15, 1, 'alguien@gmail.com', '1234', 'de', 'ed', 33, '543'),
-(21, 1, 'ffff@gmail.com', '$2y$10$Eqxpz3J8nvzUihrDsq3XBOiDT4Lo8GCB9EJk3ooRSHhx', 'hermosa', 'gauna', 0, ''),
-(22, 1, 'nicolasvelez@gmail.com', '$2y$10$LI7fUuBHLAN6lDyqYgpuNewK09HN2b1JmPP6G1msJxCW', 'nicolas', 'perez', 333, '222');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `ventas`
---
-
-CREATE TABLE `ventas` (
-  `id_venta` int(11) NOT NULL,
-  `usuario_id` int(11) NOT NULL,
-  `espectaculo_id` int(11) NOT NULL,
-  `fecha_venta` date NOT NULL,
-  `monto_total` decimal(10,2) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `ventas`
---
-
-INSERT INTO `ventas` (`id_venta`, `usuario_id`, `espectaculo_id`, `fecha_venta`, `monto_total`) VALUES
-(58, 1, 20, '2026-01-03', '0.08'),
-(60, 1, 20, '2026-01-05', '155554.00'),
-(61, 1, 20, '2026-01-05', '311108.00'),
-(62, 1, 20, '2026-01-07', '233331.00'),
-(63, 1, 20, '2026-01-12', '233331.00'),
-(64, 1, 20, '2026-01-12', '233331.00'),
-(65, 1, 20, '2026-01-12', '311108.00'),
-(66, 1, 20, '2026-01-13', '155554.00');
+(1, 2, 'ivaninfonet@gmail.com', '1234', 'ivan', 'tolaba', 34571058, '11-2310-6932'),
+(2, 2, 'ivaninfonet2@gmail.com', '1234', 'pablo', 'flores', 42589521, '11-4082-6777'),
+(31, 1, 'ivaninfonorte@gmail.com', '1234', 'gerardo', 'fernandez', 34234433, '11-4156-3813'),
+(32, 1, 'ivaninfosur@gmail.com', '1234', 'miguel', 'angel', 2147483647, '11-2310-8788'),
+(33, 1, 'ivaninfoeste@gmail.com', '1234', 'rodrigo', 'gomez', 12345678, '4444-4444'),
+(34, 1, 'ivaninfoeste2@gmail.com', '1234', 'rodrigo', 'flores', 3222114, '5555-6666');
 
 --
 -- Índices para tablas volcadas
 --
-
---
--- Indices de la tabla `clientes`
---
-ALTER TABLE `clientes`
-  ADD PRIMARY KEY (`id_cliente`),
-  ADD KEY `usuario` (`usuario_id`);
-
---
--- Indices de la tabla `espectaculos`
---
-ALTER TABLE `espectaculos`
-  ADD PRIMARY KEY (`id_espectaculo`);
-
---
--- Indices de la tabla `reservas`
---
-ALTER TABLE `reservas`
-  ADD PRIMARY KEY (`id_reserva`),
-  ADD KEY `espectaculos` (`espectaculo_id`),
-  ADD KEY `usuarios` (`usuario_id`);
 
 --
 -- Indices de la tabla `roles`
@@ -259,37 +206,12 @@ ALTER TABLE `roles`
 --
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`id_usuario`),
-  ADD KEY `rol` (`rol_id`);
-
---
--- Indices de la tabla `ventas`
---
-ALTER TABLE `ventas`
-  ADD PRIMARY KEY (`id_venta`),
-  ADD KEY `espectaculo` (`espectaculo_id`),
-  ADD KEY `reserva` (`usuario_id`);
+  ADD UNIQUE KEY `nombre_usuario` (`nombre_usuario`),
+  ADD KEY `fk_usuario_rol` (`rol_id`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
 --
-
---
--- AUTO_INCREMENT de la tabla `clientes`
---
-ALTER TABLE `clientes`
-  MODIFY `id_cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
-
---
--- AUTO_INCREMENT de la tabla `espectaculos`
---
-ALTER TABLE `espectaculos`
-  MODIFY `id_espectaculo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
-
---
--- AUTO_INCREMENT de la tabla `reservas`
---
-ALTER TABLE `reservas`
-  MODIFY `id_reserva` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
 
 --
 -- AUTO_INCREMENT de la tabla `roles`
@@ -301,42 +223,17 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
-
---
--- AUTO_INCREMENT de la tabla `ventas`
---
-ALTER TABLE `ventas`
-  MODIFY `id_venta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- Restricciones para tablas volcadas
 --
 
 --
--- Filtros para la tabla `clientes`
---
-ALTER TABLE `clientes`
-  ADD CONSTRAINT `usuario` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id_usuario`);
-
---
--- Filtros para la tabla `reservas`
---
-ALTER TABLE `reservas`
-  ADD CONSTRAINT `espectaculos` FOREIGN KEY (`espectaculo_id`) REFERENCES `espectaculos` (`id_espectaculo`),
-  ADD CONSTRAINT `usuarios` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id_usuario`);
-
---
 -- Filtros para la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  ADD CONSTRAINT `rol` FOREIGN KEY (`rol_id`) REFERENCES `roles` (`id_rol`);
-
---
--- Filtros para la tabla `ventas`
---
-ALTER TABLE `ventas`
-  ADD CONSTRAINT `espectaculo` FOREIGN KEY (`espectaculo_id`) REFERENCES `espectaculos` (`id_espectaculo`);
+  ADD CONSTRAINT `fk_usuario_rol` FOREIGN KEY (`rol_id`) REFERENCES `roles` (`id_rol`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
