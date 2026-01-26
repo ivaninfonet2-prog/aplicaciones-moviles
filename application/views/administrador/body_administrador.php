@@ -5,9 +5,7 @@
     <title>Panel del Administrador</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- CSS -->
     <link rel="stylesheet" href="<?= base_url('activos/css/administrador/body_administrador.css'); ?>">
-
 </head>
 <body>
 
@@ -22,6 +20,19 @@
         </p>
     </section>
 
+    <!-- MENSAJES FLASH -->
+    <?php if ($this->session->flashdata('success')): ?>
+        <div class="mensaje mensaje-exito">
+            <?= $this->session->flashdata('success'); ?>
+        </div>
+    <?php endif; ?>
+
+    <?php if ($this->session->flashdata('error')): ?>
+        <div class="mensaje mensaje-error">
+            <?= $this->session->flashdata('error'); ?>
+        </div>
+    <?php endif; ?>
+
     <!-- TARJETA PANEL -->
     <section class="botones-container">
         <h2 class="panel-title">Panel de Control</h2>
@@ -30,19 +41,6 @@
             Seleccioná una opción para administrar el contenido del sistema.
         </p>
 
-        <!-- MENSAJES FLASH -->
-        <?php if ($this->session->flashdata('success')): ?>
-            <div class="mensaje mensaje-exito">
-                <?= $this->session->flashdata('success'); ?>
-            </div>
-        <?php endif; ?>
-
-        <?php if ($this->session->flashdata('error')): ?>
-            <div class="mensaje mensaje-error">
-                <?= $this->session->flashdata('error'); ?>
-            </div>
-        <?php endif; ?>
-
         <!-- BOTONES -->
         <a href="<?= base_url('administrador/administrador_espectaculos'); ?>" class="boton boton-1">Espectáculos</a>
         <a href="<?= base_url('ventas/mostrar_ventas'); ?>" class="boton boton-2">Ventas</a>
@@ -50,12 +48,14 @@
         <a href="<?= base_url('administrador/crear_espectaculo'); ?>" class="boton boton-4">Agregar Espectáculo</a>
         <a href="<?= base_url('administrador/lista_usuarios'); ?>" class="boton boton-5">Usuarios</a>
         <a href="<?= base_url('administrador/crear_usuario'); ?>" class="boton boton-6">Agregar Usuario</a>
-
     </section>
 
     <!-- TEXTO INFERIOR -->
     <section class="texto-inferior">
-        <p>Gestiona todo el contenido de manera rápida y eficiente desde este panel de control. ¡Explora las opciones disponibles!</p>
+        <p>
+            Gestiona todo el contenido de manera rápida y eficiente desde este panel de control.
+            ¡Explora las opciones disponibles!
+        </p>
     </section>
 
 </main>

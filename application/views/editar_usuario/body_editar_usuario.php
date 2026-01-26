@@ -15,21 +15,6 @@
             Completá los campos que necesites actualizar. Si no ingresás una nueva contraseña, se mantendrá la actual.
         </div>
 
-        <!-- Mensaje de éxito -->
-        <?php if ($this->session->flashdata('mensaje_exito')): ?>
-            <div class="alert success">
-                <?= $this->session->flashdata('mensaje_exito'); ?><br><br>
-                <a href="javascript:history.back()" class="btn btn-success">Volver a la vista anterior</a>
-            </div>
-        <?php endif; ?>
-
-        <!-- Mensaje de error -->
-        <?php if ($this->session->flashdata('mensaje')): ?>
-            <div class="alert">
-                <?= $this->session->flashdata('mensaje'); ?>
-            </div>
-        <?php endif; ?>
-
         <form action="<?= base_url('usuario/editar_usuario/' . ($usuario->id_usuario ?? '')) ?>" method="post">
             <input type="hidden" name="id_usuario" value="<?= $usuario->id_usuario ?? '' ?>">
 

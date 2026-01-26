@@ -180,26 +180,29 @@ class Usuario extends CI_Controller
         $this->Usuario_modelo->registrar_usuario($usuario_data);
 
         $this->session->set_flashdata('mensaje_exito', 'Usuario creado exitosamente.');
+        
         redirect('usuario/crear_usuario');
     }
 
-    // =============================
     // EDITAR USUARIO
-    // =============================
+   
     public function editar_usuario($id_usuario)
     {
         $usuario = $this->Usuario_modelo->obtener_usuario_por_id($id_usuario);
 
-        if (!$usuario)
+        if ( !$usuario)
         {
             show_error('Usuario no encontrado.', 404);
         }
 
         $this->validar_usuario(false);
 
+        // Si la validación falla, se vuelve a mostrar el formulario
+        
         if ($this->form_validation->run() === FALSE)
         {
-            $data = [
+            $data =
+            [
                 'titulo'     => 'Editar Usuario',
                 'fondo'      => base_url('activos/imagenes/mi_fondo.jpg'),
                 'id_usuario' => $this->session->userdata('id_usuario'),
@@ -213,54 +216,76 @@ class Usuario extends CI_Controller
             return;
         }
 
-        $usuario_data = [
+        // Datos a actualizar
+        $usuario_data =
+        [
             'nombre'         => $this->input->post('nombre', true),
             'apellido'       => $this->input->post('apellido', true),
             'nombre_usuario' => $this->input->post('email', true)
         ];
 
+        // Password opcional
         if ($this->input->post('password'))
         {
-            $usuario_data['palabra_clave'] =
-                password_hash($this->input->post('password'), PASSWORD_DEFAULT);
+            $usuario_data['palabra_clave'] = password_hash($this->input->post('password'),PASSWORD_DEFAULT);
         }
 
-        $this->Usuario_modelo->actualizar_usuario($id_usuario, $usuario_data);
+        // Actualización
+        $actualizado = $this->Usuario_modelo->actualizar_usuario($id_usuario, $usuario_data);
 
-        $this->session->set_flashdata('mensaje_exito', 'Usuario actualizado correctamente.');
-        redirect('usuario/editar_usuario/' . $id_usuario);
+        if ($actualizado)
+        {
+            $this->session->set_flashdata('success','Usuario actualizado correctamente.');
+        }
+        else
+        {
+            $this->session->set_flashdata('error','No se pudo actualizar el usuario.');
+        }
+
+        // REDIRECCIÓN AL PANEL ADMIN
+        redirect('administrador');
     }
 
-    // =============================
     // ELIMINAR USUARIO
-    // =============================
+  
     public function eliminar_usuario($id_usuario)
     {
         $usuario = $this->Usuario_modelo->obtener_usuario_por_id($id_usuario);
 
-        if (!$usuario)
+        if ( !$usuario)
         {
             show_error('Usuario no encontrado.', 404);
         }
 
-        $tiene_clientes = $this->db
-            ->where('usuario_id', $id_usuario)
-            ->get('clientes')
-            ->num_rows() > 0;
+        // Verificar si el usuario tiene clientes asociados
+    
+        $tiene_clientes = $this->db->where('usuario_id', $id_usuario)->get('clientes')->num_rows() > 0;
 
-        if ($tiene_clientes)
+        if ( $tiene_clientes)
         {
-            $this->session->set_flashdata(
-                'mensaje_error',
-                'No se puede eliminar el usuario: tiene clientes asociados.'
-            );
+            // MENSAJE ROJO
+            
+            $this->session->set_flashdata('error','No se puede eliminar el usuario: tiene clientes asociados.');
         }
         else
         {
-            $this->Usuario_modelo->eliminar_usuario($id_usuario);
-            $this->session->set_flashdata('mensaje_exito', 'Usuario eliminado correctamente.');
+            $eliminado = $this->Usuario_modelo->eliminar_usuario($id_usuario);
+
+            if ($eliminado)
+            {
+                // MENSAJE VERDE
+            
+                $this->session->set_flashdata('success','Usuario eliminado correctamente.');
+            }
+            else
+            {
+                // ERROR AL ELIMINAR
+            
+                $this->session->set_flashdata('error','Ocurrió un error al eliminar el usuario.');
+            }
         }
 
+        // REDIRECCIÓN AL PANEL ADMINISTRADOR
         redirect('administrador');
     }
 }
