@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-01-2026 a las 00:14:19
+-- Tiempo de generación: 26-01-2026 a las 04:32:54
 -- Versión del servidor: 10.4.25-MariaDB
 -- Versión de PHP: 7.4.30
 
@@ -32,6 +32,14 @@ CREATE TABLE `clientes` (
   `usuario_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Volcado de datos para la tabla `clientes`
+--
+
+INSERT INTO `clientes` (`id_cliente`, `usuario_id`) VALUES
+(72, 33),
+(73, 33);
+
 -- --------------------------------------------------------
 
 --
@@ -55,8 +63,12 @@ CREATE TABLE `espectaculos` (
 --
 
 INSERT INTO `espectaculos` (`id_espectaculo`, `nombre`, `descripcion`, `disponibles`, `precio`, `direccion`, `fecha`, `hora`, `imagen`) VALUES
-(20, 'maria becerra ttttttt', 'la nena de argentina hhhhhhh', 865, '77777.00', 'belgrano 44445555', '2025-12-31', '22:11:00', '62df21eab7af8c186e82fddda3749853.jpg'),
-(29, 'emilia mernes la mejor', 'ggg', 55555, '66666.00', 'belgrano 4444', '2026-01-22', '19:48:00', '55fcce243cb3b9ccef0a265e0b845d5f.jpg');
+(20, 'maria becerra', 'la nena de argentina', 863, '77777.00', 'belgrano 44445555', '2025-12-31', '22:11:00', '62df21eab7af8c186e82fddda3749853.jpg'),
+(29, 'emilia mernes', 'la mejor bailarina del mundo', 55551, '66666.00', 'belgrano 4444', '2026-01-22', '19:48:00', '55fcce243cb3b9ccef0a265e0b845d5f.jpg'),
+(30, 'nicky nicole', 'la mas random', 44, '2244.00', 'lanus 22111', '2026-01-21', '05:07:00', '1992a1631eae9eb2d1de5beb90e49944.jpg'),
+(31, 'trueno rapido', 'el rebelde de lanus', 6666, '65555.00', 'paris 234', '2026-01-26', '01:08:00', 'd1ae787018edc3d28716dbc1fd4e6a98.jpg'),
+(32, 'duki el trapero del norte', 'el galante', 5555, '777777.00', 'paris 234', '2026-01-27', '01:09:00', 'c7bcfbac31c1f3c81781211e6fbc915f.jpg'),
+(33, 'el poncho', 'ex rebelde', 3333, '33333.00', 'camin negro 3333', '2026-01-28', '05:14:00', '929221cc65c45a2a34dcf2e592a8379e.jpg');
 
 -- --------------------------------------------------------
 
@@ -72,6 +84,14 @@ CREATE TABLE `reservas` (
   `fecha_reserva` date NOT NULL,
   `monto_total` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `reservas`
+--
+
+INSERT INTO `reservas` (`id_reserva`, `usuario_id`, `espectaculo_id`, `cantidad`, `fecha_reserva`, `monto_total`) VALUES
+(73, 33, 20, 2, '2026-01-26', 155554),
+(74, 33, 29, 4, '2026-01-26', 266664);
 
 -- --------------------------------------------------------
 
@@ -118,8 +138,8 @@ INSERT INTO `usuarios` (`id_usuario`, `rol_id`, `nombre_usuario`, `palabra_clave
 (32, 1, 'ivaninfosur@gmail.com', '1234', 'miguel', 'angel', 2147483647, '11-2310-8788'),
 (33, 1, 'ivaninfoeste@gmail.com', '1234', 'rodrigo', 'gomez', 12345678, '4444-4444'),
 (34, 1, 'ivaninfoeste2@gmail.com', '1234', 'rodrigo ', 'flores', 3222114, '5555-6666'),
-(36, 2, 'ivaninfonet@gmail.com', '1234', 'ivan', 'tolaba', 2211112, '5555-6666'),
-(37, 2, 'ivaninfonet2@gmail.com', '1234', 'pablo', 'flores', 11111111, '4444-5555');
+(36, 2, 'ivaninfonet@gmail.com', '1234', 'pablo', 'tolaba', 2211112, '5555-6666'),
+(38, 2, 'pppp@gmail.com', '$2y$10$9okI3MsgEgB2RiPA3W8Aie5zgd1qU5TujFxZ108ZiXi5', 'fabian', 'gauto', 0, '');
 
 -- --------------------------------------------------------
 
@@ -134,6 +154,14 @@ CREATE TABLE `ventas` (
   `fecha_venta` date NOT NULL,
   `monto_total` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `ventas`
+--
+
+INSERT INTO `ventas` (`id_venta`, `usuario_id`, `espectaculo_id`, `fecha_venta`, `monto_total`) VALUES
+(72, 33, 20, '2026-01-26', '155554.00'),
+(73, 33, 29, '2026-01-26', '266664.00');
 
 --
 -- Índices para tablas volcadas
@@ -189,19 +217,19 @@ ALTER TABLE `ventas`
 -- AUTO_INCREMENT de la tabla `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `id_cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
+  MODIFY `id_cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
 
 --
 -- AUTO_INCREMENT de la tabla `espectaculos`
 --
 ALTER TABLE `espectaculos`
-  MODIFY `id_espectaculo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id_espectaculo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT de la tabla `reservas`
 --
 ALTER TABLE `reservas`
-  MODIFY `id_reserva` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
+  MODIFY `id_reserva` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
 
 --
 -- AUTO_INCREMENT de la tabla `roles`
@@ -213,13 +241,13 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT de la tabla `ventas`
 --
 ALTER TABLE `ventas`
-  MODIFY `id_venta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
+  MODIFY `id_venta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
 
 --
 -- Restricciones para tablas volcadas

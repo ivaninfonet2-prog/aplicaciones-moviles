@@ -29,7 +29,6 @@ class Venta_modelo extends CI_Model
             return false; // Retorna false si no hay datos disponibles
         }
     }
-
 }
 
 ?>;

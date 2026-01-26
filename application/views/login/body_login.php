@@ -11,14 +11,14 @@
             <p>Ingresá con tu usuario para acceder a todos los eventos</p>
         </div>
 
+        <?php if ($this->session->flashdata('error')): ?>
+            <div class="alert alert-danger">
+                <?= $this->session->flashdata('error'); ?>
+            </div>
+        <?php endif; ?>
+
         <!-- TARJETA LOGIN -->
         <div class="login-card">
-
-            <?php if ($this->session->flashdata('error')): ?>
-                <div class="alert alert-danger">
-                    <?= $this->session->flashdata('error'); ?>
-                </div>
-            <?php endif; ?>
 
             <p class="login-text">Completá tus datos para iniciar sesión</p>
 

@@ -29,7 +29,8 @@ class Reserva_modelo extends CI_Model
 
         // Insertar reserva
 
-        $reserva = [
+        $reserva = 
+        [
             'espectaculo_id' => $id_espectaculo,
             'cantidad'       => $cantidad,
             'fecha_reserva'  => $fecha_reserva,
@@ -71,7 +72,7 @@ class Reserva_modelo extends CI_Model
         return $this->obtener_reservas_usuario($usuario_id);
     }
 
-     public function eliminar_reserva($id_reserva)
+    public function eliminar_reserva($id_reserva)
     {
         $this->db->where('id_reserva', $id_reserva);
         return $this->db->delete('reservas');

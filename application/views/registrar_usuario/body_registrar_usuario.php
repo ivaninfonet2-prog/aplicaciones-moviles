@@ -24,14 +24,14 @@
         <p>Rellena tus datos personales para crear una cuenta.</p>
       </div>
 
-      <!-- Tarjeta de registro -->
-      <div class="registro-card">
-
         <?php if (isset($error)): ?>
           <div class="alert-danger">
             <strong>Atención:</strong> <?= $error; ?>
           </div>
         <?php endif; ?>
+
+      <!-- Tarjeta de registro -->
+      <div class="registro-card">
 
         <form method="post" action="<?= site_url('registrar/registrar_usuario'); ?>" autocomplete="off">
 

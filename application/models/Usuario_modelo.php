@@ -9,35 +9,30 @@ class Usuario_modelo extends CI_Model
         $this->load->database();
     }
 
-    // ==================================================
     // REGISTRAR USUARIO (SIEMPRE ROL USUARIO = 2)
-    // ==================================================
+   
     public function registrar_usuario($data)
     {
-        // Blindaje total contra duplicación de rol
-        unset($data['rol_id']);
         $data['rol_id'] = 2;
 
         return $this->db->insert('usuarios', $data);
     }
 
-    // ==================================================
     // VERIFICAR SI EXISTE USUARIO (EMAIL O DNI)
-    // ==================================================
+
     public function verificar_usuario_existente($email, $dni)
     {
         return $this->db
             ->group_start()
-                ->where('nombre_usuario', $email)
-                ->or_where('dni', $dni)
+            ->where('nombre_usuario', $email)
+            ->or_where('dni', $dni)
             ->group_end()
             ->get('usuarios')
             ->num_rows() > 0;
     }
 
-    // ==================================================
     // OBTENER USUARIO POR EMAIL (LOGIN)
-    // ==================================================
+ 
     public function obtener_usuario_por_email($email)
     {
         return $this->db
@@ -46,9 +41,8 @@ class Usuario_modelo extends CI_Model
             ->row();
     }
 
-    // ==================================================
     // OBTENER USUARIO POR ID
-    // ==================================================
+
     public function obtener_usuario_por_id($id_usuario)
     {
         return $this->db
@@ -57,17 +51,15 @@ class Usuario_modelo extends CI_Model
             ->row();
     }
 
-    // ==================================================
     // LISTAR TODOS LOS USUARIOS
-    // ==================================================
+   
     public function obtener_usuarios()
     {
         return $this->db->get('usuarios')->result();
     }
 
-    // ==================================================
-    // LISTAR SOLO USUARIOS ESTÁNDAR
-    // ==================================================
+    // LISTAR SOLO USUARIOS ESTANDAR
+    
     public function obtener_usuarios_estandar()
     {
         return $this->db
@@ -76,9 +68,8 @@ class Usuario_modelo extends CI_Model
             ->result();
     }
 
-    // ==================================================
     // ACTUALIZAR USUARIO (SIN CAMBIAR ROL)
-    // ==================================================
+   
     public function actualizar_usuario($id_usuario, $data)
     {
         unset($data['rol_id']);
@@ -88,17 +79,15 @@ class Usuario_modelo extends CI_Model
             ->update('usuarios', $data);
     }
 
-    // ==================================================
     // ELIMINAR USUARIO
-    // ==================================================
+    
     public function eliminar_usuario($id_usuario)
     {
         return $this->db->delete('usuarios', ['id_usuario' => $id_usuario]);
     }
 
-    // ==================================================
     // OBTENER EMAIL POR ID
-    // ==================================================
+   
     public function get_usuario_email($id_usuario)
     {
         return $this->db
@@ -108,15 +97,11 @@ class Usuario_modelo extends CI_Model
             ->row_array();
     }
 
-    // ==================================================
-    // OBTENER USUARIO POR EMAIL (COMPATIBILIDAD LOGIN)
-    // ==================================================
-    public function obtener_usuario($nombre_usuario)
+    public function usuario_tiene_clientes($id_usuario)
     {
         return $this->db
-            ->where('nombre_usuario', $nombre_usuario)
-            ->get('usuarios')
-            ->row();
+            ->where('usuario_id', $id_usuario)
+            ->get('clientes')
+            ->num_rows() > 0;
     }
-
 }

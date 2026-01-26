@@ -54,7 +54,7 @@ class Espectaculo_modelo extends CI_Model
                    ->get('espectaculos')
                    ->row();
 
-        if (!$es) 
+        if ( ! $es) 
         {
             return false;
         }
@@ -126,7 +126,7 @@ class Espectaculo_modelo extends CI_Model
     {
         // Protección extra: imagen NUNCA NULL
 
-        if (!isset($data['imagen']) || empty($data['imagen'])) 
+        if ( !isset($data['imagen']) || empty($data['imagen'])) 
         {
             $data['imagen'] = 'activos/imagenes/espectaculos/default.jpg';
         }
@@ -171,7 +171,7 @@ class Espectaculo_modelo extends CI_Model
                         ->get('usuarios')
                         ->row_array();
 
-        if (!$usuario) 
+        if ( !$usuario) 
         {
             return false;
         }
