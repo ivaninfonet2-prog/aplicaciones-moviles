@@ -7,41 +7,34 @@ class Usuario extends CI_Controller
     {
         parent::__construct();
 
-        $this->load->model([
-            'Usuario_modelo',
-            'Espectaculo_modelo',
-            'Reserva_modelo'
-        ]);
-
+        $this->load->model(['Usuario_modelo','Espectaculo_modelo','Reserva_modelo']);
         $this->load->library(['session', 'form_validation']);
         $this->load->helper(['url', 'form']);
 
-        // =============================
         // PROTECCIÓN GLOBAL
-        // =============================
-        if (!$this->session->userdata('logged_in'))
+       
+        if ( !$this->session->userdata('logged_in'))
         {
             redirect('login');
             exit;
         }
 
-        // =============================
         // EVITAR CACHE
-        // =============================
+        
         $this->output
             ->set_header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0")
             ->set_header("Pragma: no-cache");
     }
 
-    // =============================
     // HOME USUARIO
-    // =============================
+
     public function index()
     {
         $id_usuario = $this->session->userdata('id_usuario');
         $usuario    = $this->Usuario_modelo->obtener_usuario_por_id($id_usuario);
 
-        $data = [
+        $data = 
+        [
             'titulo'     => 'Bienvenido Usuario',
             'fondo'      => base_url('activos/imagenes/mi_fondo.jpg'),
             'id_usuario' => $id_usuario,
@@ -55,12 +48,12 @@ class Usuario extends CI_Controller
         $this->load->view('footer_footer/footer_footer_usuario');
     }
 
-    // =============================
     // ESPECTÁCULOS
-    // =============================
+   
     public function usuario_espectaculos()
     {
-        $data = [
+        $data = 
+        [
             'titulo'       => 'Cartelera de Espectáculos',
             'fondo'        => base_url('activos/imagenes/mi_fondo.jpg'),
             'id_usuario'   => $this->session->userdata('id_usuario'),
@@ -73,14 +66,14 @@ class Usuario extends CI_Controller
         $this->load->view('footer_footer/footer_footer_usuario');
     }
 
-    // =============================
     // MIS RESERVAS
-    // =============================
+
     public function usuario_reservas()
     {
         $id_usuario = $this->session->userdata('id_usuario');
 
-        $data = [
+        $data = 
+        [
             'titulo'     => 'Mis Reservas',
             'fondo'      => base_url('activos/imagenes/mi_fondo.jpg'),
             'id_usuario' => $id_usuario,
@@ -93,20 +86,20 @@ class Usuario extends CI_Controller
         $this->load->view('footer_footer/footer_footer_usuario');
     }
 
-    // =============================
     // DETALLE DE RESERVA
-    // =============================
+  
     public function usuario_reservas_detalle($id_reserva)
     {
         $id_usuario = $this->session->userdata('id_usuario');
         $reserva    = $this->Reserva_modelo->obtener_reserva_detalle($id_reserva, $id_usuario);
 
-        if (!$reserva)
+        if ( !$reserva)
         {
             show_error('Reserva no encontrada.', 404);
         }
 
-        $data = [
+        $data = 
+        [
             'titulo'     => 'Detalle de Reserva',
             'fondo'      => base_url('activos/imagenes/mi_fondo.jpg'),
             'id_usuario' => $id_usuario,
@@ -119,9 +112,8 @@ class Usuario extends CI_Controller
         $this->load->view('footer_footer/footer_footer_usuario');
     }
 
-    // =============================
     // VALIDACIONES
-    // =============================
+  
     private function validar_usuario($es_nuevo = true)
     {
         $this->form_validation->set_rules('nombre', 'Nombre', 'required|trim');
@@ -129,17 +121,9 @@ class Usuario extends CI_Controller
 
         if ($es_nuevo)
         {
-            $this->form_validation->set_rules(
-                'email',
-                'Email',
-                'required|valid_email|is_unique[usuarios.nombre_usuario]'
-            );
+            $this->form_validation->set_rules('email','Email','required|valid_email|is_unique[usuarios.nombre_usuario]');
             $this->form_validation->set_rules('password', 'Contraseña', 'required|min_length[4]');
-            $this->form_validation->set_rules(
-                'password_confirm',
-                'Confirmar Contraseña',
-                'required|matches[password]'
-            );
+            $this->form_validation->set_rules('password_confirm','Confirmar Contraseña','required|matches[password]');
         }
         else
         {
@@ -147,16 +131,19 @@ class Usuario extends CI_Controller
         }
     }
 
-    // =============================
+  
     // CREAR USUARIO (ADMIN)
-    // =============================
+    
     public function crear_usuario()
     {
         $this->validar_usuario(true);
 
+        // Si falla la validación, se muestra el formulario
+    
         if ($this->form_validation->run() === FALSE)
         {
-            $data = [
+            $data =
+            [
                 'titulo'     => 'Crear Usuario',
                 'fondo'      => base_url('activos/imagenes/mi_fondo.jpg'),
                 'id_usuario' => $this->session->userdata('id_usuario'),
@@ -166,22 +153,34 @@ class Usuario extends CI_Controller
             $this->load->view('header_footer/header_footer_administrador', $data);
             $this->load->view('crear_usuario/body_crear_usuario', $data);
             $this->load->view('footer_footer/footer_footer_administrador', $data);
+            
             return;
         }
 
-        $usuario_data = [
+        // Datos del usuario
+        $usuario_data =
+        [
             'nombre'         => $this->input->post('nombre', true),
             'apellido'       => $this->input->post('apellido', true),
             'nombre_usuario' => $this->input->post('email', true),
-            'palabra_clave'  => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
-            'rol_id'         => 2 // 👈 USUARIO NORMAL
+            'palabra_clave'  => password_hash($this->input->post('password'),PASSWORD_DEFAULT),
+            'rol_id'         => 2 // Rol usuario
         ];
 
-        $this->Usuario_modelo->registrar_usuario($usuario_data);
+        // Registro
+        $creado = $this->Usuario_modelo->registrar_usuario($usuario_data);
 
-        $this->session->set_flashdata('mensaje_exito', 'Usuario creado exitosamente.');
-        
-        redirect('usuario/crear_usuario');
+        if ($creado)
+        {
+            $this->session->set_flashdata('success','Usuario creado exitosamente.');
+        }
+        else
+        {
+            $this->session->set_flashdata('error','No se pudo crear el usuario.');
+        }
+
+        // REDIRECCIÓN AL PANEL ADMIN
+        redirect('administrador');
     }
 
     // EDITAR USUARIO
@@ -258,7 +257,7 @@ class Usuario extends CI_Controller
         }
 
         // Verificar si el usuario tiene clientes asociados
-    
+
         $tiene_clientes = $this->db->where('usuario_id', $id_usuario)->get('clientes')->num_rows() > 0;
 
         if ( $tiene_clientes)
