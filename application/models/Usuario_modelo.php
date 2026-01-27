@@ -9,30 +9,26 @@ class Usuario_modelo extends CI_Model
         $this->load->database();
     }
 
-    // REGISTRAR USUARIO (SIEMPRE ROL USUARIO = 2)
-   
     public function registrar_usuario($data)
     {
-        $data['rol_id'] = 2;
-
+        $data['rol_id'] = 1;
+        
         return $this->db->insert('usuarios', $data);
     }
 
-    // VERIFICAR SI EXISTE USUARIO (EMAIL O DNI)
-
+    // VERIFICAR SI EXISTE USUARIO (email o dni)
     public function verificar_usuario_existente($email, $dni)
     {
         return $this->db
             ->group_start()
-            ->where('nombre_usuario', $email)
-            ->or_where('dni', $dni)
+                ->where('nombre_usuario', $email)
+                ->or_where('dni', $dni)
             ->group_end()
             ->get('usuarios')
             ->num_rows() > 0;
     }
 
     // OBTENER USUARIO POR EMAIL (LOGIN)
- 
     public function obtener_usuario_por_email($email)
     {
         return $this->db
@@ -42,7 +38,6 @@ class Usuario_modelo extends CI_Model
     }
 
     // OBTENER USUARIO POR ID
-
     public function obtener_usuario_por_id($id_usuario)
     {
         return $this->db
@@ -52,27 +47,31 @@ class Usuario_modelo extends CI_Model
     }
 
     // LISTAR TODOS LOS USUARIOS
-   
     public function obtener_usuarios()
     {
         return $this->db->get('usuarios')->result();
     }
 
-    // LISTAR SOLO USUARIOS ESTANDAR
-    
+    // LISTAR SOLO USUARIOS ESTÁNDAR
     public function obtener_usuarios_estandar()
     {
         return $this->db
-            ->where('rol_id', 2)
+            ->where('rol_id', 1)
             ->get('usuarios')
             ->result();
     }
 
-    // ACTUALIZAR USUARIO (SIN CAMBIAR ROL)
-   
+    // ACTUALIZAR USUARIO
     public function actualizar_usuario($id_usuario, $data)
     {
+        // No permitir cambiar rol
         unset($data['rol_id']);
+
+        // Si no envían contraseña, no se actualiza
+        if (empty($data['palabra_clave'])) 
+        {
+            unset($data['palabra_clave']);
+        }
 
         return $this->db
             ->where('id_usuario', $id_usuario)
@@ -80,28 +79,8 @@ class Usuario_modelo extends CI_Model
     }
 
     // ELIMINAR USUARIO
-    
     public function eliminar_usuario($id_usuario)
     {
         return $this->db->delete('usuarios', ['id_usuario' => $id_usuario]);
-    }
-
-    // OBTENER EMAIL POR ID
-   
-    public function get_usuario_email($id_usuario)
-    {
-        return $this->db
-            ->select('nombre_usuario')
-            ->where('id_usuario', $id_usuario)
-            ->get('usuarios')
-            ->row_array();
-    }
-
-    public function usuario_tiene_clientes($id_usuario)
-    {
-        return $this->db
-            ->where('usuario_id', $id_usuario)
-            ->get('clientes')
-            ->num_rows() > 0;
     }
 }

@@ -1,10 +1,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-// Incluir manualmente la clase Seguridad
 require_once(APPPATH . 'controllers/Seguridad.php');
 
-class Login extends Seguridad 
+class Login extends Seguridad
 {
     public function __construct()
     {
@@ -16,51 +15,51 @@ class Login extends Seguridad
 
     public function index()
     {
-        $data = [
+         $data = 
+        [
+            'titulo' => "Registrarme como Usuario",
             'fondo'  => base_url('activos/imagenes/mi_fondo.jpg'),
-            'titulo' => 'Loguearme'
         ];
-
+    
         $this->load->view('header_footer/header_footer_principal', $data);
-        $this->load->view('login/body_login', $data); 
+        $this->load->view('login/body_login',$data);
         $this->load->view('footer_footer/footer_footer_principal');
     }
 
     public function autenticar()
     {
-        $nombre_usuario = trim($this->input->post('nombre_usuario'));
-      
-        $palabra_clave  = trim($this->input->post('palabra_clave'));
+        $email = trim($this->input->post('nombre_usuario'));
+        
+        $password = trim($this->input->post('palabra_clave'));
 
-        if (empty($nombre_usuario) || empty($palabra_clave))
+        if ( !$email || !$password) 
         {
-            $this->session->set_flashdata('error', 'Debe ingresar usuario y contraseña');
-         
+            $this->session->set_flashdata('error', 'Complete todos los campos');
             redirect('login');
-           
             return;
         }
 
-        $usuario = $this->Usuario_modelo->obtener_usuario_por_mail($nombre_usuario);
+        $usuario = $this->Usuario_modelo->obtener_usuario_por_email($email);
 
-        if ($usuario && password_verify($palabra_clave, $usuario->palabra_clave))
+        if ($usuario && $password === $usuario->palabra_clave) 
         {
+
             $this->session->set_userdata([
                 'id_usuario' => $usuario->id_usuario,
-                'logged_in'  => true,
-                'rol_id'     => $usuario->rol_id
+                'rol_id'     => $usuario->rol_id,
+                'logged_in'  => true
             ]);
 
-            if ($usuario->rol_id == 2)
+            if ($usuario->rol_id == 2) 
             {
                 redirect('administrador');
-            }
-            else
+            } 
+            else 
             {
                 redirect('usuario');
             }
-        }
-        else
+        } 
+        else 
         {
             $this->session->set_flashdata('error', 'Usuario o contraseña incorrectos');
             redirect('login');
@@ -70,7 +69,6 @@ class Login extends Seguridad
     public function logout()
     {
         $this->session->sess_destroy();
-        redirect('principal');
+        redirect('login');
     }
 }
-?>
