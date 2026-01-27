@@ -63,12 +63,8 @@ class Reservar extends CI_Controller
             return $this->error("Cantidad de entradas invalida.");
         }
 
-        $this->set_datos_reserva([
-            'id_espectaculo'    => $id_espectaculo,
-            'cantidad_entradas' => $cantidad,
-            'fecha_reserva'     => date('Y-m-d'),
-            'usuario'           => $usuario
-        ]);
+        $this->set_datos_reserva(['id_espectaculo' => $id_espectaculo,'cantidad_entradas' => $cantidad,
+            'fecha_reserva' => date('Y-m-d'),'usuario' => $usuario]);
 
         redirect("reservar/confirmar_reserva/{$id_espectaculo}");
     }
@@ -93,20 +89,12 @@ class Reservar extends CI_Controller
 
         $monto_total = $datos['cantidad_entradas'] * $precio;
 
-        $ok = $this->reserva->crear_reserva(
-            $datos['id_espectaculo'],
-            $datos['cantidad_entradas'],
-            $datos['fecha_reserva'],
-            $datos['usuario'],
-            $monto_total
-        );
+        $ok = $this->reserva->crear_reserva($datos['id_espectaculo'],$datos['cantidad_entradas'],
+            $datos['fecha_reserva'],$datos['usuario'],$monto_total);
 
         if ( !$ok)
         {
-            $this->session->set_flashdata(
-                'mensaje',
-                'Error: No hay suficientes entradas.'
-            );
+            $this->session->set_flashdata('mensaje','Error: No hay suficientes entradas.');
 
             redirect("espectaculos/espectaculo_logueado/{$id_espectaculo}");
             return;
@@ -147,17 +135,11 @@ class Reservar extends CI_Controller
 
         if ( !$reserva)
         {
-            $this->session->set_flashdata(
-                'mensaje',
-                'Reserva no encontrada.'
-            );
+            $this->session->set_flashdata('mensaje','Reserva no encontrada.');
         }
         elseif ($reserva['usuario_id'] != $usuario_id)
         {
-            $this->session->set_flashdata(
-                'mensaje',
-                'No tienes permiso para cancelar esta reserva.'
-            );
+            $this->session->set_flashdata('mensaje','No tienes permiso para cancelar esta reserva.');
         }
         else
         {
@@ -165,17 +147,11 @@ class Reservar extends CI_Controller
 
             if ($ok)
             {
-                $this->session->set_flashdata(
-                    'mensaje',
-                    'La reserva Nº '.$id_reserva.' fue cancelada exitosamente.'
-                );
+                $this->session->set_flashdata('mensaje','La reserva Nº '.$id_reserva.' fue cancelada.');
             }
             else
             {
-                $this->session->set_flashdata(
-                    'mensaje',
-                    'No se pudo cancelar la reserva. Intenta nuevamente.'
-                );
+                $this->session->set_flashdata('mensaje','No se pudo cancelar la reserva. Intenta nuevamente.');
             }
         }
 
@@ -194,8 +170,7 @@ class Reservar extends CI_Controller
             return $this->error("No hay datos de reserva.");
         }
 
-        $html = $this->load->view(
-            'plantilla_pdf',
+        $html = $this->load->view('plantilla_pdf',
             [
                 'usuario'     => $this->usuario->obtener_usuario_por_id($datos['usuario']),
                 'reserva'     => $datos,

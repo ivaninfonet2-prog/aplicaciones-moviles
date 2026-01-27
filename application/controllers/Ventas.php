@@ -35,12 +35,8 @@ class Ventas extends CI_Controller
 
         $usuario_id = $this->session->userdata('id_usuario');
 
-        $resultado_venta = $this->Venta_modelo->crear_venta(
-            $usuario_id,
-            $id_espectaculo,
-            $monto_total,
-            date('Y-m-d') // Fecha actual
-        );
+        $resultado_venta = $this->Venta_modelo->crear_venta($usuario_id, $id_espectaculo,
+            $monto_total,date('Y-m-d') );
 
         if ($resultado_venta) 
         {

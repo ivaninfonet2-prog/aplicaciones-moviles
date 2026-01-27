@@ -44,8 +44,7 @@ class Login extends Seguridad
         if ($usuario && $password === $usuario->palabra_clave) 
         {
 
-            $this->session->set_userdata([
-                'id_usuario' => $usuario->id_usuario,
+            $this->session->set_userdata(['id_usuario' => $usuario->id_usuario,
                 'rol_id'     => $usuario->rol_id,
                 'logged_in'  => true
             ]);

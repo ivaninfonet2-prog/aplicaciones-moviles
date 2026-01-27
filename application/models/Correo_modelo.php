@@ -8,9 +8,9 @@ class Correo_modelo extends CI_Model
     {
         $this->load->library('email');
 
-        $this->email->from('no-responder@eventosba.com', 'Eventos Buenos Aires');
+        $this->email->from('ivaninfonet@gmail.com', 'Unla tienda');
         $this->email->to($email);
-        $this->email->subject('Cancelacion de espectáculo');
+        $this->email->subject('Cancelacion de espectaculo');
 
         $mensaje = "Hola $nombre,\n\nLamentamos informarte que el espectaculo \"$espectaculo\" ha sido cancelado. 
         Si realizaste una compra, te contactaremos para gestionar la devolucion del dinero.\n\nGracias por tu comprension.";

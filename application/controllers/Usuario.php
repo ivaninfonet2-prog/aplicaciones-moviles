@@ -2,6 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 // Incluir la clase Seguridad antes de usarla
+
 require_once(APPPATH . 'controllers/Seguridad.php');
 
 class Usuario extends Seguridad
@@ -43,25 +44,40 @@ class Usuario extends Seguridad
     }
 
     // CREAR NUEVO USUARIO
+   
     public function crear_usuario()
     {
-        $this->validar_usuario(true); // true = es nuevo usuario
+        $this->validar_usuario(true);
 
-        if ($this->form_validation->run() == FALSE)
+        if ($this->form_validation->run() === FALSE)
         {
-            $this->session->set_flashdata('error', validation_errors());
-            redirect('usuario/nuevo'); // ruta a formulario de nuevo usuario
+            $data = 
+            [
+                'titulo'     => 'Crear Usuario',
+                'fondo'      => base_url('activos/imagenes/mi_fondo.jpg'),
+                'id_usuario' => $this->session->userdata('id_usuario'),
+                'logged_in'  => true
+            ];
+
+            $this->load->view('header_footer/header_footer_administrador', $data);
+            $this->load->view('crear_usuario/body_crear_usuario', $data);
+            $this->load->view('footer_footer/footer_footer_administrador', $data);
             return;
         }
 
-        $data = [
-            'nombre'          => $this->input->post('nombre', true),
-            'apellido'        => $this->input->post('apellido', true),
-            'nombre_usuario'  => $this->input->post('email', true),
-            'palabra_clave'   => password_hash($this->input->post('password', true), PASSWORD_DEFAULT)
+        $usuario_data = 
+        [
+            'nombre'         => $this->input->post('nombre', true),
+            'apellido'       => $this->input->post('apellido', true),
+            'nombre_usuario' => $this->input->post('email', true),
+            'palabra_clave'  => password_hash($this->input->post('password', true),
+            PASSWORD_DEFAULT
+        ),
+        
+        'rol_id'         => 1 
         ];
 
-        if ($this->Usuario_modelo->crear_usuario($data))
+        if ($this->Usuario_modelo->registrar_usuario($usuario_data))
         {
             $this->session->set_flashdata('success', 'Usuario creado correctamente.');
         }
@@ -87,7 +103,8 @@ class Usuario extends Seguridad
             return;
         }
 
-        $data = [
+        $data = 
+        [
             'nombre'         => $this->input->post('nombre', true),
             'apellido'       => $this->input->post('apellido', true),
             'nombre_usuario' => $this->input->post('email', true)
@@ -178,16 +195,12 @@ class Usuario extends Seguridad
 
         if ($es_nuevo)
         {
-            $this->form_validation->set_rules(
-                'email',
-                'Email',
+            $this->form_validation->set_rules('email','Email',
                 'required|valid_email|is_unique[usuarios.nombre_usuario]'
             );
 
             $this->form_validation->set_rules('password', 'Contraseña', 'required|min_length[4]');
-            $this->form_validation->set_rules(
-                'password_confirm',
-                'Confirmar Contraseña',
+            $this->form_validation->set_rules('password_confirm','Confirmar Contraseña',
                 'required|matches[password]'
             );
         }
@@ -202,7 +215,7 @@ class Usuario extends Seguridad
     {
         $usuario = $this->Usuario_modelo->obtener_usuario_por_id($id_usuario);
 
-        if (!$usuario)
+        if ( !$usuario)
         {
             show_error('Usuario no encontrado.', 404);
             return;

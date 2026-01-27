@@ -10,7 +10,6 @@ class Cliente_modelo extends CI_Model
         $this->load->database();
     }
 
-
     //   OBTENER CLIENTE POR USUARIO
     
     public function obtener_cliente_por_usuario($usuario_id)
